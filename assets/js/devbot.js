@@ -3,55 +3,104 @@ class DevBotController {
         this.container = document.getElementById('devbot-container');
         this.bot = document.getElementById('devbot');
         this.eyes = document.querySelectorAll('.devbot-eye');
+        this.speechBubble = document.querySelector('.devbot-speech-bubble');
 
         // Settings
-        this.baseY = 20; // Bottom position px
+        this.baseY = 20;
         this.minX = 50;
         this.maxX = window.innerWidth - 150;
-        this.idleTime = 0;
-        this.isMoving = false;
         this.currentSection = 'home';
         this.targetX = 100;
-        this.currentX = -200; // Start off-screen
+        this.currentX = -200;
         this.mouseNear = false;
         this.isInteracting = false;
+        this.isMobile = window.innerWidth <= 768;
 
-        // Initialize
+        this.phrases = {
+            home: [
+                "Hi! I'm DevBot.",
+                "Welcome to Shubham's Portfolio!",
+                "I live in this browser.",
+                "Scroll down for cool stuff!"
+            ],
+            experience: [
+                "Wow, Computer Vision at Deepen.AI!",
+                "Analyzing lidar data... beep boop.",
+                "Financial systems are complex!",
+                "Look at those optimization metrics.",
+                "I need a bigger magnifying glass."
+            ],
+            skills: [
+                "I love Python!",
+                "Deep Learning is my brain power.",
+                "OpenCV helps me see you.",
+                "So many algorithms!",
+                "Do you speak Binary?"
+            ],
+            contact: [
+                "Hire him! He's great.",
+                "Send a message!",
+                "I promise to deliver your email.",
+                "Let's build something together."
+            ],
+            click: [
+                "Ouch! That tickles.",
+                "High five!",
+                "System Systems... nominal.",
+                "You found a secret!"
+            ]
+        };
+
         this.init();
     }
 
     init() {
-        // Event Listeners
         window.addEventListener('resize', () => {
             this.maxX = window.innerWidth - 150;
+            this.isMobile = window.innerWidth <= 768;
+            if(this.isMobile) {
+                // Reset position on mobile to be fixed
+                this.currentX = window.innerWidth - 80;
+                this.container.style.left = '';
+                this.container.style.right = '10px';
+            }
         });
 
-        // Mouse Tracking
         document.addEventListener('mousemove', (e) => this.handleMouseMove(e));
 
-        // Scroll/Section Detection
         this.setupIntersectionObserver();
-
-        // Click Interaction
         this.container.addEventListener('click', () => this.handleClick());
 
-        // Start Loop
+        // Add Jetpack flames dynamically
+        const jetpack = document.createElement('div');
+        jetpack.className = 'devbot-jetpack';
+        jetpack.innerHTML = '<div class="jet-flame left"></div><div class="jet-flame right"></div>';
+        this.bot.querySelector('.devbot-body').prepend(jetpack);
+
         this.animate();
 
-        // Initial Entrance
         setTimeout(() => {
             this.container.classList.add('visible');
-            this.walkTo(100, () => {
-                this.wave();
-            });
+            if(!this.isMobile) {
+                this.walkTo(100, () => {
+                    this.wave();
+                    this.speak("Hi! I'm DevBot.");
+                });
+            } else {
+                this.speak("Hi! I'm DevBot.");
+            }
         }, 1000);
+
+        // Random idle speech loop
+        setInterval(() => {
+            if (!this.isMoving && Math.random() > 0.7) {
+                this.speakRandom();
+            }
+        }, 10000);
     }
 
     setupIntersectionObserver() {
-        const options = {
-            threshold: 0.4
-        };
-
+        const options = { threshold: 0.4 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -60,9 +109,7 @@ class DevBotController {
             });
         }, options);
 
-        document.querySelectorAll('section, header').forEach(section => {
-            observer.observe(section);
-        });
+        document.querySelectorAll('section, header').forEach(section => observer.observe(section));
     }
 
     setSection(sectionId) {
@@ -70,6 +117,16 @@ class DevBotController {
         this.currentSection = sectionId;
         this.resetState();
 
+        // Speak something relevant
+        setTimeout(() => this.speakRandom(sectionId), 500);
+
+        // Mobile Behavior: Just stay put or bounce
+        if (this.isMobile) {
+            this.setEmotion(sectionId === 'contact' ? 'love' : 'normal');
+            return;
+        }
+
+        // Desktop Behavior
         switch(sectionId) {
             case 'home':
                 this.wave();
@@ -80,34 +137,46 @@ class DevBotController {
                 break;
             case 'skills':
                 this.setEmotion('happy');
-                // Walk fast back and forth
                 this.startPatrol(true);
                 break;
             case 'contact':
                 this.setProp('sign');
                 this.setEmotion('love');
-                this.walkTo(window.innerWidth / 2 - 60); // Center
+                this.walkTo(window.innerWidth / 2 - 60);
                 break;
             default:
                 this.setEmotion('normal');
         }
     }
 
+    speak(text, duration = 3000) {
+        this.speechBubble.textContent = text;
+        this.speechBubble.classList.add('visible');
+
+        if (this.speechTimer) clearTimeout(this.speechTimer);
+        this.speechTimer = setTimeout(() => {
+            this.speechBubble.classList.remove('visible');
+        }, duration);
+    }
+
+    speakRandom(section = this.currentSection) {
+        const options = this.phrases[section] || this.phrases['home'];
+        const text = options[Math.floor(Math.random() * options.length)];
+        this.speak(text);
+    }
+
     handleMouseMove(e) {
-        if (this.isInteracting) return;
+        if (this.isInteracting || this.isMobile) return;
 
         const rect = this.container.getBoundingClientRect();
         const botX = rect.left + rect.width / 2;
         const botY = rect.top + rect.height / 2;
-
         const dist = Math.hypot(e.clientX - botX, e.clientY - botY);
 
         if (dist < 150) {
-            // Close proximity behavior
             if (!this.mouseNear) {
                 this.mouseNear = true;
                 this.setEmotion('surprised');
-                // Back away slightly
                 const runDir = e.clientX < botX ? 1 : -1;
                 this.walkTo(this.currentX + (runDir * 50));
             }
@@ -116,36 +185,33 @@ class DevBotController {
                 this.mouseNear = false;
                 this.setEmotion('normal');
             }
-
-            // Look at cursor logic could go here (css transform eyes)
         }
     }
 
     handleClick() {
         this.isInteracting = true;
         this.setEmotion('happy');
-        this.bot.classList.add('devbot-waving');
+        this.speakRandom('click');
 
-        // Jump animation
-        this.container.style.transform = `translateY(-50px)`;
+        // Jetpack Jump
+        this.container.classList.add('flying');
+        this.container.style.transform = `translateY(-100px)`;
+
         setTimeout(() => {
             this.container.style.transform = `translateY(0)`;
-        }, 200);
-
-        setTimeout(() => {
-            this.bot.classList.remove('devbot-waving');
-            this.setEmotion('normal');
+            this.container.classList.remove('flying');
             this.isInteracting = false;
-        }, 1500);
+            this.setEmotion('normal');
+        }, 1000);
     }
 
     walkTo(x, callback) {
-        // Clamp X
+        if (this.isMobile) return; // No walking on mobile
+
         x = Math.max(this.minX, Math.min(x, this.maxX));
         this.targetX = x;
         this.isMoving = true;
 
-        // Determine direction
         if (this.targetX > this.currentX) {
             this.container.classList.remove('face-left');
         } else {
@@ -156,13 +222,20 @@ class DevBotController {
     }
 
     startPatrol(fast = false) {
-        // Simple random walk behavior
+        if (this.isMobile) return;
+
         const patrol = () => {
             if (this.currentSection !== 'experience' && this.currentSection !== 'skills') return;
 
+            // Random chance to fly instead of walk
+            if (Math.random() > 0.7) {
+                this.container.classList.add('flying');
+                setTimeout(() => this.container.classList.remove('flying'), 2000);
+            }
+
             const randomX = Math.random() * (this.maxX - this.minX) + this.minX;
             this.walkTo(randomX, () => {
-                setTimeout(patrol, Math.random() * 3000 + 1000);
+                setTimeout(patrol, Math.random() * 3000 + 2000);
             });
         };
         patrol();
@@ -188,6 +261,7 @@ class DevBotController {
         this.setEmotion('normal');
         this.setProp(null);
         this.onMoveComplete = null;
+        this.container.classList.remove('flying');
     }
 
     wave() {
@@ -198,8 +272,7 @@ class DevBotController {
     }
 
     animate() {
-        // Animation Loop
-        if (this.isMoving) {
+        if (this.isMoving && !this.isMobile) {
             const speed = this.currentSection === 'skills' ? 4 : 2;
             const dx = this.targetX - this.currentX;
 
@@ -228,7 +301,6 @@ class DevBotController {
     }
 }
 
-// Initialize when DOM loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.devBot = new DevBotController();
 });
