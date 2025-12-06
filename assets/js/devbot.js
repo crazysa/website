@@ -15,6 +15,8 @@ class DevBotController {
         this.mouseNear = false;
         this.isInteracting = false;
         this.isMobile = window.innerWidth <= 768;
+        this.lastStepTime = 0;
+        this.stepInterval = 300; // ms
 
         this.phrases = {
             home: [
@@ -38,10 +40,10 @@ class DevBotController {
                 "Do you speak Binary?"
             ],
             contact: [
-                "Hire him! He's great.",
                 "Send a message!",
                 "I promise to deliver your email.",
-                "Let's build something together."
+                "Let's build something together.",
+                "Operators are standing by."
             ],
             click: [
                 "Ouch! That tickles.",
@@ -68,8 +70,20 @@ class DevBotController {
 
         document.addEventListener('mousemove', (e) => this.handleMouseMove(e));
 
+        // Double click to flip
+        this.container.addEventListener('dblclick', () => {
+             this.bot.style.transition = 'transform 0.5s';
+             this.bot.style.transform = 'rotate(360deg)';
+             setTimeout(() => {
+                 this.bot.style.transition = '';
+                 this.bot.style.transform = '';
+             }, 500);
+             this.speak("Do a barrel roll!");
+        });
+
         this.setupIntersectionObserver();
         this.container.addEventListener('click', () => this.handleClick());
+        this.setupInteractiveElements();
 
         // Add Jetpack flames dynamically
         const jetpack = document.createElement('div');
@@ -112,6 +126,47 @@ class DevBotController {
         document.querySelectorAll('section, header').forEach(section => observer.observe(section));
     }
 
+    setupInteractiveElements() {
+        // Phone links
+        document.querySelectorAll('a[href^="tel:"]').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                this.setProp('phone');
+                this.setEmotion('happy');
+                this.speak("Calling...");
+            });
+            el.addEventListener('mouseleave', () => this.resetState());
+        });
+
+        // Email links
+        document.querySelectorAll('a[href^="mailto:"]').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                this.setProp('mail');
+                this.setEmotion('happy');
+                this.speak("You've got mail!");
+            });
+            el.addEventListener('mouseleave', () => this.resetState());
+        });
+
+        // Github
+        document.querySelectorAll('a[href*="github.com"]').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                this.setProp('code');
+                this.setEmotion('happy');
+                this.speak("Git push origin master!");
+            });
+            el.addEventListener('mouseleave', () => this.resetState());
+        });
+
+        // LinkedIn
+        document.querySelectorAll('a[href*="linkedin.com"]').forEach(el => {
+             el.addEventListener('mouseenter', () => {
+                this.setEmotion('love');
+                this.speak("Let's connect!");
+            });
+            el.addEventListener('mouseleave', () => this.resetState());
+        });
+    }
+
     setSection(sectionId) {
         if (this.currentSection === sectionId) return;
         this.currentSection = sectionId;
@@ -140,7 +195,6 @@ class DevBotController {
                 this.startPatrol(true);
                 break;
             case 'contact':
-                this.setProp('sign');
                 this.setEmotion('love');
                 this.walkTo(window.innerWidth / 2 - 60);
                 break;
@@ -228,9 +282,16 @@ class DevBotController {
             if (this.currentSection !== 'experience' && this.currentSection !== 'skills') return;
 
             // Random chance to fly instead of walk
-            if (Math.random() > 0.7) {
+            const action = Math.random();
+            if (action > 0.6) {
+                // Fly
                 this.container.classList.add('flying');
-                setTimeout(() => this.container.classList.remove('flying'), 2000);
+                // ZigZag fly
+                this.isFlyingZigZag = true;
+                setTimeout(() => {
+                    this.container.classList.remove('flying');
+                    this.isFlyingZigZag = false;
+                }, 3000);
             }
 
             const randomX = Math.random() * (this.maxX - this.minX) + this.minX;
@@ -249,7 +310,7 @@ class DevBotController {
     }
 
     setProp(prop) {
-        this.container.classList.remove('show-magnifier', 'show-sign');
+        this.container.classList.remove('show-magnifier', 'show-sign', 'show-phone', 'show-mail', 'show-code');
         if (prop) {
             this.container.classList.add(`show-${prop}`);
         }
@@ -262,6 +323,7 @@ class DevBotController {
         this.setProp(null);
         this.onMoveComplete = null;
         this.container.classList.remove('flying');
+        this.isFlyingZigZag = false;
     }
 
     wave() {
@@ -271,10 +333,36 @@ class DevBotController {
         }, 2000);
     }
 
+    addStep() {
+        const step = document.createElement('div');
+        step.className = 'magic-step';
+
+        const rect = this.container.getBoundingClientRect();
+        // Position at feet
+        step.style.left = (rect.left + rect.width / 2 - 10) + 'px';
+        step.style.bottom = '20px'; // relative to viewport, but since it's fixed position it's fine
+
+        document.body.appendChild(step);
+
+        // Remove after animation
+        setTimeout(() => {
+            step.remove();
+        }, 1000);
+    }
+
     animate() {
         if (this.isMoving && !this.isMobile) {
             const speed = this.currentSection === 'skills' ? 4 : 2;
             const dx = this.targetX - this.currentX;
+
+            // ZigZag flight vertical offset
+            if (this.isFlyingZigZag) {
+                const time = Date.now() / 200;
+                const yOffset = Math.sin(time) * 20;
+                this.container.style.transform = `translateY(${yOffset}px)`;
+            } else {
+                 this.container.style.transform = `translateY(0px)`;
+            }
 
             if (Math.abs(dx) < speed) {
                 this.currentX = this.targetX;
@@ -290,6 +378,15 @@ class DevBotController {
                 this.currentX += Math.sign(dx) * speed;
                 this.bot.classList.remove('devbot-idle');
                 this.bot.classList.add('devbot-walking');
+
+                // Add magic steps if walking (not flying)
+                if (!this.isFlyingZigZag && !this.container.classList.contains('flying')) {
+                     const now = Date.now();
+                     if (now - this.lastStepTime > this.stepInterval) {
+                         this.addStep();
+                         this.lastStepTime = now;
+                     }
+                }
             }
 
             this.container.style.left = `${this.currentX}px`;
