@@ -56,22 +56,20 @@ class Particle {
 
         // Interaction: Move towards mouse slightly if close (attraction) or away (repulsion)
         // User asked for "moving towards cursor", so let's try attraction but keeping it subtle
-        // Actually, standard constellation is repulsion to clear a path, but let's try a magnetic effect
-        // or just standard float with lines connecting to mouse.
 
-        // Let's do a subtle repulsion so text is readable, but lines connect to mouse
-        if (distance < mouse.radius + this.size){
+        // Magnetic effect towards mouse
+        if (distance < mouse.radius + 100){ // Increased interaction radius
              if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
-                 this.x += 3;
+                 this.x -= 2; // Move towards mouse
              }
              if (mouse.x > this.x && this.x > this.size * 10) {
-                 this.x -= 3;
+                 this.x += 2;
              }
              if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
-                 this.y += 3;
+                 this.y -= 2;
              }
              if (mouse.y > this.y && this.y > this.size * 10) {
-                 this.y -= 3;
+                 this.y += 2;
              }
         }
 
@@ -87,13 +85,15 @@ class Particle {
 // Create particle array
 function init() {
     particlesArray = [];
-    let numberOfParticles = (canvas.height * canvas.width) / 9000;
+    // Increase density: Divisor reduced from 9000 to 7000
+    let numberOfParticles = (canvas.height * canvas.width) / 7000;
     for (let i = 0; i < numberOfParticles; i++) {
-        let size = (Math.random() * 2) + 1;
+        // Increase size: min 1.5, max 4.5
+        let size = (Math.random() * 3) + 1.5;
         let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
         let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-        let directionX = (Math.random() * 1) - 0.5; // Speed
-        let directionY = (Math.random() * 1) - 0.5;
+        let directionX = (Math.random() * 1.5) - 0.75; // Increased speed slightly
+        let directionY = (Math.random() * 1.5) - 0.75;
         let color = '#64ffda';
 
         particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
@@ -103,14 +103,21 @@ function init() {
 // Check if particles are close enough to draw line between them
 function connect() {
     let opacityValue = 1;
+    // Define connection distance threshold
+    const connectionDistance = (canvas.width/7) * (canvas.height/7);
+
     for (let a = 0; a < particlesArray.length; a++) {
         for (let b = a; b < particlesArray.length; b++) {
             let distance = (( particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
             + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
 
-            if (distance < (canvas.width/7) * (canvas.height/7)) {
-                opacityValue = 1 - (distance/20000);
-                ctx.strokeStyle = 'rgba(100, 255, 218,' + opacityValue * 0.2 + ')'; // Accent color with low opacity
+            if (distance < connectionDistance) {
+                // Calculate opacity: closer particles = more opaque
+                // max opacity 0.5 (was 0.2) for better visibility
+                opacityValue = 1 - (distance / connectionDistance);
+                if(opacityValue < 0) opacityValue = 0;
+
+                ctx.strokeStyle = 'rgba(100, 255, 218,' + opacityValue * 0.5 + ')';
                 ctx.lineWidth = 1;
                 ctx.beginPath();
                 ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -137,6 +144,7 @@ window.addEventListener('resize',
     function() {
         canvas.width = innerWidth;
         canvas.height = innerHeight;
+        // Recalculate mouse radius or other dependent variables if needed
         mouse.radius = ((canvas.height/80) * (canvas.height/80));
         init();
     }
