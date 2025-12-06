@@ -72,6 +72,52 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// ScrollSpy: Highlight active navbar link
+const sections = document.querySelectorAll('section, header');
+const navItems = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navItems.forEach(a => {
+        a.classList.remove('active-link');
+        if (a.classList.contains(current)) {
+            a.classList.add('active-link'); // Note: Need to add this class in CSS if not present
+        }
+        // Fallback for href check
+        if (a.getAttribute('href') === `#${current}`) {
+            a.classList.add('active-link');
+        }
+    });
+});
+
+// Back to Top Button Logic
+const backToTopBtn = document.getElementById('back-to-top');
+if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+
 // Initialize AOS (Animate On Scroll)
 AOS.init({
     duration: 1000,
@@ -84,7 +130,7 @@ AOS.init({
 if (document.getElementById('typed-output')) {
     new Typed('#typed-output', {
         strings: [
-            'Senior Software & Research Engineer',
+            'Senior Software & Research Engineer', // Using & is fine now with delay
             'Computer Vision Specialist',
             'AI Researcher',
             'Systems Architect',
@@ -93,12 +139,13 @@ if (document.getElementById('typed-output')) {
         typeSpeed: 50,
         backSpeed: 30,
         backDelay: 2000,
+        startDelay: 1000, // Added delay to ensure page load doesn't cause glitch
         loop: true
     });
 }
 
 // Initialize Vanilla Tilt
-VanillaTilt.init(document.querySelectorAll(".contact-card, .skills-category, .timeline-item"), {
+VanillaTilt.init(document.querySelectorAll(".contact-card, .skills-category, .skill-card, .timeline-content"), {
     max: 10,
     speed: 400,
     glare: true,
