@@ -79,3 +79,28 @@ AOS.init({
     once: true,
     mirror: false
 });
+
+// Initialize Typed.js
+if (document.getElementById('typed-output')) {
+    new Typed('#typed-output', {
+        strings: [
+            'Senior Software & Research Engineer',
+            'Computer Vision Specialist',
+            'AI Researcher',
+            'Systems Architect'
+        ],
+        typeSpeed: 50,
+        backSpeed: 30,
+        backDelay: 2000,
+        loop: true
+    });
+}
+
+// Initialize Vanilla Tilt
+VanillaTilt.init(document.querySelectorAll(".contact-card, .skills-category, .timeline-item"), {
+    max: 10,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.1,
+    scale: 1.02
+});

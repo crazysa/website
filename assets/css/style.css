@@ -50,6 +50,17 @@ ul {
     padding: 0 2rem;
 }
 
+/* Background Canvas */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none; /* Allows clicking on elements above it */
+}
+
 /* Utilities */
 .section {
     padding: 5rem 0;

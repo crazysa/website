@@ -17,10 +17,18 @@
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <!-- Typed.js for typing animation -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+    <!-- Vanilla Tilt for 3D hover effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <!-- Background Animation Canvas -->
+    <canvas id="bg-canvas"></canvas>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -43,7 +51,7 @@
         <div class="container hero-content">
             <div class="hero-text" data-aos="fade-right" data-aos-duration="1000">
                 <h1>Hi, I'm <span class="highlight">Shubham Agarwal</span></h1>
-                <h2>Senior Software & Research Engineer</h2>
+                <h2><span id="typed-output"></span></h2>
                 <p>Specializing in Computer Vision, Vision-Language Models, and Scalable Systems. I engineer breakthrough solutions using <strong>OpenCV</strong>, <strong>Multi-variate Optimization</strong>, and <strong>Deep Learning</strong> that reduce operational costs and improve efficiency.</p>
                 <div class="hero-btns">
                     <a href="#contact" class="btn btn-primary">Get in Touch</a>
@@ -209,6 +217,8 @@
     <!-- Scripts -->
     <!-- AOS Animation Library JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Background Animation -->
+    <script src="assets/js/bg-animation.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
