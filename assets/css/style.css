@@ -229,17 +229,27 @@ ul {
     transform: scale(1.05);
 }
 
-/* New Experience Section */
+/*
+   Experience Section (Alternating)
+   Grid System: Time (20%) - Content/Visual (80%)
+   But inside the 80%, we split it based on odd/even.
+
+   Actually, standard alternating timeline:
+   [Content] [Dot] [Visual]
+   [Visual] [Dot] [Content]
+*/
+
 .timeline {
     position: relative;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 /* Central vertical line */
 .timeline-line {
     position: absolute;
-    left: 20%; /* Position of the line */
+    left: 50%; /* Center the line */
+    transform: translateX(-50%);
     width: 2px;
     background: var(--heading-color);
     top: 0;
@@ -251,28 +261,24 @@ ul {
     display: flex;
     margin-bottom: 4rem;
     position: relative;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
-.timeline-time {
-    width: 20%;
-    text-align: right;
-    padding-right: 3rem;
-    color: var(--accent-color);
-    font-weight: bold;
-    padding-top: 10px;
-}
-
+/* Dot Wrapper centered */
 .timeline-dot-wrapper {
     position: absolute;
-    left: 20%;
+    left: 50%;
     transform: translateX(-50%);
-    top: 10px;
     z-index: 2;
+    background-color: var(--primary-color);
+    padding: 10px 0;
 }
 
 .timeline-dot {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     background-color: var(--primary-color);
     border: 2px solid var(--accent-color);
     border-radius: 50%;
@@ -280,19 +286,65 @@ ul {
     align-items: center;
     justify-content: center;
     color: var(--accent-color);
-    font-size: 12px;
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(100,255,218,0.2);
 }
 
+/*
+  Left/Right Split
+  .timeline-row.left -> Content on Left, Visual on Right
+  .timeline-row.right -> Visual on Left, Content on Right
+*/
+
+.timeline-content, .timeline-visual {
+    width: 45%; /* Leave 10% for center line */
+    position: relative;
+}
+
+/* Content Box Styling */
 .timeline-content {
-    width: 75%;
     background-color: var(--secondary-color);
     padding: 2rem;
     border-radius: 8px;
-    margin-left: 5%;
     box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
     border: 1px solid rgba(100, 255, 218, 0.1);
     position: relative;
-    overflow: hidden; /* For scan line */
+    overflow: hidden;
+}
+
+/* Margins for proper spacing */
+.timeline-row.left .timeline-content {
+    margin-right: auto; /* Push to left */
+    text-align: right; /* Right align text for left side items? standard practice varies. Let's keep left align for readability. */
+    text-align: left;
+}
+
+.timeline-row.left .timeline-visual {
+    margin-left: auto; /* Push to right */
+    padding-left: 2rem;
+}
+
+.timeline-row.right .timeline-content {
+    margin-left: auto; /* Push to right */
+    text-align: left;
+}
+
+.timeline-row.right .timeline-visual {
+    margin-right: auto; /* Push to left */
+    padding-right: 2rem;
+}
+
+
+/* Timeline Date Styling - Inside the content box now */
+.timeline-date {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-weight: bold;
+    display: inline-block;
+    border: 1px solid var(--accent-color);
+    padding: 2px 8px;
+    border-radius: 4px;
 }
 
 /* Company Header Layout */
@@ -331,37 +383,201 @@ ul {
 }
 
 .timeline-content ul {
-    list-style-type: disc;
-    margin-left: 1.5rem;
+    list-style-type: none; /* Removed default bullets */
 }
 
 .timeline-content li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
     color: var(--text-color);
     font-size: 0.95rem;
+    position: relative;
+    padding-left: 1.2rem;
 }
 
-/* Animations */
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.4);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(100, 255, 218, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(100, 255, 218, 0);
-    }
+.timeline-content li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
 }
 
-.pulse-animation:hover {
-    animation: pulse 1.5s infinite;
-    background-color: var(--accent-color);
+
+/*
+   TECH ANIMATIONS (The 'Planks')
+*/
+.tech-window {
+    width: 100%;
+    height: 250px; /* Fixed height for visual consistency */
+    background-color: rgba(17, 34, 64, 0.5);
+    border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* 1. CV Scanner Animation */
+.cv-scanner .scanner-grid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(100, 255, 218, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 255, 218, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.cv-scanner .scanner-box {
+    position: absolute;
+    border: 2px solid var(--accent-color);
+    background: rgba(100, 255, 218, 0.1);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    animation: moveBox 4s infinite alternate ease-in-out;
+}
+
+.cv-scanner .scanner-box span {
+    background: var(--accent-color);
     color: var(--primary-color);
-    cursor: pointer;
+    font-size: 10px;
+    padding: 1px 4px;
+    font-weight: bold;
 }
 
-/* Scan Line Animation (Computer Vision Theme) */
+.box-1 { width: 80px; height: 50px; top: 40%; left: 20%; animation-delay: 0s; }
+.box-2 { width: 40px; height: 80px; top: 30%; left: 60%; animation-delay: 1s; }
+
+.cv-scanner .scanner-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-color);
+    top: 0;
+    box-shadow: 0 0 10px var(--accent-color);
+    animation: scanVertical 3s linear infinite;
+}
+
+.cv-scanner .terminal-text {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-family: monospace;
+    font-size: 10px;
+    color: var(--accent-color);
+    opacity: 0.8;
+}
+
+@keyframes scanVertical {
+    0% { top: 0; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+@keyframes moveBox {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(10px, -10px); }
+    100% { transform: translate(-5px, 5px); }
+}
+
+/* 2. Data Monitor Animation */
+.data-monitor .chart-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    height: 100px;
+}
+
+.data-monitor .bar {
+    width: 20px;
+    background: var(--accent-color);
+    opacity: 0.7;
+    animation: barGraph 2s infinite ease-in-out;
+}
+
+.bar-1 { height: 30%; animation-delay: 0.1s; }
+.bar-2 { height: 60%; animation-delay: 0.3s; }
+.bar-3 { height: 40%; animation-delay: 0.5s; }
+.bar-4 { height: 80%; animation-delay: 0.2s; }
+.bar-5 { height: 50%; animation-delay: 0.4s; }
+
+.data-monitor .data-stream {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: monospace;
+    font-size: 10px;
+    color: var(--accent-color);
+    text-align: right;
+}
+
+.data-monitor .data-stream span {
+    display: block;
+    margin-bottom: 4px;
+}
+
+@keyframes barGraph {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(1.2); opacity: 1; }
+}
+
+/* 3. NLP Network Animation */
+.nlp-network .node {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+.center-node {
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    z-index: 2;
+}
+
+.sat-node { animation: orbit 4s infinite linear; }
+.node-1 { top: 30%; left: 30%; animation-duration: 3s; }
+.node-2 { top: 70%; left: 60%; animation-duration: 4s; }
+.node-3 { top: 40%; left: 70%; animation-duration: 5s; }
+
+.nlp-network .line {
+    position: absolute;
+    background: rgba(100, 255, 218, 0.3);
+    height: 1px;
+    transform-origin: 0 0;
+}
+
+.nlp-network .msg-bubble {
+    position: absolute;
+    bottom: 20px;
+    background: var(--white);
+    color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: bold;
+    animation: popIn 2s infinite;
+}
+
+@keyframes popIn {
+    0%, 100% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1); opacity: 1; }
+}
+
+/* Common Scan Line for Cards */
 .scan-line {
     position: absolute;
     width: 100%;
@@ -380,12 +596,8 @@ ul {
 }
 
 @keyframes scan {
-    0% {
-        top: 0;
-    }
-    100% {
-        top: 100%;
-    }
+    0% { top: 0; }
+    100% { top: 100%; }
 }
 
 /* Skills Section */
@@ -504,7 +716,7 @@ footer {
 /* Responsive */
 @media screen and (max-width: 768px) {
     .nav-links {
-        display: none; /* Hide for now, can implement toggle later */
+        display: none;
     }
 
     .hamburger {
@@ -528,18 +740,13 @@ footer {
     /* Timeline Mobile Adjustments */
     .timeline-line {
         left: 20px;
+        transform: none;
     }
 
     .timeline-row {
         flex-direction: column;
-    }
-
-    .timeline-time {
-        width: 100%;
-        text-align: left;
-        padding-left: 60px;
-        padding-right: 0;
-        margin-bottom: 0.5rem;
+        align-items: flex-start;
+        margin-bottom: 3rem;
     }
 
     .timeline-dot-wrapper {
@@ -549,6 +756,23 @@ footer {
 
     .timeline-content {
         width: auto;
+        margin-left: 60px;
+        margin-right: 20px;
+        margin-top: 0;
+        text-align: left !important; /* Force left align on mobile */
+    }
+
+    .timeline-visual {
+        width: auto;
+        margin-left: 60px;
+        margin-right: 20px;
+        margin-top: 1rem;
+        padding: 0 !important;
+    }
+
+    /* Reset left/right specific margins for mobile */
+    .timeline-row.left .timeline-content,
+    .timeline-row.right .timeline-content {
         margin-left: 60px;
         margin-right: 20px;
     }

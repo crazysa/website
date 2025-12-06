@@ -87,7 +87,8 @@ if (document.getElementById('typed-output')) {
             'Senior Software & Research Engineer',
             'Computer Vision Specialist',
             'AI Researcher',
-            'Systems Architect'
+            'Systems Architect',
+            'Generalist'
         ],
         typeSpeed: 50,
         backSpeed: 30,
