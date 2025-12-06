@@ -229,16 +229,7 @@ ul {
     transform: scale(1.05);
 }
 
-/*
-   Experience Section (Alternating)
-   Grid System: Time (20%) - Content/Visual (80%)
-   But inside the 80%, we split it based on odd/even.
-
-   Actually, standard alternating timeline:
-   [Content] [Dot] [Visual]
-   [Visual] [Dot] [Content]
-*/
-
+/* Experience Section */
 .timeline {
     position: relative;
     max-width: 1000px;
@@ -248,7 +239,7 @@ ul {
 /* Central vertical line */
 .timeline-line {
     position: absolute;
-    left: 50%; /* Center the line */
+    left: 50%;
     transform: translateX(-50%);
     width: 2px;
     background: var(--heading-color);
@@ -290,14 +281,9 @@ ul {
     box-shadow: 0 0 10px rgba(100,255,218,0.2);
 }
 
-/*
-  Left/Right Split
-  .timeline-row.left -> Content on Left, Visual on Right
-  .timeline-row.right -> Visual on Left, Content on Right
-*/
-
+/* Split Layout */
 .timeline-content, .timeline-visual {
-    width: 45%; /* Leave 10% for center line */
+    width: 45%;
     position: relative;
 }
 
@@ -314,28 +300,27 @@ ul {
 
 /* Margins for proper spacing */
 .timeline-row.left .timeline-content {
-    margin-right: auto; /* Push to left */
-    text-align: right; /* Right align text for left side items? standard practice varies. Let's keep left align for readability. */
+    margin-right: auto;
     text-align: left;
 }
 
 .timeline-row.left .timeline-visual {
-    margin-left: auto; /* Push to right */
+    margin-left: auto;
     padding-left: 2rem;
 }
 
 .timeline-row.right .timeline-content {
-    margin-left: auto; /* Push to right */
+    margin-left: auto;
     text-align: left;
 }
 
 .timeline-row.right .timeline-visual {
-    margin-right: auto; /* Push to left */
+    margin-right: auto;
     padding-right: 2rem;
 }
 
 
-/* Timeline Date Styling - Inside the content box now */
+/* Timeline Date Styling */
 .timeline-date {
     font-size: 0.9rem;
     color: var(--accent-color);
@@ -359,14 +344,15 @@ ul {
 .company-logo-placeholder {
     width: 50px;
     height: 50px;
-    background-color: rgba(100, 255, 218, 0.1);
+    background-color: #fff; /* White background for logos to be visible */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 1.5rem;
     flex-shrink: 0;
-    color: var(--accent-color);
+    overflow: hidden;
+    padding: 5px;
 }
 
 .company-header h3 {
@@ -383,7 +369,7 @@ ul {
 }
 
 .timeline-content ul {
-    list-style-type: none; /* Removed default bullets */
+    list-style-type: none;
 }
 
 .timeline-content li {
@@ -407,7 +393,7 @@ ul {
 */
 .tech-window {
     width: 100%;
-    height: 250px; /* Fixed height for visual consistency */
+    height: 250px;
     background-color: rgba(17, 34, 64, 0.5);
     border-radius: 8px;
     border: 1px solid rgba(100, 255, 218, 0.2);
@@ -600,32 +586,106 @@ ul {
     100% { top: 100%; }
 }
 
-/* Skills Section */
+/*
+    RE-DESIGNED SKILLS SECTION
+    Bigger, bolder, card-based layout
+*/
 .bg-light {
     background-color: var(--secondary-color);
 }
 
-.skills-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
+    margin-bottom: 3rem;
 }
 
-.skills-category {
-    flex: 1;
-    min-width: 300px;
-    background: var(--primary-color);
+.skill-card {
+    background-color: var(--primary-color);
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+    transition: var(--transition);
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
-.skills-category h3 {
-    text-align: center;
+.skill-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+}
+
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.skill-card:hover::before {
+    transform: scaleX(1);
+}
+
+.skill-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
     margin-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 0.5rem;
+}
+
+.skill-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.skill-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.skill-list span {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: var(--transition);
+    width: 100%;
+    text-align: center;
+    background-color: rgba(100, 255, 218, 0.05);
+}
+
+.skill-list span:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: var(--accent-color);
+    transform: translateX(5px);
+}
+
+/* Interests Wrapper */
+.interests-wrapper {
+    background-color: var(--primary-color);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.interests-wrapper h3 {
+    margin-bottom: 1.5rem;
 }
 
 .tags {
@@ -642,18 +702,23 @@ ul {
     border-radius: 20px;
     font-size: 0.9rem;
     transition: var(--transition);
+    border: 1px solid transparent;
 }
 
 .tags span:hover {
     background-color: rgba(100, 255, 218, 0.2);
     transform: translateY(-2px);
+    border-color: var(--accent-color);
 }
 
 .highlight-tag {
-    background-color: rgba(255, 215, 0, 0.1) !important;
-    color: #ffd700 !important;
-    border: 1px solid #ffd700;
+    /* Kept only for CFA if requested, but user said remove highlight.
+       But let's keep the class with neutral styling just in case. */
+    background-color: rgba(100, 255, 218, 0.1) !important;
+    color: var(--accent-color) !important;
+    border: 1px solid transparent !important;
 }
+
 
 /* Contact Section */
 .contact-content {
@@ -759,7 +824,7 @@ footer {
         margin-left: 60px;
         margin-right: 20px;
         margin-top: 0;
-        text-align: left !important; /* Force left align on mobile */
+        text-align: left !important;
     }
 
     .timeline-visual {
