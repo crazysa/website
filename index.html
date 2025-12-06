@@ -25,11 +25,40 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/devbot.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="assets/img/profile.jpg">
 </head>
 <body>
+    <!-- DevBot Container -->
+    <div id="devbot-container">
+        <div id="devbot" class="devbot-idle">
+            <div class="devbot-antenna"></div>
+            <div class="devbot-head">
+                <div class="devbot-face">
+                    <div class="devbot-eye left"></div>
+                    <div class="devbot-eye right"></div>
+                </div>
+            </div>
+            <div class="devbot-body">
+                <div class="devbot-chest-display"></div>
+            </div>
+            <div class="devbot-arms">
+                <div class="arm left"></div>
+                <div class="arm right"></div>
+            </div>
+            <div class="devbot-legs">
+                <div class="leg left"></div>
+                <div class="leg right"></div>
+            </div>
+            <div class="devbot-shadow"></div>
+        </div>
+        <!-- Props -->
+        <div class="devbot-prop prop-magnifier"></div>
+        <div class="devbot-prop prop-sign">Hire Me!</div>
+    </div>
+
     <!-- Background Animation Canvas -->
     <canvas id="bg-canvas"></canvas>
 
@@ -353,6 +382,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Background Animation -->
     <script src="assets/js/bg-animation.js"></script>
+    <script src="assets/js/devbot.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>

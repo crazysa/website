@@ -1,0 +1,363 @@
+:root {
+    --bot-color-primary: #64ffda;
+    --bot-color-secondary: #0a192f;
+    --bot-color-accent: #112240;
+    --bot-eye-color: #0a192f;
+    --bot-eye-light: #fff;
+    --bot-size: 0.8; /* Scale factor */
+}
+
+#devbot-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50px; /* Initial position */
+    z-index: 9999;
+    width: calc(120px * var(--bot-size));
+    height: calc(160px * var(--bot-size));
+    pointer-events: all; /* Allow clicks on robot */
+    transition: transform 0.3s ease-out, bottom 0.5s ease-in-out, opacity 0.5s ease;
+    will-change: transform, left;
+    display: none; /* Hidden until loaded */
+    opacity: 0;
+}
+
+#devbot-container.visible {
+    display: block;
+    opacity: 1;
+}
+
+#devbot {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-origin: bottom center;
+}
+
+/* --- Robot Body Parts --- */
+
+.devbot-head {
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 70px;
+    background: var(--bot-color-primary);
+    border-radius: 15px;
+    border: 3px solid var(--bot-color-secondary);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.devbot-antenna {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 20px;
+    background: var(--bot-color-secondary);
+    z-index: 5;
+}
+
+.devbot-antenna::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: var(--bot-color-primary);
+    border: 2px solid var(--bot-color-secondary);
+    border-radius: 50%;
+    animation: blinkLight 2s infinite;
+}
+
+.devbot-face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.devbot-eye {
+    width: 12px;
+    height: 12px;
+    background: var(--bot-eye-color);
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.devbot-eye::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 4px;
+    height: 4px;
+    background: var(--bot-eye-light);
+    border-radius: 50%;
+}
+
+.devbot-body {
+    position: absolute;
+    top: 65px;
+    left: 15%;
+    width: 70%;
+    height: 60px;
+    background: var(--bot-color-accent);
+    border-radius: 10px;
+    border: 3px solid var(--bot-color-primary);
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.devbot-chest-display {
+    width: 20px;
+    height: 20px;
+    background: var(--bot-color-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--bot-color-primary);
+    animation: heartbeat 3s infinite;
+}
+
+.devbot-arms {
+    position: absolute;
+    top: 75px;
+    width: 100%;
+    z-index: 8;
+}
+
+.arm {
+    position: absolute;
+    width: 15px;
+    height: 40px;
+    background: var(--bot-color-primary);
+    border-radius: 10px;
+    border: 2px solid var(--bot-color-secondary);
+    transform-origin: top center;
+    transition: transform 0.3s ease;
+}
+
+.arm.left {
+    left: 0;
+}
+
+.arm.right {
+    right: 0;
+}
+
+.devbot-legs {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    z-index: 8;
+}
+
+.leg {
+    position: absolute;
+    bottom: 0;
+    width: 15px;
+    height: 35px;
+    background: var(--bot-color-secondary);
+    border-radius: 0 0 10px 10px;
+    border: 2px solid var(--bot-color-primary);
+    transform-origin: top center;
+}
+
+.leg.left {
+    left: 30%;
+}
+
+.leg.right {
+    right: 30%;
+}
+
+.devbot-shadow {
+    position: absolute;
+    bottom: -10px;
+    left: 10%;
+    width: 80%;
+    height: 10px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 50%;
+    filter: blur(2px);
+    transition: all 0.3s ease;
+}
+
+/* --- Props (Sign, Magnifying Glass) --- */
+.devbot-prop {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.prop-magnifier {
+    top: 60px;
+    right: -20px;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #ccd6f6;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+}
+.prop-magnifier::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    width: 4px;
+    height: 20px;
+    background: #8892b0;
+    transform: translateX(-50%) rotate(-45deg);
+    transform-origin: top center;
+}
+
+.prop-sign {
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ccd6f6;
+    color: #0a192f;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+    border: 2px solid var(--bot-color-primary);
+}
+.prop-sign::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background: #8892b0;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+/* --- Animations --- */
+
+/* Idle */
+@keyframes idleHover {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.devbot-idle #devbot {
+    animation: idleHover 3s ease-in-out infinite;
+}
+
+.devbot-idle .arm.left {
+    transform: rotate(10deg);
+}
+.devbot-idle .arm.right {
+    transform: rotate(-10deg);
+}
+
+/* Walking */
+.devbot-walking #devbot {
+    animation: idleHover 0.5s ease-in-out infinite; /* Bouncier */
+}
+
+.devbot-walking .leg.left {
+    animation: walkLeg 0.8s infinite;
+}
+.devbot-walking .leg.right {
+    animation: walkLeg 0.8s infinite reverse;
+}
+.devbot-walking .arm.left {
+    animation: walkArm 0.8s infinite reverse;
+}
+.devbot-walking .arm.right {
+    animation: walkArm 0.8s infinite;
+}
+
+@keyframes walkLeg {
+    0%, 100% { transform: translateY(0) rotate(20deg); }
+    50% { transform: translateY(-5px) rotate(-20deg); }
+}
+@keyframes walkArm {
+    0%, 100% { transform: rotate(30deg); }
+    50% { transform: rotate(-30deg); }
+}
+
+/* Wave */
+.devbot-waving .arm.right {
+    transform-origin: top right;
+    animation: wave 1s infinite;
+}
+
+@keyframes wave {
+    0%, 100% { transform: rotate(-20deg); }
+    50% { transform: rotate(-160deg); }
+}
+
+/* Emotions */
+.emotion-happy .devbot-eye {
+    height: 6px;
+    border-radius: 0;
+    transform: scaleX(1.2);
+}
+
+.emotion-surprised .devbot-eye {
+    height: 16px;
+    width: 16px;
+}
+
+.emotion-love .devbot-eye {
+    background-color: #ff6b6b;
+    border-radius: 0;
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 75%, 18% 100%, 0% 38%);
+}
+
+.emotion-dizzy .devbot-eye {
+    animation: rollEyes 1s linear infinite;
+}
+@keyframes rollEyes {
+    from { transform: rotate(0deg) translateX(2px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(2px) rotate(-360deg); }
+}
+
+/* Misc Animations */
+@keyframes blinkLight {
+    0%, 100% { opacity: 0.5; box-shadow: 0 0 0 var(--bot-color-primary); }
+    50% { opacity: 1; box-shadow: 0 0 10px var(--bot-color-primary); }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    10% { transform: scale(1.2); opacity: 1; }
+    20% { transform: scale(1); opacity: 0.7; }
+}
+
+/* Direction mirroring */
+.face-left #devbot {
+    transform: scaleX(-1);
+}
+
+/* Visibility of props */
+.show-magnifier .prop-magnifier { opacity: 1; }
+.show-sign .prop-sign { opacity: 1; }
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    #devbot-container {
+        transform: scale(0.7);
+        left: 10px;
+        bottom: 10px;
+    }
+}
