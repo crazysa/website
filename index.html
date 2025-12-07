@@ -18,12 +18,14 @@
   <meta property="og:image" content="https://crazysa.github.io/website/assets/images/og-preview.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Shubham Agarwal - Senior CV/ML Engineer">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Shubham Agarwal | Senior CV Engineer">
   <meta name="twitter:description" content="$72K saved. 500% faster. 300K hours automated. Computer Vision that ships.">
   <meta name="twitter:image" content="https://crazysa.github.io/website/assets/images/og-preview.png">
+  <meta name="twitter:image:alt" content="Shubham Agarwal - Senior CV/ML Engineer">
 
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="assets/images/profile.jpg">
@@ -43,31 +45,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>:root {
-  /* Backgrounds */
-  --bg-primary: #0a192f;
-  --bg-secondary: #112240;
-  --accent-primary: #64ffda;
-  --text-primary: #e6f1ff;
-  --text-secondary: #8892b0;
-}
-
-body {
-  margin: 0;
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: system-ui, -apple-system, sans-serif;
-}
-
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 80px;
-  z-index: 1000;
-}
-
+<style>
 .section--hero {
   min-height: 100vh;
   display: flex;
@@ -76,25 +54,62 @@ body {
 }
 
 .hero-headline {
-    font-size: 2.5rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-}
-
-.metrics-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 768px) {
-    .metrics-row {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .hero__content {
-        flex-direction: column-reverse;
-    }
+  .metrics-row {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .hero__content {
+    flex-direction: column-reverse !important;
+  }
+  .hero__visual {
+    flex: 0 0 auto !important;
+    margin-bottom: 2rem;
+  }
+  .hero__visual img {
+    width: 200px !important;
+    height: 200px !important;
+  }
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: var(--bg-secondary);
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .hamburger {
+    display: block !important;
+  }
+  .status-badges {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .metrics-row {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+  }
+  .metric-card {
+    padding: 0.75rem !important;
+  }
+  .metric-value {
+    font-size: 1.4rem !important;
+  }
 }
 </style></head>
 <body>
@@ -111,6 +126,7 @@ body {
 
             <div class="nav-links">
                 <a href="#hero">Overview</a>
+                <a href="#why-me">Why Me</a>
                 <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
                 <a href="#skills">Skills</a>
@@ -412,31 +428,55 @@ body {
 
             <!-- ARCESIUM -->
             <div class="experience-card" style="background: var(--bg-card); border-radius: 8px; padding: 2rem; margin-bottom: 2rem;" data-aos="fade-up">
-                <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.5rem;">
-                    <img src="assets/images/company-logos/arcesium_logo.png" alt="Arcesium" style="width: 50px; height: 50px; border-radius: 8px; background: white; padding: 5px;">
-                    <div>
-                        <h3 style="margin: 0; color: var(--text-primary);">Arcesium</h3>
-                        <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">Software Engineer</p>
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <img src="assets/images/company-logos/arcesium_logo.png" alt="Arcesium" style="width: 50px; height: 50px; border-radius: 8px; background: white; padding: 5px;">
+                        <div>
+                            <h3 style="margin: 0; color: var(--text-primary);">Arcesium</h3>
+                            <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">Software Engineer</p>
+                        </div>
+                    </div>
+                    <div style="text-align: right; color: var(--text-tertiary); font-family: var(--font-mono); font-size: 0.8rem;">
+                        <div>Feb 2021 - Apr 2022</div>
+                        <div>1 yr 3 mos</div>
+                        <div>📍 Hyderabad</div>
                     </div>
                 </div>
                 <div style="background: rgba(10, 25, 47, 0.5); padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
                     <strong style="color: var(--accent-primary);">🏆 Saved 700+ Human Hours Yearly</strong>
                     <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Rewrote and automated post-trade reconciliation monitoring systems.</p>
                 </div>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">Java</span>
+                    <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">Monitoring</span>
+                    <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">Automation</span>
+                </div>
             </div>
 
             <!-- LOGMEIN -->
             <div class="experience-card" style="background: var(--bg-card); border-radius: 8px; padding: 2rem;" data-aos="fade-up">
-                <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.5rem;">
-                    <img src="assets/images/company-logos/logmein_logo.png" alt="LogMeIn" style="width: 50px; height: 50px; border-radius: 8px; background: white; padding: 5px;">
-                    <div>
-                        <h3 style="margin: 0; color: var(--text-primary);">LogMeIn</h3>
-                        <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">Associate Software Engineer Trainee</p>
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <img src="assets/images/company-logos/logmein_logo.png" alt="LogMeIn" style="width: 50px; height: 50px; border-radius: 8px; background: white; padding: 5px;">
+                        <div>
+                            <h3 style="margin: 0; color: var(--text-primary);">LogMeIn</h3>
+                            <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">Associate Software Engineer Trainee</p>
+                        </div>
+                    </div>
+                    <div style="text-align: right; color: var(--text-tertiary); font-family: var(--font-mono); font-size: 0.8rem;">
+                        <div>Jan 2020 - Dec 2020</div>
+                        <div>1 yr</div>
+                        <div>📍 Bangalore</div>
                     </div>
                 </div>
                 <div style="background: rgba(10, 25, 47, 0.5); padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
                     <strong style="color: var(--accent-primary);">🏆 63% → 94% Email Classification</strong>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Improved ICICI Bank email classification accuracy, processing 10k+ daily.</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Improved ICICI Bank email classification accuracy, processing 10K+ daily.</p>
+                </div>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">Python</span>
+                    <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">ML</span>
+                    <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">NLP</span>
                 </div>
             </div>
         </div>
@@ -510,6 +550,28 @@ body {
                     <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
                         <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">OpenCV</span>
                         <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">C++</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="300" style="background: var(--bg-card); border-radius: 8px; overflow: hidden;">
+                <div style="height: 150px; background: var(--bg-tertiary); display: flex; align-items: center; justify-content: center;">
+                    <div style="font-family: monospace; font-size: 0.8rem; color: var(--accent-primary);">
+                        ╭─────╮ → ●─────●─────● → 🗺️
+                    </div>
+                </div>
+                <div style="padding: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <h3 style="font-size: 1.1rem; margin: 0;">SLAM Integration</h3>
+                        <span style="font-size: 0.7rem; background: rgba(100, 255, 218, 0.1); color: var(--accent-primary); padding: 2px 6px; border-radius: 4px;">🔬 R&D</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">KISS-ICP motion path & mapping for unidirectional LiDARs.</p>
+                    <div style="color: var(--accent-primary); font-weight: 700; font-family: var(--font-mono); margin-bottom: 1rem;">PROD READY</div>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">ROS2</span>
+                        <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">SLAM</span>
+                        <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">Point Cloud</span>
                     </div>
                 </div>
             </div>
