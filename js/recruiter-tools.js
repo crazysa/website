@@ -1,5 +1,5 @@
 const RecruiterTools = {
-    summary: "Senior CV Engineer with 6+ years experience. Key achievements: $72K annual cost savings (Azure optimization), 500% performance improvements, 300K+ hours automated, led team of 5 for camera calibration system with 1mm accuracy. Specializes in Computer Vision, VLMs, and Autonomous Vehicle AI. Currently at Deepen.AI.",
+    summary: "Senior CV/ML Engineer | 6+ YoE | Computer Vision, VLMs, LiDAR-Camera Calibration | Python, PyTorch, OpenCV, Azure | $72K saved, 500% faster, 300K+ hours automated | Led team of 5 for 1mm accuracy calibration | Autonomous Vehicles | Hyderabad/Remote | CFA L1",
     
     init: function() {
         this.injectToolsUI();

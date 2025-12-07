@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initCounters();
     initExpandButtons();
     initMobileNav();
+    initBackToTop();
 });
 
 function initAOS() {
@@ -172,6 +173,23 @@ function initMobileNav() {
                 icon.classList.add('fa-bars');
             }
         });
+    });
+}
+
+function initBackToTop() {
+    const backToTop = document.getElementById('backToTop');
+    if (!backToTop) return;
+    
+    window.addEventListener('scroll', function() {
+        const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+        
+        if (scrollPercent > 0.3) {
+            backToTop.style.opacity = '1';
+            backToTop.style.visibility = 'visible';
+        } else {
+            backToTop.style.opacity = '0';
+            backToTop.style.visibility = 'hidden';
+        }
     });
 }
 
