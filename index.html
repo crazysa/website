@@ -3,13 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shubham Agarwal - Senior Software & Research Engineer</title>
-    <meta name="description" content="Portfolio of Shubham Agarwal, Senior Software and Research Engineer specializing in Computer Vision, Machine Learning, and Scalable Systems.">
+    
+    <!-- Primary Meta Tags -->
+    <title>Shubham Agarwal | Senior CV Engineer - $72K Saved, 500% Faster</title>
+    <meta name="description" content="Senior Software & Research Engineer specializing in Computer Vision, VLMs, and Autonomous Vehicle AI. Proven track record: $72K cost savings, 500% performance gains, 300K+ hours automated.">
+    <meta name="keywords" content="Computer Vision Engineer, VLM, LiDAR Camera Calibration, Autonomous Vehicles, PyTorch, OpenCV, Senior Software Engineer">
+    <meta name="author" content="Shubham Agarwal">
+    
+    <!-- Open Graph / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://crazysa.github.io/website/">
+    <meta property="og:title" content="Shubham Agarwal | Senior CV Engineer Who Ships">
+    <meta property="og:description" content="I build AI vision systems that save $72K+ annually. 500% faster than industry standard. Let's talk.">
+    <meta property="og:image" content="https://crazysa.github.io/website/assets/img/og-preview.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shubham Agarwal | Senior CV Engineer">
+    <meta name="twitter:description" content="$72K saved. 500% faster. 300K hours automated. Computer Vision that ships.">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts - Updated Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -17,265 +33,775 @@
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- Typed.js for typing animation -->
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-
-    <!-- Vanilla Tilt for 3D hover effect -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
-
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/devbot.css">
+    <link rel="stylesheet" href="assets/css/vizzy.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="assets/img/profile.jpg">
 </head>
 <body>
-    <!-- DevBot Container -->
-    <div id="devbot-container">
-        <div id="devbot" class="devbot-idle">
-            <!-- Mascot SVG (Professor Shubham) -->
-            <svg id="mascot-svg" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg" style="overflow: visible; width: 100%; height: 100%;">
-                <defs>
-                    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                        <feGaussianBlur stdDeviation="2" result="blur"/>
-                        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-                    </filter>
-                </defs>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
 
-                <!-- Shadow -->
-                <ellipse cx="60" cy="150" rx="30" ry="5" fill="rgba(0,0,0,0.2)" filter="url(#glow)" class="mascot-shadow"/>
-
-                <!-- Legs Group -->
-                <g class="mascot-legs">
-                    <g class="leg left-leg" transform="translate(45, 100)"> <!-- Pivot at hip -->
-                        <rect x="-6" y="0" width="12" height="40" fill="#0a192f" rx="3"/>
-                        <path d="M-7 40 L7 40 L8 48 L-8 48 Z" fill="#112240"/> <!-- Shoe -->
-                    </g>
-                    <g class="leg right-leg" transform="translate(75, 100)">
-                        <rect x="-6" y="0" width="12" height="40" fill="#0a192f" rx="3"/>
-                        <path d="M-7 40 L7 40 L8 48 L-8 48 Z" fill="#112240"/> <!-- Shoe -->
-                    </g>
-                </g>
-
-                <!-- Body Group -->
-                <g class="mascot-body-group">
-                    <!-- Lab Coat Tail -->
-                    <path d="M35 100 Q60 115 85 100 L85 80 L35 80 Z" fill="#e6f1ff"/>
-
-                    <!-- Torso -->
-                    <rect x="35" y="60" width="50" height="50" fill="#ffffff" rx="5"/>
-                    <path d="M35 60 L60 90 L85 60" fill="none" stroke="#ccd6f6" stroke-width="1"/> <!-- Lapels -->
-
-                    <!-- Shirt/Tie -->
-                    <path d="M50 60 L60 70 L70 60 Z" fill="#64ffda"/>
-                    <path d="M60 60 L60 85" stroke="#0a192f" stroke-width="3"/> <!-- Tie -->
-
-                    <!-- Head -->
-                    <g class="mascot-head" transform="translate(60, 50)"> <!-- Pivot neck -->
-                        <!-- Neck -->
-                        <rect x="-6" y="0" width="12" height="12" fill="#ffdbac"/>
-
-                        <!-- Face -->
-                        <circle cx="0" cy="-15" r="24" fill="#ffdbac"/>
-
-                        <!-- Hair (Wild Researcher Style) -->
-                        <path d="M-24 -15 Q-32 -25 -22 -38 Q-12 -48 0 -42 Q12 -48 22 -38 Q32 -25 24 -15 Q28 -5 22 0 Q28 5 18 5 L-18 5 Q-28 5 -22 0 Q-28 -5 -24 -15 Z"
-                            fill="#f0f0f0" stroke="#ccd6f6" stroke-width="1"/>
-
-                        <!-- Eyes -->
-                        <g class="mascot-eyes">
-                            <circle class="eye left" cx="-8" cy="-15" r="2.5" fill="#0a192f"/>
-                            <circle class="eye right" cx="8" cy="-15" r="2.5" fill="#0a192f"/>
-                        </g>
-
-                        <!-- Glasses -->
-                        <g class="glasses" fill="none" stroke="#0a192f" stroke-width="1.5">
-                            <circle cx="-8" cy="-15" r="7"/>
-                            <circle cx="8" cy="-15" r="7"/>
-                            <line x1="-1" y1="-15" x2="1" y2="-15"/>
-                        </g>
-
-                        <!-- Mustache -->
-                        <path d="M-10 -5 Q0 -10 10 -5 Q0 2 -10 -5" fill="#f0f0f0" stroke="#ccd6f6" stroke-width="0.5"/>
-                    </g>
-
-                    <!-- Arms -->
-                    <g class="mascot-arm left-arm" transform="translate(35, 65)"> <!-- Pivot Shoulder -->
-                        <rect x="-6" y="0" width="12" height="35" fill="#ffffff" rx="3" transform="rotate(10)"/>
-                        <circle cx="2" cy="35" r="5" fill="#ffdbac" transform="rotate(10)"/>
-                    </g>
-                    <g class="mascot-arm right-arm" transform="translate(85, 65)"> <!-- Pivot Shoulder -->
-                        <rect x="-6" y="0" width="12" height="35" fill="#ffffff" rx="3" transform="rotate(-10)"/>
-                        <circle cx="-2" cy="35" r="5" fill="#ffdbac" transform="rotate(-10)"/>
-                    </g>
-                </g>
+    <!-- Vizzy Floating Widget -->
+    <div class="floating-widget" id="floatingWidget" data-state="collapsed">
+        <button class="floating-widget__trigger" aria-label="Quick actions">
+            <svg class="vizzy-mini" viewBox="0 0 100 100">
+                <rect class="vizzy-head" x="20" y="30" width="60" height="50" rx="10" fill="#112240" stroke="#64ffda" stroke-width="2"/>
+                <circle class="vizzy-eye-outer" cx="50" cy="55" r="18" fill="#0a192f" stroke="#64ffda" stroke-width="2"/>
+                <circle class="vizzy-iris" cx="50" cy="55" r="12" fill="#64ffda"/>
+                <circle class="vizzy-pupil" cx="50" cy="55" r="6" fill="#0a192f"/>
+                <line class="vizzy-antenna" x1="50" y1="30" x2="50" y2="15" stroke="#64ffda" stroke-width="2"/>
+                <circle class="vizzy-antenna-light" cx="50" cy="12" r="4" fill="#64ffda"/>
             </svg>
+        </button>
+        <div class="floating-widget__panel">
+            <div class="floating-widget__header">
+                <span>Quick Links</span>
+                <button class="floating-widget__close" aria-label="Close">&times;</button>
+            </div>
+            <div class="floating-widget__links">
+                <a href="mailto:sragarwal@outlook.in"><span>📧</span> Email</a>
+                <a href="https://www.linkedin.com/in/shubam-agarwal/" target="_blank"><span>💼</span> LinkedIn</a>
+                <a href="../Shubham Agarwal Resume.pdf" download><span>📄</span> Resume</a>
+            </div>
         </div>
-        <!-- Props -->
-        <div class="devbot-prop prop-magnifier"></div>
-        <div class="devbot-prop prop-sign">Impact!</div>
-        <!-- Speech Bubble -->
-        <div class="devbot-speech-bubble">Hi! I'm Shubham.</div>
     </div>
 
     <!-- Background Animation Canvas -->
     <canvas id="bg-canvas"></canvas>
 
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container">
             <a href="#" class="logo">SA.</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Overview</a></li>
+                <li><a href="#why-me">Why Me</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
+            <a href="../Shubham Agarwal Resume.pdf" download class="nav-resume-btn">
+                <i class="fas fa-download"></i> Resume
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu__close" id="mobileMenuClose">&times;</button>
+        <nav class="mobile-menu__nav">
+            <a href="#home">Overview</a>
+            <a href="#why-me">Why Me</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+            <a href="../Shubham Agarwal Resume.pdf" download class="mobile-menu__resume">
+                <i class="fas fa-download"></i> Download Resume
+            </a>
+        </nav>
+    </div>
+
     <!-- Hero Section -->
     <header id="home" class="hero">
-        <div class="container hero-content">
-            <div class="hero-text" data-aos="fade-right" data-aos-duration="1000">
-                <h1>Hi, I'm <span class="highlight">Shubham Agarwal</span></h1>
-                <h2><span id="typed-output"></span></h2>
-                <p>Specializing in Computer Vision, Vision-Language Models, and Scalable Systems. I engineer breakthrough solutions using <strong>OpenCV</strong>, <strong>Multi-variate Optimization</strong>, and <strong>Deep Learning</strong> that reduce operational costs and improve efficiency.</p>
-                <div class="hero-btns">
-                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
-                    <a href="#experience" class="btn btn-secondary">View Work</a>
+        <div class="container">
+            <!-- Status Badges -->
+            <div class="status-badges" data-aos="fade-down" data-aos-delay="0">
+                <div class="status-badge status-badge--urgent">
+                    <span class="pulse-dot"></span>
+                    <span>🔥 Actively Interviewing</span>
+                </div>
+                <div class="status-badge">
+                    <span>📍 Hyderabad | Open to Remote</span>
+                </div>
+                <div class="status-badge status-badge--gold">
+                    <span>📊 CFA L1 Cleared</span>
                 </div>
             </div>
-            <div class="hero-image" data-aos="fade-left" data-aos-duration="1000">
-                <img src="assets/img/profile.jpg" alt="Shubham Agarwal">
+
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-right" data-aos-delay="200">
+                    <h1 class="hero-headline">
+                        The CV Engineer Who Turns<br>
+                        <span class="highlight-money">$72K Problems</span> Into <span class="highlight-accent">$0</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        I build vision systems that are <strong>5x faster</strong>, cost <strong>6 figures less</strong>, 
+                        and actually ship to production.
+                    </p>
+                    <p class="hero-micro">
+                        Currently: <strong>Senior Software & Research Engineer</strong> @ 
+                        <span class="company-accent">Deepen.AI</span>
+                        <span class="divider">|</span>
+                        Autonomous Vehicle AI
+                    </p>
+                    <p class="read-time">⏱️ 3 min read</p>
+                </div>
+                <div class="hero-image" data-aos="fade-left" data-aos-delay="400">
+                    <img src="assets/img/profile.jpg" alt="Shubham Agarwal - Senior CV Engineer">
+                    <!-- Vizzy peeking -->
+                    <div class="vizzy-hero" aria-hidden="true">
+                        <svg class="vizzy" viewBox="0 0 100 100">
+                            <rect class="vizzy-head" x="20" y="30" width="60" height="50" rx="10" fill="#112240" stroke="#64ffda" stroke-width="2"/>
+                            <circle class="vizzy-eye-outer" cx="50" cy="55" r="18" fill="#0a192f" stroke="#64ffda" stroke-width="2"/>
+                            <circle class="vizzy-iris" cx="50" cy="55" r="12" fill="#64ffda"/>
+                            <circle class="vizzy-pupil" cx="50" cy="55" r="6" fill="#0a192f"/>
+                            <circle class="vizzy-highlight" cx="46" cy="52" r="2" fill="#ffffff" opacity="0.8"/>
+                            <line x1="50" y1="30" x2="50" y2="15" stroke="#64ffda" stroke-width="2" stroke-linecap="round"/>
+                            <circle class="vizzy-antenna-light" cx="50" cy="12" r="4" fill="#64ffda"/>
+                            <path class="vizzy-smile" d="M 35 68 Q 50 78 65 68" stroke="#64ffda" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recruiter Quick Copy Card -->
+            <div class="recruiter-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="recruiter-card__header">
+                    <span class="recruiter-card__icon">📋</span>
+                    <span class="recruiter-card__title">RECRUITER QUICK COPY</span>
+                </div>
+                <p class="recruiter-card__summary" id="recruiterSummary">
+                    Senior CV/ML Engineer | 5+ YoE | Computer Vision, VLMs, LiDAR-Camera Calibration | Python, PyTorch, OpenCV, Azure | Autonomous Vehicles | Hyderabad/Remote | 30-day notice
+                </p>
+                <div class="recruiter-card__actions">
+                    <button class="btn-copy" id="copySummary">
+                        <i class="fas fa-copy"></i> Copy Summary
+                    </button>
+                    <button class="btn-copy" id="copyEmail">
+                        <i class="fas fa-envelope"></i> Email Template
+                    </button>
+                    <button class="btn-expand" id="customSummaryBtn">
+                        <i class="fas fa-cog"></i> Build Custom
+                    </button>
+                </div>
+            </div>
+
+            <!-- Metrics Row -->
+            <div class="metrics-row" data-aos="fade-up" data-aos-delay="500">
+                <div class="metric-card" data-color="performance">
+                    <div class="metric-card__icon">⚡</div>
+                    <div class="metric-card__value">
+                        <span class="counter" data-target="500" data-suffix="%">0%</span>
+                    </div>
+                    <div class="metric-card__divider"></div>
+                    <div class="metric-card__label">Performance Gain</div>
+                    <div class="metric-card__context">vs industry standard</div>
+                </div>
+                <div class="metric-card" data-color="money">
+                    <div class="metric-card__icon">💰</div>
+                    <div class="metric-card__value">
+                        <span class="counter" data-target="72" data-prefix="$" data-suffix="K">$0K</span>
+                    </div>
+                    <div class="metric-card__divider"></div>
+                    <div class="metric-card__label">Annual Savings</div>
+                    <div class="metric-card__context">Azure optimization</div>
+                </div>
+                <div class="metric-card" data-color="accent">
+                    <div class="metric-card__icon">⏱️</div>
+                    <div class="metric-card__value">
+                        <span class="counter" data-target="300" data-suffix="K+">0K+</span>
+                    </div>
+                    <div class="metric-card__divider"></div>
+                    <div class="metric-card__label">Hours Automated</div>
+                    <div class="metric-card__context">= 150 FTEs yearly</div>
+                </div>
+                <div class="metric-card" data-color="leadership">
+                    <div class="metric-card__icon">🎯</div>
+                    <div class="metric-card__value">
+                        <span class="counter" data-target="5" data-suffix="+">0+</span>
+                    </div>
+                    <div class="metric-card__divider"></div>
+                    <div class="metric-card__label">Years Shipping</div>
+                    <div class="metric-card__context">Research → Production</div>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="hero-ctas" data-aos="fade-up" data-aos-delay="600">
+                <a href="../Shubham Agarwal Resume.pdf" download class="btn btn-primary">
+                    <i class="fas fa-download"></i> Download Resume
+                    <span class="btn-subtext">(1 page, ATS-friendly)</span>
+                </a>
+                <a href="#projects" class="btn btn-secondary">
+                    See What I've Built <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <p>5 companies. 3 years of impact. Scroll to explore.</p>
+                <div class="scroll-chevron">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
             </div>
         </div>
     </header>
 
+    <!-- Why Me Section -->
+    <section id="why-me" class="section section--why-me">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Why Companies Keep Betting on Me</h2>
+            <p class="section-subtitle" data-aos="fade-up">Three patterns across every role</p>
+
+            <div class="value-cards">
+                <!-- Card 1: Money -->
+                <div class="value-card value-card--money" data-aos="fade-up" data-aos-delay="100">
+                    <div class="value-card__header">
+                        <span class="value-card__icon">💰</span>
+                        <h3 class="value-card__title">I Find Hidden Money</h3>
+                    </div>
+                    <div class="value-card__visual">
+                        <div class="money-diagram">
+                            <div class="bill bill--before">$100K</div>
+                            <div class="arrow">→</div>
+                            <div class="optimization">My Optimization</div>
+                            <div class="arrow">→</div>
+                            <div class="bill bill--after">$28K</div>
+                        </div>
+                    </div>
+                    <p class="value-card__description">
+                        Most engineers optimize for accuracy. <strong>I optimize for ROI.</strong>
+                        At Deepen.AI, I found $72K hiding in Azure configs that everyone else missed.
+                    </p>
+                    <div class="value-card__proof">
+                        <span class="proof-pill">$72K/yr at Deepen.AI</span>
+                        <span class="proof-pill">700+ hrs at Arcesium</span>
+                        <span class="proof-pill">40K classifications</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Performance -->
+                <div class="value-card value-card--performance" data-aos="fade-up" data-aos-delay="200">
+                    <div class="value-card__header">
+                        <span class="value-card__icon">⚡</span>
+                        <h3 class="value-card__title">I Ship 5x Faster</h3>
+                    </div>
+                    <div class="value-card__visual">
+                        <div class="timeline-diagram">
+                            <div class="timeline-row">
+                                <span class="timeline-label">Industry:</span>
+                                <div class="timeline-bar timeline-bar--long">
+                                    <span>6 months</span>
+                                </div>
+                            </div>
+                            <div class="timeline-row">
+                                <span class="timeline-label">My Approach:</span>
+                                <div class="timeline-bar timeline-bar--short">
+                                    <span>6 weeks</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="value-card__description">
+                        While others are still in POC, <strong>I'm already in production.</strong>
+                        My CV systems don't just demo well—they handle edge cases at scale.
+                    </p>
+                    <div class="value-card__proof">
+                        <span class="proof-pill">500% faster</span>
+                        <span class="proof-pill">50% labeling reduction</span>
+                        <span class="proof-pill">Research → Prod</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Leadership -->
+                <div class="value-card value-card--leadership" data-aos="fade-up" data-aos-delay="300">
+                    <div class="value-card__header">
+                        <span class="value-card__icon">👥</span>
+                        <h3 class="value-card__title">I Lead Without Drama</h3>
+                    </div>
+                    <div class="value-card__visual">
+                        <div class="org-diagram">
+                            <div class="org-leader">Me</div>
+                            <div class="org-line"></div>
+                            <div class="org-team">
+                                <span></span><span></span><span></span><span></span><span></span>
+                            </div>
+                            <div class="org-result">✓ Shipped</div>
+                        </div>
+                    </div>
+                    <p class="value-card__description">
+                        Led a team of 5 to build a camera calibration system with <strong>1mm accuracy.</strong>
+                        No scope creep. No missed deadlines. Just shipped.
+                    </p>
+                    <div class="value-card__proof">
+                        <span class="proof-pill">5-person team</span>
+                        <span class="proof-pill">Cross-functional</span>
+                        <span class="proof-pill">Full lifecycle</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What This Means CTA -->
+            <div class="why-me__cta" data-aos="fade-up" data-aos-delay="400">
+                <p class="cta-label">Translate this to your team →</p>
+                <div class="cta-outcomes">
+                    <span>✓ I can reduce your cloud spend by 5-6 figures</span>
+                    <span>✓ I can build CV systems that actually scale</span>
+                    <span>✓ I can lead small teams to ship complex systems</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Experience Section -->
     <section id="experience" class="section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Work Experience</h2>
+            <h2 class="section-title" data-aos="fade-up">The Journey So Far</h2>
+            <p class="section-subtitle" data-aos="fade-up">Click any role to see the full impact</p>
 
-            <div class="experience-container">
+            <div class="experience-timeline">
+                <!-- Deepen.AI -->
+                <div class="experience-card experience-card--active" data-aos="fade-up">
+                    <div class="experience-card__header">
+                        <div class="experience-card__logo">
+                            <img src="assets/img/deepen_logo.png" alt="Deepen.AI">
+                        </div>
+                        <div class="experience-card__meta">
+                            <h3 class="company-name">Deepen.AI</h3>
+                            <p class="role-title">Senior Software & Research Engineer</p>
+                            <p class="duration">
+                                <span class="dates">Apr 2022 - Present</span>
+                                <span class="length">· 2 yrs 8 mos</span>
+                            </p>
+                            <p class="location">📍 Hyderabad</p>
+                        </div>
+                        <button class="experience-card__toggle" aria-expanded="true">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
 
-                <!-- Job 1: Deepen.AI -->
-                <div class="experience-block" id="exp-deepen">
-                    <div class="exp-visual" data-aos="fade-right">
-                        <div class="tech-window cv-scanner huge-window">
-                            <div class="scanner-grid"></div>
-                            <div class="scanner-box box-1"><span>Car 99%</span></div>
-                            <div class="scanner-box box-2"><span>Pedestrian</span></div>
-                            <div class="scanner-line"></div>
-                            <div class="terminal-text">
-                                > Processing Lidar Data...<br>
-                                > Calibrating Sensors...<br>
-                                > Object Detected: Vehicle<br>
-                                > Confidence: 0.99
+                    <!-- Headline Achievement -->
+                    <div class="experience-card__headline">
+                        <div class="headline-badge">🏆 HEADLINE ACHIEVEMENT</div>
+                        <div class="headline-content">
+                            <div class="headline-metric">Saved $72,000/year</div>
+                            <p class="headline-description">
+                                by rebuilding AI Sense microservice on Azure Batch Pools 
+                                with sparse convolutional networks and CenterPoint inference
+                            </p>
+                            <div class="headline-tags">
+                                <span>Azure</span>
+                                <span>Batch Pools</span>
+                                <span>Sparse Conv</span>
+                                <span>CenterPoint</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="exp-content" data-aos="fade-left">
-                        <div class="company-header">
-                            <div class="company-logo-placeholder">
-                                <img src="assets/img/deepen_logo.png" alt="Deepen.AI Logo" style="height: 35px; width: auto; max-width: 100%;">
-                            </div>
-                            <div>
-                                <h3>Senior Software & Research Engineer</h3>
-                                <h4>Deepen.AI <span class="location">| Hyderabad</span></h4>
-                                <div class="timeline-date">April 2022 - Present</div>
+                    <!-- Key Deliverables -->
+                    <div class="experience-card__deliverables">
+                        <h4>KEY DELIVERABLES:</h4>
+                        <div class="deliverable" data-color="performance">
+                            <span class="deliverable-icon">⚡</span>
+                            <div class="deliverable-content">
+                                <span class="deliverable-metric">500% Performance Gain</span>
+                                <p>Built CV system with simultaneous multi-pattern recognition, 5x faster than industry standard</p>
                             </div>
                         </div>
+                        <div class="deliverable" data-color="accent">
+                            <span class="deliverable-icon">🤖</span>
+                            <div class="deliverable-content">
+                                <span class="deliverable-metric">50% Labeling Time Reduction</span>
+                                <p>Integrated Qwen-VL pipeline for multimodal attribute labeling across diverse scenarios</p>
+                            </div>
+                        </div>
+                        <div class="deliverable" data-color="leadership">
+                            <span class="deliverable-icon">🎯</span>
+                            <div class="deliverable-content">
+                                <span class="deliverable-metric">1mm Calibration Accuracy</span>
+                                <span class="deliverable-badge">Led Team of 5</span>
+                                <p>One-Shot Overlapping Camera Calibration system, research to production</p>
+                            </div>
+                        </div>
+                    </div>
 
-                        <ul class="exp-list">
-                            <li><strong>Vision-Language Models:</strong> Designed and integrated a Qwen-VL–based Vision-Language Model pipeline for multimodal attribute labeling, achieving a ~50% reduction in manual labeling time while maintaining high semantic accuracy.</li>
-                            <li><strong>High-Performance CV:</strong> Engineered breakthrough computer vision system using <strong>OpenCV</strong> achieving 500% performance improvement over industry-standard solutions.</li>
-                            <li><strong>Cloud & Cost Optimization:</strong> Redeveloped AI Sense for 3D PCD object detection using spatial sparse convolutional network, hosted as a Microservice on Azure Pools reducing costs by $72,000 annually.</li>
-                            <li><strong>Calibration Algorithms:</strong> Led R&D for F-Theta/Kannala-brandt Camera Models and One Shot Overlapping Calibration (1mm accuracy).</li>
-                            <li><strong>Sensor Fusion:</strong> Responsible for complete lifecycle of ROS2 target-based Lidar-Camera calibration and intrinsics.</li>
-                        </ul>
+                    <!-- More Achievements -->
+                    <div class="experience-card__more">
+                        <button class="more-toggle">
+                            <span>+ Show 8 more achievements</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="more-content" hidden>
+                            <div class="deliverable">
+                                <span class="deliverable-icon">🔧</span>
+                                <div class="deliverable-content">
+                                    <span class="deliverable-metric">Custom OpenCV Build</span>
+                                    <p>Built and deployed custom OpenCV with improvements and fixes</p>
+                                </div>
+                            </div>
+                            <div class="deliverable">
+                                <span class="deliverable-icon">📐</span>
+                                <div class="deliverable-content">
+                                    <span class="deliverable-metric">F-Theta & Kannala-Brandt Models</span>
+                                    <p>R&D and productionization of camera models from scratch</p>
+                                </div>
+                            </div>
+                            <div class="deliverable">
+                                <span class="deliverable-icon">🗺️</span>
+                                <div class="deliverable-content">
+                                    <span class="deliverable-metric">KISS-ICP SLAM Integration</span>
+                                    <p>Better handling of unidirectional lidars</p>
+                                </div>
+                            </div>
+                            <div class="deliverable">
+                                <span class="deliverable-icon">🎯</span>
+                                <div class="deliverable-content">
+                                    <span class="deliverable-metric">SAM for Calibration</span>
+                                    <p>66% accuracy improvement, 70% time reduction</p>
+                                </div>
+                            </div>
+                            <div class="deliverable">
+                                <span class="deliverable-icon">📊</span>
+                                <div class="deliverable-content">
+                                    <span class="deliverable-metric">Outlier Rejection System</span>
+                                    <p>Quality detection across calibration suite</p>
+                                </div>
+                            </div>
+                            <div class="deliverable">
+                                <span class="deliverable-icon">🔄</span>
+                                <div class="deliverable-content">
+                                    <span class="deliverable-metric">40% Labeling Reduction</span>
+                                    <p>Multi-sensor fusion transformation & localization</p>
+                                </div>
+                            </div>
+                            <div class="deliverable">
+                                <span class="deliverable-icon">🚀</span>
+                                <div class="deliverable-content">
+                                    <span class="deliverable-metric">300K+ Hours Saved</span>
+                                    <p>Auto-generation of bifurcation points</p>
+                                </div>
+                            </div>
+                            <div class="deliverable">
+                                <span class="deliverable-icon">⚡</span>
+                                <div class="deliverable-content">
+                                    <span class="deliverable-metric">15.7% Optimization Speedup</span>
+                                    <p>Calibration optimization improvements</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- What This Means -->
+                    <div class="experience-card__meaning">
+                        <button class="meaning-toggle">
+                            💡 What this means for your team →
+                        </button>
+                        <div class="meaning-content" hidden>
+                            <ul>
+                                <li>I can reduce your cloud spend by 5-6 figures annually</li>
+                                <li>I can build CV pipelines that handle production edge cases</li>
+                                <li>I can lead small teams to ship complex calibration systems</li>
+                                <li>I ship research to production, not just POCs</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack -->
+                    <div class="experience-card__tech">
+                        <span>Python</span>
+                        <span>PyTorch</span>
+                        <span>OpenCV</span>
+                        <span>Azure</span>
+                        <span>ROS2</span>
+                        <span>VLM</span>
+                        <span>CUDA</span>
+                        <span>Docker</span>
                     </div>
                 </div>
 
-                <!-- Job 2: Arcesium -->
-                <div class="experience-block" id="exp-arcesium">
-                    <div class="exp-visual" data-aos="fade-left">
-                         <div class="tech-window data-monitor huge-window">
-                             <div class="chart-bars">
-                                 <div class="bar bar-1"></div>
-                                 <div class="bar bar-2"></div>
-                                 <div class="bar bar-3"></div>
-                                 <div class="bar bar-4"></div>
-                                 <div class="bar bar-5"></div>
-                             </div>
-                             <div class="data-stream">
-                                 <span>TXN_ID: 8842... OK</span>
-                                 <span>RECON_STATUS: MATCHED</span>
-                                 <span>LATENCY: 12ms</span>
-                                 <span>ALERT: SYSTEM NORMAL</span>
-                             </div>
-                         </div>
+                <!-- Arcesium -->
+                <div class="experience-card" data-aos="fade-up">
+                    <div class="experience-card__header">
+                        <div class="experience-card__logo">
+                            <img src="assets/img/arcesium_logo.png" alt="Arcesium">
+                        </div>
+                        <div class="experience-card__meta">
+                            <h3 class="company-name">Arcesium</h3>
+                            <p class="role-title">Software Engineer</p>
+                            <p class="duration">
+                                <span class="dates">Feb 2021 - Apr 2022</span>
+                                <span class="length">· 1 yr 3 mos</span>
+                            </p>
+                            <p class="location">📍 Hyderabad</p>
+                        </div>
+                        <button class="experience-card__toggle" aria-expanded="false">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
 
-                    <div class="exp-content" data-aos="fade-right">
-                        <div class="company-header">
-                            <div class="company-logo-placeholder">
-                                <img src="assets/img/arcesium_logo.png" alt="Arcesium Logo" style="height: 45px; width: auto; max-width: 100%;">
-                            </div>
-                            <div>
-                                <h3>Software Engineer</h3>
-                                <h4>Arcesium <span class="location">| Hyderabad</span></h4>
-                                <div class="timeline-date">February 2021 - April 2022</div>
+                    <div class="experience-card__preview">
+                        <span class="preview-headline">🏆 700+ human hours saved yearly</span>
+                        <span class="preview-tags">Monitoring · Data Integrity · Automation</span>
+                    </div>
+
+                    <div class="experience-card__body" hidden>
+                        <div class="experience-card__headline">
+                            <div class="headline-badge">🏆 HEADLINE ACHIEVEMENT</div>
+                            <div class="headline-content">
+                                <div class="headline-metric">Saved 700+ Human Hours Yearly</div>
+                                <p class="headline-description">
+                                    Rewrote and automated post-trade reconciliation monitoring systems
+                                </p>
                             </div>
                         </div>
-                        <ul class="exp-list">
-                            <li><strong>System Design:</strong> Designed and Developed monitoring and alerting systems for post-trade reconciliation applications.</li>
-                            <li><strong>Data Integrity:</strong> Drove data integrity management for major architectural changes.</li>
-                            <li><strong>Automation:</strong> Improved code compliance and automated tasks, saving at least 700 human hours yearly.</li>
-                            <li>Worked on improving the internal proprietary framework for financial data processing.</li>
-                        </ul>
+                        <div class="experience-card__deliverables">
+                            <div class="deliverable">
+                                <span class="deliverable-icon">📊</span>
+                                <div class="deliverable-content">
+                                    <span class="deliverable-metric">Monitoring & Alerting Systems</span>
+                                    <p>Designed for post-trade reconciliation application</p>
+                                </div>
+                            </div>
+                            <div class="deliverable">
+                                <span class="deliverable-icon">🔒</span>
+                                <div class="deliverable-content">
+                                    <span class="deliverable-metric">Data Integrity Management</span>
+                                    <p>Major architecture and service changes</p>
+                                </div>
+                            </div>
+                            <div class="deliverable">
+                                <span class="deliverable-icon">⚡</span>
+                                <div class="deliverable-content">
+                                    <span class="deliverable-metric">Framework Improvements</span>
+                                    <p>Enhanced internal proprietary framework</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="experience-card__tech">
+                            <span>Java</span>
+                            <span>Monitoring</span>
+                            <span>Alerting</span>
+                            <span>Automation</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Job 3: LogMeIn -->
-                <div class="experience-block" id="exp-logmein">
-                    <div class="exp-visual" data-aos="fade-right">
-                        <div class="tech-window nlp-network huge-window">
-                            <div class="node center-node"><i class="fas fa-envelope"></i></div>
-                            <div class="node sat-node node-1"></div>
-                            <div class="node sat-node node-2"></div>
-                            <div class="node sat-node node-3"></div>
-                            <div class="network-lines">
-                                <div class="line line-1"></div>
-                                <div class="line line-2"></div>
-                                <div class="line line-3"></div>
-                            </div>
-                            <div class="msg-bubble">Classified: 94%</div>
+                <!-- LogMeIn -->
+                <div class="experience-card" data-aos="fade-up">
+                    <div class="experience-card__header">
+                        <div class="experience-card__logo">
+                            <img src="assets/img/logmein_logo.png" alt="LogMeIn">
                         </div>
+                        <div class="experience-card__meta">
+                            <h3 class="company-name">LogMeIn</h3>
+                            <p class="role-title">Associate Software Engineer Trainee</p>
+                            <p class="duration">
+                                <span class="dates">Jan 2020 - Dec 2020</span>
+                                <span class="length">· 1 yr</span>
+                            </p>
+                            <p class="location">📍 Bangalore</p>
+                        </div>
+                        <button class="experience-card__toggle" aria-expanded="false">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
 
-                    <div class="exp-content" data-aos="fade-left">
-                        <div class="company-header">
-                             <div class="company-logo-placeholder">
-                                <img src="assets/img/logmein_logo.png" alt="LogMeIn Logo" style="height: 35px; width: auto; max-width: 100%;">
-                            </div>
-                            <div>
-                                <h3>Associate Software Engineer Trainee</h3>
-                                <h4>LogMeIn <span class="location">| Bangalore</span></h4>
-                                <div class="timeline-date">January 2020 - December 2020</div>
+                    <div class="experience-card__preview">
+                        <span class="preview-headline">🏆 63% → 94% email classification accuracy</span>
+                        <span class="preview-tags">ML · NLP · Speaker Diarization · Web Scraping</span>
+                    </div>
+
+                    <div class="experience-card__body" hidden>
+                        <div class="experience-card__headline">
+                            <div class="headline-badge">🏆 HEADLINE ACHIEVEMENT</div>
+                            <div class="headline-content">
+                                <div class="headline-metric">63% → 94% Email Classification</div>
+                                <p class="headline-description">
+                                    Improved ICICI Bank email classification accuracy, processing 10,000+ emails daily
+                                </p>
                             </div>
                         </div>
-                        <ul class="exp-list">
-                            <li><strong>NLP & Classification:</strong> Increased email classification accuracy for ICICI bank from 63% to 94% (10k+ emails/day) via better data cleaning and tools.</li>
-                            <li>Developed POCs for email classification (word matching) and speaker diarization for meeting transcripts.</li>
-                            <li><strong>Remote Innovation:</strong> Worked remotely with the Boston innovation team to develop "go to office" solutions from scratch.</li>
-                            <li>Built web scraping and customer classification systems for targeted marketing (40k+ customers).</li>
-                        </ul>
+                        <div class="experience-card__deliverables">
+                            <div class="deliverable">
+                                <span class="deliverable-icon">🎤</span>
+                                <div class="deliverable-content">
+                                    <span class="deliverable-metric">Speaker Diarization POC</span>
+                                    <p>Transcript segregation for remote meetings</p>
+                                </div>
+                            </div>
+                            <div class="deliverable">
+                                <span class="deliverable-icon">🌐</span>
+                                <div class="deliverable-content">
+                                    <span class="deliverable-metric">40K+ Customer Classifications</span>
+                                    <p>Web scraping for targeted marketing</p>
+                                </div>
+                            </div>
+                            <div class="deliverable">
+                                <span class="deliverable-icon">🏢</span>
+                                <div class="deliverable-content">
+                                    <span class="deliverable-metric">"Go to Office" from Scratch</span>
+                                    <span class="deliverable-badge">Remote with Boston Team</span>
+                                    <p>Only employee working remotely with Innovation Fields team</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="experience-card__tech">
+                            <span>Python</span>
+                            <span>ML</span>
+                            <span>NLP</span>
+                            <span>Web Scraping</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section section--projects">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Systems I've Shipped</h2>
+            <p class="section-subtitle" data-aos="fade-up">Not demos. Not POCs. Production systems.</p>
+
+            <div class="projects-grid">
+                <!-- VLM Pipeline -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card__visual">
+                        <div class="project-diagram vlm-diagram">
+                            <div class="diagram-step">
+                                <div class="diagram-icon">📷</div>
+                                <span>Image</span>
+                            </div>
+                            <div class="diagram-arrow">→</div>
+                            <div class="diagram-step diagram-step--process">
+                                <div class="diagram-icon">🧠</div>
+                                <span>Qwen-VL</span>
+                            </div>
+                            <div class="diagram-arrow">→</div>
+                            <div class="diagram-step diagram-step--output">
+                                <div class="diagram-icon">✓</div>
+                                <span>Labeled</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card__content">
+                        <div class="project-card__header">
+                            <h3>VLM Multimodal Labeling Pipeline</h3>
+                            <span class="project-badge project-badge--shipped">🚀 SHIPPED</span>
+                        </div>
+                        <p class="project-card__description">
+                            Automated attribute labeling for autonomous vehicle data using Vision-Language Models
+                        </p>
+                        <div class="project-card__metric" data-color="performance">
+                            <span class="metric-value">50% FASTER</span>
+                            <span class="metric-label">Labeling</span>
+                        </div>
+                        <div class="project-card__tech">
+                            <span>Python</span>
+                            <span>Qwen-VL</span>
+                            <span>Docker</span>
+                            <span>Azure</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3D LiDAR -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-card__visual">
+                        <div class="project-diagram lidar-diagram">
+                            <div class="point-cloud">
+                                <span></span><span></span><span></span>
+                                <span></span><span></span><span></span>
+                                <span></span><span></span><span></span>
+                            </div>
+                            <div class="detection-box"></div>
+                        </div>
+                    </div>
+                    <div class="project-card__content">
+                        <div class="project-card__header">
+                            <h3>3D LiDAR Object Detection</h3>
+                            <span class="project-badge project-badge--shipped">🚀 SHIPPED</span>
+                        </div>
+                        <p class="project-card__description">
+                            Sparse conv networks with CenterPoint inference for real-time 3D object detection
+                        </p>
+                        <div class="project-card__metric" data-color="money">
+                            <span class="metric-value">$72K SAVED</span>
+                            <span class="metric-label">Annually</span>
+                        </div>
+                        <div class="project-card__tech">
+                            <span>PyTorch</span>
+                            <span>CUDA</span>
+                            <span>Azure Batch</span>
+                            <span>CenterPoint</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Camera Calibration -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-card__visual">
+                        <div class="project-diagram calibration-diagram">
+                            <div class="camera-rig">
+                                <div class="camera"><i class="fas fa-video"></i></div>
+                                <div class="camera"><i class="fas fa-video"></i></div>
+                                <div class="camera"><i class="fas fa-video"></i></div>
+                            </div>
+                            <div class="calibration-lines"></div>
+                            <div class="accuracy-badge">1mm</div>
+                        </div>
+                    </div>
+                    <div class="project-card__content">
+                        <div class="project-card__header">
+                            <h3>One-Shot Camera Calibration</h3>
+                            <span class="project-badge project-badge--shipped">🚀 SHIPPED</span>
+                            <span class="project-badge project-badge--led">👥 LED TEAM</span>
+                        </div>
+                        <p class="project-card__description">
+                            Multi-camera calibration system with 1mm translation and 1° rotation accuracy
+                        </p>
+                        <div class="project-card__metric" data-color="leadership">
+                            <span class="metric-value">1mm ACCURACY</span>
+                            <span class="metric-label">Translation</span>
+                        </div>
+                        <div class="project-card__tech">
+                            <span>OpenCV</span>
+                            <span>C++</span>
+                            <span>Python</span>
+                            <span>Optimization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLAM -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-card__visual">
+                        <div class="project-diagram slam-diagram">
+                            <svg viewBox="0 0 100 60" class="path-svg">
+                                <path class="slam-path" d="M10,50 Q25,20 50,30 T90,20" fill="none" stroke="#64ffda" stroke-width="2"/>
+                                <circle class="slam-dot" cx="10" cy="50" r="4" fill="#64ffda"/>
+                            </svg>
+                            <div class="map-grid"></div>
+                        </div>
+                    </div>
+                    <div class="project-card__content">
+                        <div class="project-card__header">
+                            <h3>SLAM Integration (KISS-ICP)</h3>
+                            <span class="project-badge project-badge--rnd">🔬 R&D</span>
+                        </div>
+                        <p class="project-card__description">
+                            Motion path visualization and mapping for unidirectional LiDARs
+                        </p>
+                        <div class="project-card__metric" data-color="accent">
+                            <span class="metric-value">PROD READY</span>
+                            <span class="metric-label">Deployed</span>
+                        </div>
+                        <div class="project-card__tech">
+                            <span>ROS2</span>
+                            <span>SLAM</span>
+                            <span>Point Clouds</span>
+                            <span>Localization</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -283,134 +809,326 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section bg-light">
+    <section id="skills" class="section section--skills">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Skills & Interests</h2>
+            <h2 class="section-title" data-aos="fade-up">Technical Arsenal</h2>
+            <p class="section-subtitle" data-aos="fade-up">Organized by what I can deliver, not years counted</p>
 
-            <div class="skills-grid">
-                <!-- Advanced / Research -->
-                <div class="skill-card" data-aos="fade-up" data-aos-delay="0">
-                    <div class="skill-icon"><i class="fas fa-brain"></i></div>
-                    <h3>Advanced AI & Vision</h3>
-                    <div class="skill-list">
-                        <span>Vision Language Models</span>
-                        <span>Deep Learning</span>
-                        <span>Computer Vision</span>
-                        <span>OpenCV</span>
-                        <span>Multi-variate Optimization</span>
+            <div class="skills-tiers">
+                <!-- Tier 1 -->
+                <div class="skill-tier skill-tier--expert" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-tier__header">
+                        <span class="skill-tier__icon">🎯</span>
+                        <h3 class="skill-tier__title">SHIP BLINDFOLDED</h3>
+                        <span class="skill-tier__subtitle">Things I've shipped to production multiple times</span>
+                    </div>
+                    <div class="skill-tier__progress">
+                        <div class="progress-bar" data-percent="100"></div>
+                    </div>
+                    <div class="skill-tier__items">
+                        <div class="skill-item">
+                            <span class="skill-item__name">Computer Vision</span>
+                            <span class="skill-item__context">Custom OpenCV, 500% faster systems</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item__name">Python</span>
+                            <span class="skill-item__context">Primary language, 5+ years production</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item__name">PyTorch</span>
+                            <span class="skill-item__context">Sparse conv networks, classification</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item__name">OpenCV</span>
+                            <span class="skill-item__context">Custom-built for internal use</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item__name">Calibration</span>
+                            <span class="skill-item__context">LiDAR-Camera, Intrinsics, Overlapping</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Machine Learning & Frameworks -->
-                <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="skill-icon"><i class="fas fa-microchip"></i></div>
-                    <h3>ML Frameworks</h3>
-                    <div class="skill-list">
-                        <span>PyTorch</span>
-                        <span>Scikit-learn</span>
-                        <span>NumPy</span>
-                        <span>Pandas</span>
-                        <span>Machine Learning</span>
+                <!-- Tier 2 -->
+                <div class="skill-tier skill-tier--advanced" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-tier__header">
+                        <span class="skill-tier__icon">⚡</span>
+                        <h3 class="skill-tier__title">PRODUCTION-READY IN DAYS</h3>
+                        <span class="skill-tier__subtitle">Comfortable and proven, ready to deploy</span>
+                    </div>
+                    <div class="skill-tier__progress">
+                        <div class="progress-bar" data-percent="80"></div>
+                    </div>
+                    <div class="skill-tier__items">
+                        <div class="skill-item">
+                            <span class="skill-item__name">VLM/Multimodal</span>
+                            <span class="skill-item__context">Qwen-VL pipeline in production</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item__name">Deep Learning</span>
+                            <span class="skill-item__context">CNNs, Transformers, SLAM</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item__name">Azure</span>
+                            <span class="skill-item__context">Batch Pools, cost optimization</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item__name">System Design</span>
+                            <span class="skill-item__context">Microservices, pipelines</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item__name">ROS2</span>
+                            <span class="skill-item__context">Sensor fusion, calibration nodes</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Systems & Infrastructure -->
-                <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="skill-icon"><i class="fas fa-server"></i></div>
-                    <h3>Systems & Cloud</h3>
-                    <div class="skill-list">
-                        <span>System Design</span>
-                        <span>Azure</span>
-                        <span>AWS</span>
-                        <span>GCP</span>
-                        <span>Docker</span>
-                        <span>Linux</span>
+                <!-- Tier 3 -->
+                <div class="skill-tier skill-tier--proficient" data-aos="fade-up" data-aos-delay="300">
+                    <div class="skill-tier__header">
+                        <span class="skill-tier__icon">🔧</span>
+                        <h3 class="skill-tier__title">COMFORTABLE & GROWING</h3>
+                        <span class="skill-tier__subtitle">Used professionally, actively expanding</span>
                     </div>
-                </div>
-
-                <!-- Core Engineering -->
-                <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="skill-icon"><i class="fas fa-code"></i></div>
-                    <h3>Core Engineering</h3>
-                    <div class="skill-list">
-                        <span>Python</span>
-                        <span>C++</span>
-                        <span>Data Structures</span>
-                        <span>Algorithms</span>
-                        <span>ROS2</span>
-                        <span>Git</span>
+                    <div class="skill-tier__progress">
+                        <div class="progress-bar" data-percent="60"></div>
+                    </div>
+                    <div class="skill-tier__items">
+                        <div class="skill-item">
+                            <span class="skill-item__name">AWS / GCP</span>
+                            <span class="skill-item__context">Cross-cloud experience</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item__name">Docker</span>
+                            <span class="skill-item__context">Containerization, deployment</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item__name">C++</span>
+                            <span class="skill-item__context">OpenCV optimizations, perf-critical</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item__name">MongoDB</span>
+                            <span class="skill-item__context">Data pipelines, storage</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Interests (Separate but matching style) -->
-             <div class="interests-wrapper" data-aos="fade-up" data-aos-delay="400">
-                <h3><i class="fas fa-heart"></i> Interests & Certifications</h3>
-                <div class="tags">
-                    <span>Scalable Systems</span>
-                    <span>Financial Markets</span>
-                    <span>CFA L1 Cleared</span>
-                    <span>Robotics</span>
+            <!-- CFA Callout -->
+            <div class="cfa-callout" data-aos="fade-up" data-aos-delay="400">
+                <div class="cfa-callout__header">
+                    <span class="cfa-callout__icon">📊</span>
+                    <span class="cfa-callout__badge">THE UNCOMMON COMBINATION</span>
+                    <span class="cfa-callout__sparkle">✨</span>
                 </div>
-             </div>
+                <h3 class="cfa-callout__title">CFA LEVEL 1 CLEARED</h3>
+                <div class="cfa-callout__content">
+                    <p class="cfa-callout__question">"Why does a CV engineer study finance?"</p>
+                    <p class="cfa-callout__answer">
+                        Because I learned that the best technical solutions are worthless 
+                        if they don't move business metrics.
+                    </p>
+                    <p class="cfa-callout__proof">
+                        I don't just optimize for accuracy—<strong>I optimize for ROI.</strong>
+                        That's why I found $72K hiding in cloud configs that pure engineers missed.
+                    </p>
+                    <p class="cfa-callout__conclusion">
+                        <strong>Tech + Finance = Solutions that actually matter.</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Currently Exploring -->
+            <div class="skills-exploring" data-aos="fade-up" data-aos-delay="500">
+                <div class="skills-exploring__header">
+                    <span class="skills-exploring__icon">🔬</span>
+                    <h4 class="skills-exploring__title">CURRENTLY EXPLORING</h4>
+                </div>
+                <div class="skills-exploring__items">
+                    <span class="exploring-tag">Embodied AI</span>
+                    <span class="exploring-tag">3D Gaussian Splatting</span>
+                    <span class="exploring-tag">Diffusion Models for Synthetic Data</span>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section id="contact" class="section section--contact">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
-            <div class="contact-content">
-                <p data-aos="fade-up">I am always open to discussing new projects, creative ideas or opportunities to be part of your visions.</p>
-                <div class="contact-cards" data-aos="fade-up">
-                    <a href="mailto:sragarwal@outlook.in" class="contact-card">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Email</h3>
-                        <p>sragarwal@outlook.in</p>
-                    </a>
-                    <a href="tel:+917023511169" class="contact-card">
-                        <i class="fas fa-phone"></i>
-                        <h3>Phone</h3>
-                        <p>+91 70235 11169</p>
-                    </a>
-                    <a href="https://www.linkedin.com/in/shubam-agarwal/" target="_blank" class="contact-card">
-                        <i class="fab fa-linkedin"></i>
-                        <h3>LinkedIn</h3>
-                        <p>Connect with me</p>
-                    </a>
-                    <a href="https://github.com/crazysa" target="_blank" class="contact-card">
-                        <i class="fab fa-github"></i>
-                        <h3>GitHub</h3>
-                        <p>Check my code</p>
-                    </a>
+            <h2 class="section-title" data-aos="fade-up">Let's Build Something That Ships</h2>
+            <p class="section-subtitle" data-aos="fade-up">Not another meeting that leads nowhere</p>
+
+            <div class="contact-cards" data-aos="fade-up" data-aos-delay="100">
+                <a href="mailto:sragarwal@outlook.in" class="contact-card">
+                    <span class="contact-card__icon">📧</span>
+                    <span class="contact-card__label">Email Me</span>
+                    <span class="contact-card__subtext">Respond in 24 hours</span>
+                </a>
+                <a href="https://www.linkedin.com/in/shubam-agarwal/" target="_blank" class="contact-card">
+                    <span class="contact-card__icon">💼</span>
+                    <span class="contact-card__label">Connect</span>
+                    <span class="contact-card__subtext">Let's grow networks</span>
+                </a>
+                <a href="https://github.com/crazysa" target="_blank" class="contact-card">
+                    <span class="contact-card__icon">🐙</span>
+                    <span class="contact-card__label">View Code</span>
+                    <span class="contact-card__subtext">See how I think</span>
+                </a>
+                <a href="../Shubham Agarwal Resume.pdf" download class="contact-card contact-card--primary">
+                    <span class="contact-card__icon">📄</span>
+                    <span class="contact-card__label">Download Resume</span>
+                    <span class="contact-card__subtext">1 page, ATS-friendly</span>
+                </a>
+            </div>
+
+            <!-- What to Expect -->
+            <div class="contact-expectations" data-aos="fade-up" data-aos-delay="200">
+                <div class="contact-expectations__header">
+                    <span class="contact-expectations__icon">📬</span>
+                    <h4>WHAT TO EXPECT</h4>
                 </div>
+                <ul class="contact-expectations__list">
+                    <li><span class="check">✓</span> I respond within 24 hours (usually same day)</li>
+                    <li><span class="check">✓</span> Happy to do a 15-min intro call</li>
+                    <li><span class="check">✓</span> Can share detailed case studies on request</li>
+                    <li><span class="check">✓</span> Open to contract, full-time, or consulting</li>
+                    <li><span class="check">✓</span> Open to initial technical discussion before formal process</li>
+                </ul>
+            </div>
+
+            <!-- Office Hours -->
+            <div class="contact-office-hours" data-aos="fade-up" data-aos-delay="300">
+                <span class="contact-office-hours__icon">☕</span>
+                <div class="contact-office-hours__content">
+                    <h4>OFFICE HOURS</h4>
+                    <p>
+                        Open for 15-min coffee chats about CV systems, calibration, 
+                        or career advice. <strong>No pitch required.</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Vizzy Contact -->
+            <div class="vizzy-contact" aria-hidden="true">
+                <svg class="vizzy vizzy--waving" viewBox="0 0 100 100">
+                    <rect class="vizzy-head" x="20" y="30" width="60" height="50" rx="10" fill="#112240" stroke="#64ffda" stroke-width="2"/>
+                    <circle class="vizzy-eye-outer" cx="50" cy="55" r="18" fill="#0a192f" stroke="#64ffda" stroke-width="2"/>
+                    <circle class="vizzy-iris" cx="50" cy="55" r="12" fill="#64ffda"/>
+                    <circle class="vizzy-pupil" cx="50" cy="55" r="6" fill="#0a192f"/>
+                    <line x1="50" y1="30" x2="50" y2="15" stroke="#64ffda" stroke-width="2"/>
+                    <circle class="vizzy-antenna-light" cx="50" cy="12" r="4" fill="#64ffda"/>
+                    <path class="vizzy-smile" d="M 35 68 Q 50 78 65 68" stroke="#64ffda" stroke-width="2" fill="none"/>
+                </svg>
+                <div class="vizzy-speech">Say hi! 👋</div>
             </div>
         </div>
     </section>
 
     <!-- Back to Top Button -->
-    <a href="#" id="back-to-top" class="back-to-top">
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
         <i class="fas fa-chevron-up"></i>
-    </a>
+    </button>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/shubam-agarwal/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/crazysa" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="mailto:sragarwal@outlook.in"><i class="fas fa-envelope"></i></a>
+            <div class="footer__columns">
+                <div class="footer__column">
+                    <h4>Connect</h4>
+                    <div class="footer__social">
+                        <a href="https://www.linkedin.com/in/shubam-agarwal/" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/crazysa" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:sragarwal@outlook.in" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__column">
+                    <h4>Quick Links</h4>
+                    <nav class="footer__nav">
+                        <a href="#home">Overview</a>
+                        <a href="#experience">Experience</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#skills">Skills</a>
+                        <a href="#contact">Contact</a>
+                    </nav>
+                </div>
+                <div class="footer__column">
+                    <h4>Status</h4>
+                    <div class="footer__status">
+                        <span>📍 Hyderabad, India</span>
+                        <span>🌐 Open to Remote</span>
+                        <span class="status-active">
+                            <span class="pulse-dot-small"></span>
+                            🔥 Actively Interviewing
+                        </span>
+                    </div>
+                </div>
             </div>
-            <p>&copy; 2025 Shubham Agarwal. All Rights Reserved.</p>
+            <div class="footer__divider"></div>
+            <div class="footer__bottom">
+                <p class="footer__tagline">Crafted with precision & lots of ☕</p>
+                <p class="footer__copyright">© 2025 Shubham Agarwal</p>
+            </div>
+            <div class="footer__vizzy" aria-hidden="true">
+                <svg class="vizzy-tiny" viewBox="0 0 100 100">
+                    <rect x="20" y="30" width="60" height="50" rx="10" fill="#112240" stroke="#64ffda" stroke-width="2"/>
+                    <circle cx="50" cy="55" r="12" fill="#64ffda"/>
+                    <circle cx="50" cy="55" r="6" fill="#0a192f"/>
+                    <circle cx="50" cy="12" r="4" fill="#64ffda"/>
+                </svg>
+            </div>
         </div>
     </footer>
 
+    <!-- Custom Summary Modal -->
+    <div class="modal" id="customSummaryModal" hidden>
+        <div class="modal__backdrop"></div>
+        <div class="modal__content">
+            <div class="modal__header">
+                <h3><i class="fas fa-cog"></i> Build Custom Summary</h3>
+                <button class="modal__close">&times;</button>
+            </div>
+            <div class="modal__body">
+                <p>Select skills relevant to your role:</p>
+                <div class="skill-checkboxes">
+                    <label><input type="checkbox" value="Computer Vision" checked> Computer Vision</label>
+                    <label><input type="checkbox" value="VLM/Multimodal"> VLM/Multimodal</label>
+                    <label><input type="checkbox" value="Deep Learning" checked> Deep Learning</label>
+                    <label><input type="checkbox" value="LiDAR Calibration"> LiDAR Calibration</label>
+                    <label><input type="checkbox" value="Cloud (Azure/AWS)"> Cloud (Azure/AWS)</label>
+                    <label><input type="checkbox" value="PyTorch" checked> PyTorch</label>
+                    <label><input type="checkbox" value="Team Leadership"> Team Leadership</label>
+                    <label><input type="checkbox" value="Cost Optimization"> Cost Optimization</label>
+                    <label><input type="checkbox" value="ROS2"> ROS2</label>
+                    <label><input type="checkbox" value="Python" checked> Python</label>
+                    <label><input type="checkbox" value="OpenCV" checked> OpenCV</label>
+                    <label><input type="checkbox" value="System Design"> System Design</label>
+                </div>
+                <div class="generated-summary">
+                    <h4>Generated Summary:</h4>
+                    <p id="generatedSummaryText"></p>
+                </div>
+            </div>
+            <div class="modal__footer">
+                <button class="btn btn-primary" id="copyCustomSummary">
+                    <i class="fas fa-copy"></i> Copy Custom Summary
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast" aria-live="polite"></div>
+
     <!-- Scripts -->
-    <!-- AOS Animation Library JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Background Animation -->
     <script src="assets/js/bg-animation.js"></script>
-    <script src="assets/js/devbot.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
