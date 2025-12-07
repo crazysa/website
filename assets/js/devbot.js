@@ -310,7 +310,7 @@ class DevBotController {
     }
 
     setProp(prop) {
-        this.container.classList.remove('show-magnifier', 'show-sign', 'show-phone', 'show-mail', 'show-code');
+        this.container.classList.remove('show-magnifier', 'show-phone', 'show-mail', 'show-code');
         if (prop) {
             this.container.classList.add(`show-${prop}`);
         }

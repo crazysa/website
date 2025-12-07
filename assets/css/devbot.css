@@ -195,7 +195,7 @@
     transition: all 0.3s ease;
 }
 
-/* --- Props (Sign, Magnifying Glass) --- */
+/* --- Props (Magnifying Glass) --- */
 .devbot-prop {
     position: absolute;
     opacity: 0;
