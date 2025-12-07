@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://crazysa.github.io/website/sitemap.xml
