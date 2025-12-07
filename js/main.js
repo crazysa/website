@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize AOS
+    // 1. AOS Init
     AOS.init({
         duration: 800,
         easing: 'ease-out-cubic',
@@ -7,118 +7,84 @@ document.addEventListener('DOMContentLoaded', () => {
         offset: 50
     });
 
-    // Mobile Navigation
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (hamburger) {
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-
-            // Toggle hamburger icon
-            const icon = hamburger.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.background = 'var(--secondary-color)';
-                navLinks.style.padding = '2rem';
-                navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                navLinks.style.display = 'none';
-            }
+    // 2. Typed.js Init
+    if (document.getElementById('typed-subtitle')) {
+        new Typed('#typed-subtitle', {
+            strings: [
+                '5x faster.',
+                'cost 6 figures less.',
+                'actually ship to production.'
+            ],
+            typeSpeed: 40,
+            backSpeed: 20,
+            backDelay: 2000,
+            startDelay: 1000,
+            loop: true
         });
     }
 
-    // Scroll Progress Bar
+    // 3. Navbar Sticky & Scroll Progress
+    const navbar = document.querySelector('.navbar');
+    const progressBar = document.querySelector('.scroll-progress');
+    const backToTop = document.createElement('div');
+    backToTop.id = 'back-to-top';
+    backToTop.innerHTML = '<i class="fas fa-chevron-up"></i>';
+    backToTop.className = 'back-to-top';
+    document.body.appendChild(backToTop);
+
     window.addEventListener('scroll', () => {
         const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = (winScroll / height) * 100;
-        const progressBar = document.querySelector('.scroll-progress');
-        if (progressBar) {
-            progressBar.style.width = scrolled + "%";
-        }
 
-        // Navbar blur effect
-        const navbar = document.querySelector('.navbar');
+        // Progress Bar
+        if (progressBar) progressBar.style.width = scrolled + "%";
+
+        // Sticky Nav
         if (winScroll > 50) {
-            navbar.style.boxShadow = '0 10px 30px -10px rgba(2, 12, 27, 0.7)';
-            navbar.style.padding = '0.5rem 0';
+            navbar.classList.add('scrolled');
         } else {
-            navbar.style.boxShadow = 'none';
-            navbar.style.padding = '1rem 0';
+            navbar.classList.remove('scrolled');
+        }
+
+        // Back to Top
+        if (scrolled > 50) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
         }
     });
 
-    // Smooth Scroll for Anchors
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                // Close mobile menu if open
-                if (navLinks.classList.contains('active')) {
-                    hamburger.click();
-                }
-            }
-        });
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Metric Counters Animation
+    // 4. Metric Counters
     const metrics = document.querySelectorAll('.metric-value');
     const animateMetrics = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const target = parseInt(entry.target.getAttribute('data-target'));
-                const duration = 2000; // 2 seconds
-                const start = 0;
+                const targetStr = entry.target.getAttribute('data-target');
+                const target = parseInt(targetStr);
+                const duration = 2000;
                 const startTime = performance.now();
 
                 const updateCount = (currentTime) => {
                     const elapsed = currentTime - startTime;
                     const progress = Math.min(elapsed / duration, 1);
-
-                    // Ease out quart
-                    const ease = 1 - Math.pow(1 - progress, 4);
-
+                    const ease = 1 - Math.pow(1 - progress, 4); // easeOutQuart
                     const currentVal = Math.floor(ease * target);
 
-                    // Format number (e.g., 72K, 300K)
-                    let displayVal = currentVal;
-                    if (target >= 1000) {
-                        displayVal = (currentVal / 1000).toFixed(1) + 'K';
-                    }
+                    // Formatting
+                    let formatted = currentVal;
+                    if (targetStr === '72') formatted = '$' + currentVal + 'K';
+                    else if (targetStr === '500') formatted = currentVal + '%';
+                    else if (targetStr === '300') formatted = currentVal + 'K+';
+                    else if (targetStr === '5') formatted = currentVal + '+';
 
-                    // Specific formatting based on context (handled by separate span logic or text append)
-                    // But here we are just updating the number.
-                    // Let's stick to raw number and let CSS/HTML handle units?
-                    // The HTML has label below. The prompt says "$72K", "500%", "300K+".
-                    // Let's just animate the number part and append suffix if needed.
+                    entry.target.innerText = formatted;
 
-                    // Actually, simpler approach:
-                    entry.target.innerText = currentVal;
-
-                    if (progress < 1) {
-                        requestAnimationFrame(updateCount);
-                    } else {
-                        // Finalize with suffix if needed (hardcoded for now based on prompt logic or data attributes)
-                        if (target === 72) entry.target.innerText = '$' + target + 'K';
-                        else if (target === 500) entry.target.innerText = target + '%';
-                        else if (target === 300) entry.target.innerText = target + 'K+';
-                        else if (target === 5) entry.target.innerText = target + '+';
-                    }
+                    if (progress < 1) requestAnimationFrame(updateCount);
                 };
 
                 requestAnimationFrame(updateCount);
@@ -126,10 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, { threshold: 0.5 });
-
     metrics.forEach(metric => animateMetrics.observe(metric));
 
-    // Calculate Duration
+    // 5. Duration Calculator
     const deepnStart = new Date('2022-04-01');
     const now = new Date();
     let years = now.getFullYear() - deepnStart.getFullYear();
@@ -138,8 +103,61 @@ document.addEventListener('DOMContentLoaded', () => {
         years--;
         months += 12;
     }
-    const durationText = `${years} yrs ${months} mos`;
     const durEl = document.getElementById('dur-deepen');
-    if (durEl) durEl.innerText = durationText;
+    if (durEl) durEl.innerText = `${years} yrs ${months} mos`;
 
+    // 6. Mobile Menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ?
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+
+            // Mobile styling injection
+            if(navLinks.classList.contains('active')) {
+                Object.assign(navLinks.style, {
+                    display: 'flex', flexDirection: 'column', position: 'absolute',
+                    top: '100%', left: '0', width: '100%', background: 'var(--bg-secondary)',
+                    padding: '2rem', gap: '1.5rem', boxShadow: '0 10px 20px rgba(0,0,0,0.5)'
+                });
+            } else {
+                navLinks.style.display = 'none';
+            }
+        });
+    }
+
+    // Reset mobile menu on resize
+    window.addEventListener('resize', () => {
+        if(window.innerWidth > 768) {
+            navLinks.style = ''; // clear inline styles
+            navLinks.classList.remove('active');
+            if(hamburger) hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+    });
 });
+
+// 7. Expandable Cards Logic
+function toggleExpand(btn) {
+    const details = btn.nextElementSibling;
+    details.classList.toggle('open');
+    if (details.classList.contains('open')) {
+        btn.innerText = "- Show less";
+    } else {
+        btn.innerText = "+ Show more achievements & impact";
+    }
+}
+
+// 8. Copy Summary Logic
+function copySummary() {
+    const text = document.getElementById('recruiter-text').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.action-btn');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+        }, 2000);
+    });
+}

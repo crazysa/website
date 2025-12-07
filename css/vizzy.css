@@ -33,6 +33,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .vizzy-widget svg {
@@ -116,6 +117,7 @@
     transition: all 0.3s ease;
     pointer-events: none;
     border: 1px solid var(--accent-primary);
+    z-index: 1001;
 }
 
 .vizzy-speech-bubble.visible {
@@ -133,29 +135,66 @@
     animation: antennaPulse 2s infinite;
 }
 
+/* Idle Float */
+@keyframes vizzyFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.vizzy-idle .vizzy-head, .vizzy-idle .vizzy-face-group {
+    animation: vizzyFloat 3s ease-in-out infinite;
+}
+
+/* Blink */
+@keyframes vizzyBlink {
+    0%, 90%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
+}
+.vizzy-iris, .vizzy-pupil {
+    transform-origin: 50px 55px; /* Center of eye */
+    animation: vizzyBlink 4s infinite;
+}
+
+
+/* State: Curious (Hero) */
 @keyframes eyeScan {
     0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-2px); }
-    75% { transform: translateX(2px); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
+}
+.vizzy-curious .vizzy-iris, .vizzy-curious .vizzy-pupil {
+    animation: eyeScan 4s infinite ease-in-out;
+    /* Blink is handled separately or combined? simpler to override blink here */
 }
 
-/* Specific behaviors will be added via JS classes */
-.vizzy-scanning .vizzy-pupil {
-    animation: eyeScan 3s infinite ease-in-out;
-}
-
+/* State: Impressed */
 .vizzy-impressed .vizzy-iris {
-    r: 14; /* Wider eye */
+    r: 15; /* Larger iris */
     transition: r 0.3s ease;
 }
-
 .vizzy-impressed .vizzy-pupil {
-    r: 7;
+    r: 8;
     transition: r 0.3s ease;
 }
+.vizzy-impressed .vizzy-head {
+    transform: translateY(-10px); /* Bounce up */
+    transition: transform 0.2s ease;
+}
 
-.vizzy-blinking .vizzy-eye-outer {
-    /* Blink animation logic would be complex with SVG, using JS to toggle 'blinking' class or clip-path */
+/* State: Thinking */
+.vizzy-thinking .vizzy-iris, .vizzy-thinking .vizzy-pupil {
+    transform: translateY(-5px);
+    transition: transform 0.5s ease;
+}
+
+/* Vizzy Wave Arm (SVG Addition via JS or CSS) */
+.vizzy-arm-wave {
+    transform-origin: bottom center;
+    animation: wave 1s infinite ease-in-out;
+}
+@keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(20deg); }
 }
 
 @media (max-width: 768px) {
