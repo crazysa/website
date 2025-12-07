@@ -6,12 +6,18 @@ class DevBotController {
         this.speechBubble = document.querySelector('.devbot-speech-bubble');
 
         // Settings
-        this.baseY = 20;
+        this.baseY = 20; // Default ground level
         this.minX = 50;
         this.maxX = window.innerWidth - 150;
+        this.minY = 20;
+        this.maxY = window.innerHeight - 200;
+
         this.currentSection = 'home';
         this.targetX = 100;
         this.currentX = -200;
+        this.targetY = 20;
+        this.currentY = 20;
+
         this.mouseNear = false;
         this.isInteracting = false;
         this.isMobile = window.innerWidth <= 768;
@@ -59,11 +65,14 @@ class DevBotController {
     init() {
         window.addEventListener('resize', () => {
             this.maxX = window.innerWidth - 150;
+            this.maxY = window.innerHeight - 200;
             this.isMobile = window.innerWidth <= 768;
             if(this.isMobile) {
                 // Reset position on mobile to be fixed
                 this.currentX = window.innerWidth - 80;
+                this.currentY = 20;
                 this.container.style.left = '';
+                this.container.style.bottom = '20px';
                 this.container.style.right = '10px';
             }
         });
@@ -96,7 +105,7 @@ class DevBotController {
         setTimeout(() => {
             this.container.classList.add('visible');
             if(!this.isMobile) {
-                this.walkTo(100, () => {
+                this.walkTo(100, 20, () => {
                     this.wave();
                     this.speak("Hi! I'm DevBot.");
                 });
@@ -196,7 +205,7 @@ class DevBotController {
                 break;
             case 'contact':
                 this.setEmotion('love');
-                this.walkTo(window.innerWidth / 2 - 60);
+                this.walkTo(window.innerWidth / 2 - 60, 100); // Fly up a bit in contact
                 break;
             default:
                 this.setEmotion('normal');
@@ -232,7 +241,8 @@ class DevBotController {
                 this.mouseNear = true;
                 this.setEmotion('surprised');
                 const runDir = e.clientX < botX ? 1 : -1;
-                this.walkTo(this.currentX + (runDir * 50));
+                // Run away horizontally, keep current Y
+                this.walkTo(this.currentX + (runDir * 50), this.currentY);
             }
         } else {
             if (this.mouseNear) {
@@ -247,29 +257,48 @@ class DevBotController {
         this.setEmotion('happy');
         this.speakRandom('click');
 
-        // Jetpack Jump
+        // Jetpack Jump (relative to current position)
         this.container.classList.add('flying');
+        // Temporarily animate jump via transform
+        this.container.style.transition = 'transform 0.5s ease';
         this.container.style.transform = `translateY(-100px)`;
 
         setTimeout(() => {
             this.container.style.transform = `translateY(0)`;
-            this.container.classList.remove('flying');
-            this.isInteracting = false;
-            this.setEmotion('normal');
-        }, 1000);
+            setTimeout(() => {
+                 this.container.style.transition = '';
+                 this.container.classList.remove('flying');
+                 this.isInteracting = false;
+                 this.setEmotion('normal');
+            }, 500);
+        }, 500);
     }
 
-    walkTo(x, callback) {
+    walkTo(x, y, callback) {
         if (this.isMobile) return; // No walking on mobile
 
         x = Math.max(this.minX, Math.min(x, this.maxX));
+        y = Math.max(this.minY, Math.min(y, this.maxY)); // Ensure Y bounds
+
         this.targetX = x;
+        this.targetY = y;
         this.isMoving = true;
 
         if (this.targetX > this.currentX) {
             this.container.classList.remove('face-left');
         } else {
             this.container.classList.add('face-left');
+        }
+
+        // Intuitive Mode: Check if we should fly
+        // Threshold: if targetY > 50px off ground, we fly
+        if (this.targetY > 50) {
+            this.container.classList.add('flying');
+        } else {
+            // Only stop flying if we are close to ground
+            if (this.currentY <= 50) {
+                 this.container.classList.remove('flying');
+            }
         }
 
         this.onMoveComplete = callback;
@@ -281,21 +310,18 @@ class DevBotController {
         const patrol = () => {
             if (this.currentSection !== 'experience' && this.currentSection !== 'skills') return;
 
-            // Random chance to fly instead of walk
-            const action = Math.random();
-            if (action > 0.6) {
-                // Fly
-                this.container.classList.add('flying');
-                // ZigZag fly
-                this.isFlyingZigZag = true;
-                setTimeout(() => {
-                    this.container.classList.remove('flying');
-                    this.isFlyingZigZag = false;
-                }, 3000);
+            // Pick a random destination
+            const randomX = Math.random() * (this.maxX - this.minX) + this.minX;
+
+            // Random Y logic:
+            // 60% chance to stay on ground (y=20)
+            // 40% chance to fly somewhere
+            let randomY = 20;
+            if (Math.random() > 0.6) {
+                 randomY = Math.random() * (this.maxY - this.minY) + this.minY;
             }
 
-            const randomX = Math.random() * (this.maxX - this.minX) + this.minX;
-            this.walkTo(randomX, () => {
+            this.walkTo(randomX, randomY, () => {
                 setTimeout(patrol, Math.random() * 3000 + 2000);
             });
         };
@@ -322,7 +348,7 @@ class DevBotController {
         this.setEmotion('normal');
         this.setProp(null);
         this.onMoveComplete = null;
-        this.container.classList.remove('flying');
+        // Don't remove flying here, let animate handle it based on Y
         this.isFlyingZigZag = false;
     }
 
@@ -338,9 +364,9 @@ class DevBotController {
         step.className = 'magic-step';
 
         const rect = this.container.getBoundingClientRect();
-        // Position at feet
+        // Position at feet relative to viewport
         step.style.left = (rect.left + rect.width / 2 - 10) + 'px';
-        step.style.bottom = '20px'; // relative to viewport, but since it's fixed position it's fine
+        step.style.top = (rect.bottom - 10) + 'px'; // Use top instead of bottom for accuracy
 
         document.body.appendChild(step);
 
@@ -353,43 +379,57 @@ class DevBotController {
     animate() {
         if (this.isMoving && !this.isMobile) {
             const speed = this.currentSection === 'skills' ? 4 : 2;
+
             const dx = this.targetX - this.currentX;
+            const dy = this.targetY - this.currentY;
+            const dist = Math.hypot(dx, dy);
 
-            // ZigZag flight vertical offset
-            if (this.isFlyingZigZag) {
-                const time = Date.now() / 200;
-                const yOffset = Math.sin(time) * 20;
-                this.container.style.transform = `translateY(${yOffset}px)`;
-            } else {
-                 this.container.style.transform = `translateY(0px)`;
-            }
-
-            if (Math.abs(dx) < speed) {
+            if (dist < speed) {
+                // Arrived
                 this.currentX = this.targetX;
+                this.currentY = this.targetY;
                 this.isMoving = false;
                 this.bot.classList.remove('devbot-walking');
                 this.bot.classList.add('devbot-idle');
+
+                // If on ground, stop flying
+                if (this.currentY <= 30) {
+                    this.container.classList.remove('flying');
+                }
+
                 if (this.onMoveComplete) {
                     const cb = this.onMoveComplete;
                     this.onMoveComplete = null;
                     cb();
                 }
             } else {
-                this.currentX += Math.sign(dx) * speed;
-                this.bot.classList.remove('devbot-idle');
-                this.bot.classList.add('devbot-walking');
+                // Moving
+                const angle = Math.atan2(dy, dx);
+                this.currentX += Math.cos(angle) * speed;
+                this.currentY += Math.sin(angle) * speed;
 
-                // Add magic steps if walking (not flying)
-                if (!this.isFlyingZigZag && !this.container.classList.contains('flying')) {
+                this.bot.classList.remove('devbot-idle');
+
+                // If near ground, walk
+                if (this.currentY <= 30) {
+                     this.container.classList.remove('flying');
+                     this.bot.classList.add('devbot-walking');
+
+                     // Add magic steps
                      const now = Date.now();
                      if (now - this.lastStepTime > this.stepInterval) {
                          this.addStep();
                          this.lastStepTime = now;
                      }
+                } else {
+                     // Flying
+                     this.container.classList.add('flying');
+                     this.bot.classList.remove('devbot-walking');
                 }
             }
 
             this.container.style.left = `${this.currentX}px`;
+            this.container.style.bottom = `${this.currentY}px`;
         } else {
              this.bot.classList.add('devbot-idle');
         }
