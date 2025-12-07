@@ -193,7 +193,9 @@ class DevBotController {
         // Desktop Behavior
         switch(sectionId) {
             case 'home':
-                this.wave();
+                this.walkTo(100, 20, () => {
+                    this.wave();
+                });
                 break;
             case 'experience':
                 this.startPatrol();
@@ -290,17 +292,6 @@ class DevBotController {
             this.container.classList.add('face-left');
         }
 
-        // Intuitive Mode: Check if we should fly
-        // Threshold: if targetY > 50px off ground, we fly
-        if (this.targetY > 50) {
-            this.container.classList.add('flying');
-        } else {
-            // Only stop flying if we are close to ground
-            if (this.currentY <= 50) {
-                 this.container.classList.remove('flying');
-            }
-        }
-
         this.onMoveComplete = callback;
     }
 
@@ -310,16 +301,9 @@ class DevBotController {
         const patrol = () => {
             if (this.currentSection !== 'experience' && this.currentSection !== 'skills') return;
 
-            // Pick a random destination
+            // Pick a random destination anywhere on screen
             const randomX = Math.random() * (this.maxX - this.minX) + this.minX;
-
-            // Random Y logic:
-            // 60% chance to stay on ground (y=20)
-            // 40% chance to fly somewhere
-            let randomY = 20;
-            if (Math.random() > 0.6) {
-                 randomY = Math.random() * (this.maxY - this.minY) + this.minY;
-            }
+            const randomY = Math.random() * (this.maxY - this.minY) + this.minY;
 
             this.walkTo(randomX, randomY, () => {
                 setTimeout(patrol, Math.random() * 3000 + 2000);
@@ -409,22 +393,14 @@ class DevBotController {
                 this.currentY += Math.sin(angle) * speed;
 
                 this.bot.classList.remove('devbot-idle');
+                this.bot.classList.add('devbot-walking');
 
-                // If near ground, walk
-                if (this.currentY <= 30) {
-                     this.container.classList.remove('flying');
-                     this.bot.classList.add('devbot-walking');
-
-                     // Add magic steps
-                     const now = Date.now();
-                     if (now - this.lastStepTime > this.stepInterval) {
-                         this.addStep();
-                         this.lastStepTime = now;
-                     }
-                } else {
-                     // Flying
-                     this.container.classList.add('flying');
-                     this.bot.classList.remove('devbot-walking');
+                // Always add magic steps when moving (even in air)
+                // This creates the illusion of walking on magic steps
+                const now = Date.now();
+                if (now - this.lastStepTime > this.stepInterval) {
+                     this.addStep();
+                     this.lastStepTime = now;
                 }
             }
 
