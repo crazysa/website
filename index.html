@@ -1,1134 +1,597 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Primary Meta Tags -->
-    <title>Shubham Agarwal | Senior CV Engineer - $72K Saved, 500% Faster</title>
-    <meta name="description" content="Senior Software & Research Engineer specializing in Computer Vision, VLMs, and Autonomous Vehicle AI. Proven track record: $72K cost savings, 500% performance gains, 300K+ hours automated.">
-    <meta name="keywords" content="Computer Vision Engineer, VLM, LiDAR Camera Calibration, Autonomous Vehicles, PyTorch, OpenCV, Senior Software Engineer">
-    <meta name="author" content="Shubham Agarwal">
-    
-    <!-- Open Graph / LinkedIn -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://crazysa.github.io/website/">
-    <meta property="og:title" content="Shubham Agarwal | Senior CV Engineer Who Ships">
-    <meta property="og:description" content="I build AI vision systems that save $72K+ annually. 500% faster than industry standard. Let's talk.">
-    <meta property="og:image" content="https://crazysa.github.io/website/assets/img/og-preview.png">
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Shubham Agarwal | Senior CV Engineer">
-    <meta name="twitter:description" content="$72K saved. 500% faster. 300K hours automated. Computer Vision that ships.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Fonts - Updated Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Primary Meta -->
+  <title>Shubham Agarwal | Senior CV Engineer - $72K Saved, 500% Faster</title>
+  <meta name="description" content="Senior Software & Research Engineer specializing in Computer Vision, VLMs, and Autonomous Vehicle AI. Proven track record: $72K cost savings, 500% performance gains, 300K+ hours automated.">
+  <meta name="keywords" content="Computer Vision Engineer, VLM, LiDAR Camera Calibration, Autonomous Vehicles, PyTorch, OpenCV, Senior Software Engineer">
+  <meta name="author" content="Shubham Agarwal">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://crazysa.github.io/website/">
+  <meta property="og:title" content="Shubham Agarwal | Senior CV Engineer Who Ships">
+  <meta property="og:description" content="I build AI vision systems that save $72K+ annually. 500% faster than industry standard. Let's talk.">
+  <meta property="og:image" content="https://crazysa.github.io/website/assets/images/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shubham Agarwal | Senior CV Engineer">
+  <meta name="twitter:description" content="$72K saved. 500% faster. 300K hours automated. Computer Vision that ships.">
+  <meta name="twitter:image" content="https://crazysa.github.io/website/assets/images/og-preview.png">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/vizzy.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/images/profile.jpg">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="assets/img/profile.jpg">
-</head>
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/vizzy.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>:root {
+  /* Backgrounds */
+  --bg-primary: #0a192f;
+  --bg-secondary: #112240;
+  --accent-primary: #64ffda;
+  --text-primary: #e6f1ff;
+  --text-secondary: #8892b0;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  z-index: 1000;
+}
+
+.section--hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0;
+}
+
+.hero-headline {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    .metrics-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .hero__content {
+        flex-direction: column-reverse;
+    }
+}
+</style></head>
 <body>
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
-    <!-- Vizzy Floating Widget -->
-    <div class="floating-widget" id="floatingWidget" data-state="collapsed">
-        <button class="floating-widget__trigger" aria-label="Quick actions">
-            <svg class="vizzy-mini" viewBox="0 0 100 100">
-                <rect class="vizzy-head" x="20" y="30" width="60" height="50" rx="10" fill="#112240" stroke="#64ffda" stroke-width="2"/>
-                <circle class="vizzy-eye-outer" cx="50" cy="55" r="18" fill="#0a192f" stroke="#64ffda" stroke-width="2"/>
-                <circle class="vizzy-iris" cx="50" cy="55" r="12" fill="#64ffda"/>
-                <circle class="vizzy-pupil" cx="50" cy="55" r="6" fill="#0a192f"/>
-                <line class="vizzy-antenna" x1="50" y1="30" x2="50" y2="15" stroke="#64ffda" stroke-width="2"/>
-                <circle class="vizzy-antenna-light" cx="50" cy="12" r="4" fill="#64ffda"/>
-            </svg>
-        </button>
-        <div class="floating-widget__panel">
-            <div class="floating-widget__header">
-                <span>Quick Links</span>
-                <button class="floating-widget__close" aria-label="Close">&times;</button>
-            </div>
-            <div class="floating-widget__links">
-                <a href="mailto:sragarwal@outlook.in"><span>📧</span> Email</a>
-                <a href="https://www.linkedin.com/in/shubam-agarwal/" target="_blank"><span>💼</span> LinkedIn</a>
-                <a href="../Shubham Agarwal Resume.pdf" download><span>📄</span> Resume</a>
-            </div>
-        </div>
-    </div>
-
     <!-- Background Animation Canvas -->
-    <canvas id="bg-canvas"></canvas>
+    <canvas id="bg-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;"></canvas>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress"></div>
 
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar">
         <div class="container">
             <a href="#" class="logo">SA.</a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Overview</a></li>
-                <li><a href="#why-me">Why Me</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <a href="../Shubham Agarwal Resume.pdf" download class="nav-resume-btn">
-                <i class="fas fa-download"></i> Resume
-            </a>
-            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+
+            <div class="nav-links">
+                <a href="#hero">Overview</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+                <a href="assets/Shubham_Agarwal_Resume.pdf" download class="btn btn--secondary btn--small">
+                    <i class="fas fa-download"></i> Resume
+                </a>
+            </div>
+
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu__close" id="mobileMenuClose">&times;</button>
-        <nav class="mobile-menu__nav">
-            <a href="#home">Overview</a>
-            <a href="#why-me">Why Me</a>
-            <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
-            <a href="../Shubham Agarwal Resume.pdf" download class="mobile-menu__resume">
-                <i class="fas fa-download"></i> Download Resume
-            </a>
-        </nav>
-    </div>
-
     <!-- Hero Section -->
-    <header id="home" class="hero">
+    <section id="hero" class="section section--hero">
         <div class="container">
-            <!-- Status Badges -->
-            <div class="status-badges" data-aos="fade-down" data-aos-delay="0">
-                <div class="status-badge status-badge--urgent">
-                    <span class="pulse-dot"></span>
-                    <span>🔥 Actively Interviewing</span>
-                </div>
-                <div class="status-badge">
-                    <span>📍 Hyderabad | Open to Remote</span>
-                </div>
-                <div class="status-badge status-badge--gold">
-                    <span>📊 CFA L1 Cleared</span>
-                </div>
-            </div>
+            <div class="hero__content" style="display: flex; align-items: center; gap: 4rem;">
 
-            <div class="hero-content">
-                <div class="hero-text" data-aos="fade-right" data-aos-delay="200">
+                <!-- Left Column: Text -->
+                <div class="hero__text" style="flex: 1;" data-aos="fade-right">
+
+                    <!-- Badges -->
+                    <div class="status-badges" style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                        <div class="status-badge" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(249, 115, 22, 0.15); border: 1px solid var(--color-urgency); padding: 0.4rem 0.8rem; border-radius: 20px; color: var(--text-primary); font-size: 0.8rem; cursor: help;" title="Typically respond within 24 hours">
+                            <span class="pulse-dot" style="width: 8px; height: 8px; background: var(--color-urgency); border-radius: 50%;"></span>
+                            <span>🔥 Actively Interviewing</span>
+                        </div>
+                        <div class="status-badge" style="background: rgba(100, 255, 218, 0.1); border: 1px solid rgba(100, 255, 218, 0.3); padding: 0.4rem 0.8rem; border-radius: 20px; color: var(--text-primary); font-size: 0.8rem;">
+                            <span>📍 Hyderabad | Open to Remote</span>
+                        </div>
+                        <div class="status-badge" style="background: rgba(255, 215, 0, 0.15); border: 1px solid var(--color-leadership); padding: 0.4rem 0.8rem; border-radius: 20px; color: var(--text-primary); font-size: 0.8rem; cursor: help;" title="Tech + Finance = ROI-focused engineering">
+                            <span>📊 CFA L1 Cleared</span>
+                        </div>
+                    </div>
+
+                    <!-- Headlines -->
                     <h1 class="hero-headline">
                         The CV Engineer Who Turns<br>
-                        <span class="highlight-money">$72K Problems</span> Into <span class="highlight-accent">$0</span>
+                        <span class="text-money">$72K Problems</span> Into <span class="text-accent">$0</span>
                     </h1>
-                    <p class="hero-subtitle">
-                        I build vision systems that are <strong>5x faster</strong>, cost <strong>6 figures less</strong>, 
-                        and actually ship to production.
+
+                    <p class="hero-subtitle typed-text" style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                        I build vision systems that are 5x faster, cost 6 figures less, and actually ship to production.
                     </p>
-                    <p class="hero-micro">
-                        Currently: <strong>Senior Software & Research Engineer</strong> @ 
-                        <span class="company-accent">Deepen.AI</span>
-                        <span class="divider">|</span>
-                        Autonomous Vehicle AI
+
+                    <p class="hero-micro" style="color: var(--text-tertiary); margin-bottom: 2rem;">
+                        Currently: <strong style="color: var(--text-primary);">Senior Software & Research Engineer</strong> @
+                        <span class="text-accent">Deepen.AI</span> | Autonomous Vehicle AI
+                        <span style="display: block; font-size: 0.8rem; margin-top: 0.5rem;">⏱️ 3 min read</span>
                     </p>
-                    <p class="read-time">⏱️ 3 min read</p>
-                </div>
-                <div class="hero-image" data-aos="fade-left" data-aos-delay="400">
-                    <img src="assets/img/profile.jpg" alt="Shubham Agarwal - Senior CV Engineer">
-                    <!-- Vizzy peeking -->
-                    <div class="vizzy-hero" aria-hidden="true">
-                        <svg class="vizzy" viewBox="0 0 100 100">
-                            <rect class="vizzy-head" x="20" y="30" width="60" height="50" rx="10" fill="#112240" stroke="#64ffda" stroke-width="2"/>
-                            <circle class="vizzy-eye-outer" cx="50" cy="55" r="18" fill="#0a192f" stroke="#64ffda" stroke-width="2"/>
-                            <circle class="vizzy-iris" cx="50" cy="55" r="12" fill="#64ffda"/>
-                            <circle class="vizzy-pupil" cx="50" cy="55" r="6" fill="#0a192f"/>
-                            <circle class="vizzy-highlight" cx="46" cy="52" r="2" fill="#ffffff" opacity="0.8"/>
-                            <line x1="50" y1="30" x2="50" y2="15" stroke="#64ffda" stroke-width="2" stroke-linecap="round"/>
-                            <circle class="vizzy-antenna-light" cx="50" cy="12" r="4" fill="#64ffda"/>
-                            <path class="vizzy-smile" d="M 35 68 Q 50 78 65 68" stroke="#64ffda" stroke-width="2" fill="none" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Recruiter Quick Copy Card -->
-            <div class="recruiter-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="recruiter-card__header">
-                    <span class="recruiter-card__icon">📋</span>
-                    <span class="recruiter-card__title">RECRUITER QUICK COPY</span>
-                </div>
-                <p class="recruiter-card__summary" id="recruiterSummary">
-                    Senior CV/ML Engineer | 5+ YoE | Computer Vision, VLMs, LiDAR-Camera Calibration | Python, PyTorch, OpenCV, Azure | Autonomous Vehicles | Hyderabad/Remote | 30-day notice
-                </p>
-                <div class="recruiter-card__actions">
-                    <button class="btn-copy" id="copySummary">
-                        <i class="fas fa-copy"></i> Copy Summary
-                    </button>
-                    <button class="btn-copy" id="copyEmail">
-                        <i class="fas fa-envelope"></i> Email Template
-                    </button>
-                    <button class="btn-expand" id="customSummaryBtn">
-                        <i class="fas fa-cog"></i> Build Custom
-                    </button>
-                </div>
-            </div>
+                    <!-- Recruiter Quick Copy (Placeholder for JS injection) -->
+                    <div id="recruiter-tools-placeholder"></div>
 
-            <!-- Metrics Row -->
-            <div class="metrics-row" data-aos="fade-up" data-aos-delay="500">
-                <div class="metric-card" data-color="performance">
-                    <div class="metric-card__icon">⚡</div>
-                    <div class="metric-card__value">
-                        <span class="counter" data-target="500" data-suffix="%">0%</span>
+                    <!-- Metrics Row -->
+                    <div class="metrics-row" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 3rem 0;">
+                        <!-- Card 1 -->
+                        <div class="metric-card" style="background: var(--bg-card); padding: 1rem; border-radius: 8px; text-align: center; border-top: 3px solid var(--color-performance);">
+                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⚡</div>
+                            <div class="metric-value text-perf" style="font-size: 1.8rem; font-weight: 700; font-family: var(--font-mono);">
+                                <span class="counter" data-target="500">0</span>%
+                            </div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600;">Performance Gain</div>
+                            <div style="font-size: 0.7rem; color: var(--text-tertiary);">vs industry standard</div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="metric-card" style="background: var(--bg-card); padding: 1rem; border-radius: 8px; text-align: center; border-top: 3px solid var(--color-money);">
+                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">💰</div>
+                            <div class="metric-value text-money" style="font-size: 1.8rem; font-weight: 700; font-family: var(--font-mono);">
+                                $<span class="counter" data-target="72">0</span>K
+                            </div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600;">Annual Savings</div>
+                            <div style="font-size: 0.7rem; color: var(--text-tertiary);">Azure opt</div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="metric-card" style="background: var(--bg-card); padding: 1rem; border-radius: 8px; text-align: center; border-top: 3px solid var(--accent-primary);">
+                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⏱️</div>
+                            <div class="metric-value text-accent" style="font-size: 1.8rem; font-weight: 700; font-family: var(--font-mono);">
+                                <span class="counter" data-target="300">0</span>K+
+                            </div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600;">Hours Automated</div>
+                            <div style="font-size: 0.7rem; color: var(--text-tertiary);">= 150 FTEs</div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="metric-card" style="background: var(--bg-card); padding: 1rem; border-radius: 8px; text-align: center; border-top: 3px solid var(--color-leadership);">
+                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎯</div>
+                            <div class="metric-value text-gold" style="font-size: 1.8rem; font-weight: 700; font-family: var(--font-mono);">
+                                <span class="counter" data-target="6">0</span>+
+                            </div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600;">Years Shipping</div>
+                            <div style="font-size: 0.7rem; color: var(--text-tertiary);">R&D → Prod</div>
+                        </div>
                     </div>
-                    <div class="metric-card__divider"></div>
-                    <div class="metric-card__label">Performance Gain</div>
-                    <div class="metric-card__context">vs industry standard</div>
-                </div>
-                <div class="metric-card" data-color="money">
-                    <div class="metric-card__icon">💰</div>
-                    <div class="metric-card__value">
-                        <span class="counter" data-target="72" data-prefix="$" data-suffix="K">$0K</span>
-                    </div>
-                    <div class="metric-card__divider"></div>
-                    <div class="metric-card__label">Annual Savings</div>
-                    <div class="metric-card__context">Azure optimization</div>
-                </div>
-                <div class="metric-card" data-color="accent">
-                    <div class="metric-card__icon">⏱️</div>
-                    <div class="metric-card__value">
-                        <span class="counter" data-target="300" data-suffix="K+">0K+</span>
-                    </div>
-                    <div class="metric-card__divider"></div>
-                    <div class="metric-card__label">Hours Automated</div>
-                    <div class="metric-card__context">= 150 FTEs yearly</div>
-                </div>
-                <div class="metric-card" data-color="leadership">
-                    <div class="metric-card__icon">🎯</div>
-                    <div class="metric-card__value">
-                        <span class="counter" data-target="5" data-suffix="+">0+</span>
-                    </div>
-                    <div class="metric-card__divider"></div>
-                    <div class="metric-card__label">Years Shipping</div>
-                    <div class="metric-card__context">Research → Production</div>
-                </div>
-            </div>
 
-            <!-- CTA Buttons -->
-            <div class="hero-ctas" data-aos="fade-up" data-aos-delay="600">
-                <a href="../Shubham Agarwal Resume.pdf" download class="btn btn-primary">
-                    <i class="fas fa-download"></i> Download Resume
-                    <span class="btn-subtext">(1 page, ATS-friendly)</span>
-                </a>
-                <a href="#projects" class="btn btn-secondary">
-                    See What I've Built <i class="fas fa-arrow-right"></i>
-                </a>
+                    <!-- CTAs -->
+                    <div class="hero-ctas" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                        <a href="assets/Shubham_Agarwal_Resume.pdf" download class="btn btn--primary">
+                            <span>📄 Download Resume</span>
+                        </a>
+                        <a href="#projects" class="btn btn--secondary">
+                            <span>See What I've Built →</span>
+                        </a>
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary); width: 100%; margin-top: 0.5rem;">(1 page, ATS-friendly)</span>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Image & Vizzy -->
+                <div class="hero__visual" style="flex: 0 0 300px; position: relative;" data-aos="fade-left">
+                    <div class="hero__photo-wrapper" style="position: relative; z-index: 1;">
+                        <img src="assets/images/profile.jpg" alt="Shubham Agarwal" style="width: 280px; height: 280px; object-fit: cover; border-radius: 16px; border: 3px solid var(--accent-primary); box-shadow: var(--shadow-lg);">
+                    </div>
+                    <!-- Vizzy Container -->
+                    <div class="vizzy-hero-wrapper" style="position: absolute; bottom: -40px; right: -60px; width: 120px; height: 120px; z-index: 2;">
+                        <!-- SVG injected by JS -->
+                    </div>
+                </div>
             </div>
 
             <!-- Scroll Indicator -->
-            <div class="scroll-indicator">
-                <p>5 companies. 3 years of impact. Scroll to explore.</p>
-                <div class="scroll-chevron">
-                    <i class="fas fa-chevron-down"></i>
-                </div>
+            <div class="scroll-indicator" style="text-align: center; margin-top: 4rem; opacity: 0.7;">
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">3 companies. 6+ years of impact. Scroll to explore.</p>
+                <div class="chevron bounce" style="font-size: 1.5rem; color: var(--accent-primary);">↓</div>
             </div>
         </div>
-    </header>
+    </section>
 
     <!-- Why Me Section -->
-    <section id="why-me" class="section section--why-me">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Why Companies Keep Betting on Me</h2>
-            <p class="section-subtitle" data-aos="fade-up">Three patterns across every role</p>
+<section id="why-me" class="section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Why Companies Keep Betting on Me</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">Three patterns across every role</p>
 
-            <div class="value-cards">
-                <!-- Card 1: Money -->
-                <div class="value-card value-card--money" data-aos="fade-up" data-aos-delay="100">
-                    <div class="value-card__header">
-                        <span class="value-card__icon">💰</span>
-                        <h3 class="value-card__title">I Find Hidden Money</h3>
-                    </div>
-                    <div class="value-card__visual">
-                        <div class="money-diagram">
-                            <div class="bill bill--before">$100K</div>
-                            <div class="arrow">→</div>
-                            <div class="optimization">My Optimization</div>
-                            <div class="arrow">→</div>
-                            <div class="bill bill--after">$28K</div>
-                        </div>
-                    </div>
-                    <p class="value-card__description">
-                        Most engineers optimize for accuracy. <strong>I optimize for ROI.</strong>
-                        At Deepen.AI, I found $72K hiding in Azure configs that everyone else missed.
-                    </p>
-                    <div class="value-card__proof">
-                        <span class="proof-pill">$72K/yr at Deepen.AI</span>
-                        <span class="proof-pill">700+ hrs at Arcesium</span>
-                        <span class="proof-pill">40K classifications</span>
-                    </div>
+        <div class="why-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <!-- Card 1 -->
+            <div class="value-card" data-aos="fade-up" style="background: var(--bg-card); padding: 2rem; border-radius: 8px; border-top: 3px solid var(--color-money);">
+                <div style="font-size: 2rem; margin-bottom: 1rem;">💰</div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">I Find Hidden Money</h3>
+
+                <div class="visual-diagram" style="background: rgba(10, 25, 47, 0.5); padding: 1rem; margin-bottom: 1rem; border-radius: 4px; text-align: center;">
+                    <!-- SVG Diagram -->
+                    <svg viewBox="0 0 200 60" style="width: 100%; height: 60px;">
+                        <rect x="10" y="15" width="50" height="30" fill="none" stroke="var(--color-error)" rx="4"/>
+                        <text x="35" y="35" text-anchor="middle" fill="var(--color-error)" font-size="10" font-family="monospace">$100K</text>
+                        <path d="M 70 30 L 90 30" stroke="var(--text-secondary)" marker-end="url(#arrow)"/>
+                        <circle cx="100" cy="30" r="10" fill="var(--color-leadership)" opacity="0.2"/>
+                        <path d="M 110 30 L 130 30" stroke="var(--text-secondary)" marker-end="url(#arrow)"/>
+                        <rect x="140" y="15" width="50" height="30" fill="none" stroke="var(--color-money)" rx="4"/>
+                        <text x="165" y="35" text-anchor="middle" fill="var(--color-money)" font-size="10" font-family="monospace">$28K</text>
+                        <defs><marker id="arrow" markerWidth="6" markerHeight="6" refX="0" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="var(--text-secondary)"/></marker></defs>
+                    </svg>
                 </div>
 
-                <!-- Card 2: Performance -->
-                <div class="value-card value-card--performance" data-aos="fade-up" data-aos-delay="200">
-                    <div class="value-card__header">
-                        <span class="value-card__icon">⚡</span>
-                        <h3 class="value-card__title">I Ship 5x Faster</h3>
-                    </div>
-                    <div class="value-card__visual">
-                        <div class="timeline-diagram">
-                            <div class="timeline-row">
-                                <span class="timeline-label">Industry:</span>
-                                <div class="timeline-bar timeline-bar--long">
-                                    <span>6 months</span>
-                                </div>
-                            </div>
-                            <div class="timeline-row">
-                                <span class="timeline-label">My Approach:</span>
-                                <div class="timeline-bar timeline-bar--short">
-                                    <span>6 weeks</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="value-card__description">
-                        While others are still in POC, <strong>I'm already in production.</strong>
-                        My CV systems don't just demo well—they handle edge cases at scale.
-                    </p>
-                    <div class="value-card__proof">
-                        <span class="proof-pill">500% faster</span>
-                        <span class="proof-pill">50% labeling reduction</span>
-                        <span class="proof-pill">Research → Prod</span>
-                    </div>
-                </div>
-
-                <!-- Card 3: Leadership -->
-                <div class="value-card value-card--leadership" data-aos="fade-up" data-aos-delay="300">
-                    <div class="value-card__header">
-                        <span class="value-card__icon">👥</span>
-                        <h3 class="value-card__title">I Lead Without Drama</h3>
-                    </div>
-                    <div class="value-card__visual">
-                        <div class="org-diagram">
-                            <div class="org-leader">Me</div>
-                            <div class="org-line"></div>
-                            <div class="org-team">
-                                <span></span><span></span><span></span><span></span><span></span>
-                            </div>
-                            <div class="org-result">✓ Shipped</div>
-                        </div>
-                    </div>
-                    <p class="value-card__description">
-                        Led a team of 5 to build a camera calibration system with <strong>1mm accuracy.</strong>
-                        No scope creep. No missed deadlines. Just shipped.
-                    </p>
-                    <div class="value-card__proof">
-                        <span class="proof-pill">5-person team</span>
-                        <span class="proof-pill">Cross-functional</span>
-                        <span class="proof-pill">Full lifecycle</span>
-                    </div>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem; color: var(--text-secondary);">Most engineers optimize for accuracy. <strong>I optimize for ROI.</strong> At Deepen.AI, I found $72K hiding in Azure configs that everyone else missed.</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span style="font-size: 0.75rem; background: rgba(74, 222, 128, 0.1); color: var(--color-money); padding: 2px 8px; border-radius: 4px;">$72K/yr at Deepen.AI</span>
+                    <span style="font-size: 0.75rem; background: rgba(74, 222, 128, 0.1); color: var(--color-money); padding: 2px 8px; border-radius: 4px;">700+ hrs at Arcesium</span>
                 </div>
             </div>
 
-            <!-- What This Means CTA -->
-            <div class="why-me__cta" data-aos="fade-up" data-aos-delay="400">
-                <p class="cta-label">Translate this to your team →</p>
-                <div class="cta-outcomes">
-                    <span>✓ I can reduce your cloud spend by 5-6 figures</span>
-                    <span>✓ I can build CV systems that actually scale</span>
-                    <span>✓ I can lead small teams to ship complex systems</span>
+            <!-- Card 2 -->
+            <div class="value-card" data-aos="fade-up" data-aos-delay="100" style="background: var(--bg-card); padding: 2rem; border-radius: 8px; border-top: 3px solid var(--color-performance);">
+                <div style="font-size: 2rem; margin-bottom: 1rem;">⚡</div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">I Ship 5x Faster</h3>
+
+                <div class="visual-diagram" style="background: rgba(10, 25, 47, 0.5); padding: 1rem; margin-bottom: 1rem; border-radius: 4px;">
+                    <svg viewBox="0 0 200 60" style="width: 100%; height: 60px; font-family: monospace; font-size: 8px;">
+                        <text x="0" y="20" fill="var(--text-tertiary)">Industry:</text>
+                        <rect x="40" y="14" width="150" height="8" fill="var(--text-tertiary)" opacity="0.3"/>
+                        <text x="195" y="20" text-anchor="end" fill="var(--text-tertiary)">6mo</text>
+
+                        <text x="0" y="45" fill="var(--text-primary)">Me:</text>
+                        <rect x="40" y="39" width="40" height="8" fill="var(--color-performance)"/>
+                        <text x="85" y="45" fill="var(--color-performance)">6wks</text>
+                    </svg>
+                </div>
+
+                <p style="font-size: 0.9rem; margin-bottom: 1rem; color: var(--text-secondary);">While others are still in POC, <strong>I'm already in production.</strong> My CV systems don't just demo well—they handle edge cases at scale.</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span style="font-size: 0.75rem; background: rgba(96, 165, 250, 0.1); color: var(--color-performance); padding: 2px 8px; border-radius: 4px;">500% Faster</span>
+                    <span style="font-size: 0.75rem; background: rgba(96, 165, 250, 0.1); color: var(--color-performance); padding: 2px 8px; border-radius: 4px;">Research → Prod</span>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="value-card" data-aos="fade-up" data-aos-delay="200" style="background: var(--bg-card); padding: 2rem; border-radius: 8px; border-top: 3px solid var(--color-leadership);">
+                <div style="font-size: 2rem; margin-bottom: 1rem;">👥</div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">I Lead Without Drama</h3>
+
+                <div class="visual-diagram" style="background: rgba(10, 25, 47, 0.5); padding: 1rem; margin-bottom: 1rem; border-radius: 4px; text-align: center;">
+                    <svg viewBox="0 0 200 60" style="width: 100%; height: 60px;">
+                        <circle cx="100" cy="15" r="8" fill="var(--color-leadership)"/>
+                        <line x1="100" y1="23" x2="100" y2="35" stroke="var(--text-tertiary)"/>
+                        <line x1="60" y1="35" x2="140" y2="35" stroke="var(--text-tertiary)"/>
+                        <circle cx="60" cy="45" r="5" fill="var(--text-secondary)" opacity="0.5"/>
+                        <circle cx="80" cy="45" r="5" fill="var(--text-secondary)" opacity="0.5"/>
+                        <circle cx="100" cy="45" r="5" fill="var(--text-secondary)" opacity="0.5"/>
+                        <circle cx="120" cy="45" r="5" fill="var(--text-secondary)" opacity="0.5"/>
+                        <circle cx="140" cy="45" r="5" fill="var(--text-secondary)" opacity="0.5"/>
+                    </svg>
+                </div>
+
+                <p style="font-size: 0.9rem; margin-bottom: 1rem; color: var(--text-secondary);">Led a team of 5 to build a camera calibration system with <strong>1mm accuracy.</strong> No scope creep. No missed deadlines. Just shipped.</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span style="font-size: 0.75rem; background: rgba(255, 215, 0, 0.1); color: var(--color-leadership); padding: 2px 8px; border-radius: 4px;">Led 5 Engineers</span>
+                    <span style="font-size: 0.75rem; background: rgba(255, 215, 0, 0.1); color: var(--color-leadership); padding: 2px 8px; border-radius: 4px;">Full Lifecycle</span>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="section">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">The Journey So Far</h2>
-            <p class="section-subtitle" data-aos="fade-up">Click any role to see the full impact</p>
-
-            <div class="experience-timeline">
-                <!-- Deepen.AI -->
-                <div class="experience-card experience-card--active" data-aos="fade-up">
-                    <div class="experience-card__header">
-                        <div class="experience-card__logo">
-                            <img src="assets/img/deepen_logo.png" alt="Deepen.AI">
-                        </div>
-                        <div class="experience-card__meta">
-                            <h3 class="company-name">Deepen.AI</h3>
-                            <p class="role-title">Senior Software & Research Engineer</p>
-                            <p class="duration">
-                                <span class="dates">Apr 2022 - Present</span>
-                                <span class="length">· 2 yrs 8 mos</span>
-                            </p>
-                            <p class="location">📍 Hyderabad</p>
-                        </div>
-                        <button class="experience-card__toggle" aria-expanded="true">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-
-                    <!-- Headline Achievement -->
-                    <div class="experience-card__headline">
-                        <div class="headline-badge">🏆 HEADLINE ACHIEVEMENT</div>
-                        <div class="headline-content">
-                            <div class="headline-metric">Saved $72,000/year</div>
-                            <p class="headline-description">
-                                by rebuilding AI Sense microservice on Azure Batch Pools 
-                                with sparse convolutional networks and CenterPoint inference
-                            </p>
-                            <div class="headline-tags">
-                                <span>Azure</span>
-                                <span>Batch Pools</span>
-                                <span>Sparse Conv</span>
-                                <span>CenterPoint</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Key Deliverables -->
-                    <div class="experience-card__deliverables">
-                        <h4>KEY DELIVERABLES:</h4>
-                        <div class="deliverable" data-color="performance">
-                            <span class="deliverable-icon">⚡</span>
-                            <div class="deliverable-content">
-                                <span class="deliverable-metric">500% Performance Gain</span>
-                                <p>Built CV system with simultaneous multi-pattern recognition, 5x faster than industry standard</p>
-                            </div>
-                        </div>
-                        <div class="deliverable" data-color="accent">
-                            <span class="deliverable-icon">🤖</span>
-                            <div class="deliverable-content">
-                                <span class="deliverable-metric">50% Labeling Time Reduction</span>
-                                <p>Integrated Qwen-VL pipeline for multimodal attribute labeling across diverse scenarios</p>
-                            </div>
-                        </div>
-                        <div class="deliverable" data-color="leadership">
-                            <span class="deliverable-icon">🎯</span>
-                            <div class="deliverable-content">
-                                <span class="deliverable-metric">1mm Calibration Accuracy</span>
-                                <span class="deliverable-badge">Led Team of 5</span>
-                                <p>One-Shot Overlapping Camera Calibration system, research to production</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- More Achievements -->
-                    <div class="experience-card__more">
-                        <button class="more-toggle">
-                            <span>+ Show 8 more achievements</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="more-content" hidden>
-                            <div class="deliverable">
-                                <span class="deliverable-icon">🔧</span>
-                                <div class="deliverable-content">
-                                    <span class="deliverable-metric">Custom OpenCV Build</span>
-                                    <p>Built and deployed custom OpenCV with improvements and fixes</p>
-                                </div>
-                            </div>
-                            <div class="deliverable">
-                                <span class="deliverable-icon">📐</span>
-                                <div class="deliverable-content">
-                                    <span class="deliverable-metric">F-Theta & Kannala-Brandt Models</span>
-                                    <p>R&D and productionization of camera models from scratch</p>
-                                </div>
-                            </div>
-                            <div class="deliverable">
-                                <span class="deliverable-icon">🗺️</span>
-                                <div class="deliverable-content">
-                                    <span class="deliverable-metric">KISS-ICP SLAM Integration</span>
-                                    <p>Better handling of unidirectional lidars</p>
-                                </div>
-                            </div>
-                            <div class="deliverable">
-                                <span class="deliverable-icon">🎯</span>
-                                <div class="deliverable-content">
-                                    <span class="deliverable-metric">SAM for Calibration</span>
-                                    <p>66% accuracy improvement, 70% time reduction</p>
-                                </div>
-                            </div>
-                            <div class="deliverable">
-                                <span class="deliverable-icon">📊</span>
-                                <div class="deliverable-content">
-                                    <span class="deliverable-metric">Outlier Rejection System</span>
-                                    <p>Quality detection across calibration suite</p>
-                                </div>
-                            </div>
-                            <div class="deliverable">
-                                <span class="deliverable-icon">🔄</span>
-                                <div class="deliverable-content">
-                                    <span class="deliverable-metric">40% Labeling Reduction</span>
-                                    <p>Multi-sensor fusion transformation & localization</p>
-                                </div>
-                            </div>
-                            <div class="deliverable">
-                                <span class="deliverable-icon">🚀</span>
-                                <div class="deliverable-content">
-                                    <span class="deliverable-metric">300K+ Hours Saved</span>
-                                    <p>Auto-generation of bifurcation points</p>
-                                </div>
-                            </div>
-                            <div class="deliverable">
-                                <span class="deliverable-icon">⚡</span>
-                                <div class="deliverable-content">
-                                    <span class="deliverable-metric">15.7% Optimization Speedup</span>
-                                    <p>Calibration optimization improvements</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- What This Means -->
-                    <div class="experience-card__meaning">
-                        <button class="meaning-toggle">
-                            💡 What this means for your team →
-                        </button>
-                        <div class="meaning-content" hidden>
-                            <ul>
-                                <li>I can reduce your cloud spend by 5-6 figures annually</li>
-                                <li>I can build CV pipelines that handle production edge cases</li>
-                                <li>I can lead small teams to ship complex calibration systems</li>
-                                <li>I ship research to production, not just POCs</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Tech Stack -->
-                    <div class="experience-card__tech">
-                        <span>Python</span>
-                        <span>PyTorch</span>
-                        <span>OpenCV</span>
-                        <span>Azure</span>
-                        <span>ROS2</span>
-                        <span>VLM</span>
-                        <span>CUDA</span>
-                        <span>Docker</span>
-                    </div>
-                </div>
-
-                <!-- Arcesium -->
-                <div class="experience-card" data-aos="fade-up">
-                    <div class="experience-card__header">
-                        <div class="experience-card__logo">
-                            <img src="assets/img/arcesium_logo.png" alt="Arcesium">
-                        </div>
-                        <div class="experience-card__meta">
-                            <h3 class="company-name">Arcesium</h3>
-                            <p class="role-title">Software Engineer</p>
-                            <p class="duration">
-                                <span class="dates">Feb 2021 - Apr 2022</span>
-                                <span class="length">· 1 yr 3 mos</span>
-                            </p>
-                            <p class="location">📍 Hyderabad</p>
-                        </div>
-                        <button class="experience-card__toggle" aria-expanded="false">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-
-                    <div class="experience-card__preview">
-                        <span class="preview-headline">🏆 700+ human hours saved yearly</span>
-                        <span class="preview-tags">Monitoring · Data Integrity · Automation</span>
-                    </div>
-
-                    <div class="experience-card__body" hidden>
-                        <div class="experience-card__headline">
-                            <div class="headline-badge">🏆 HEADLINE ACHIEVEMENT</div>
-                            <div class="headline-content">
-                                <div class="headline-metric">Saved 700+ Human Hours Yearly</div>
-                                <p class="headline-description">
-                                    Rewrote and automated post-trade reconciliation monitoring systems
-                                </p>
-                            </div>
-                        </div>
-                        <div class="experience-card__deliverables">
-                            <div class="deliverable">
-                                <span class="deliverable-icon">📊</span>
-                                <div class="deliverable-content">
-                                    <span class="deliverable-metric">Monitoring & Alerting Systems</span>
-                                    <p>Designed for post-trade reconciliation application</p>
-                                </div>
-                            </div>
-                            <div class="deliverable">
-                                <span class="deliverable-icon">🔒</span>
-                                <div class="deliverable-content">
-                                    <span class="deliverable-metric">Data Integrity Management</span>
-                                    <p>Major architecture and service changes</p>
-                                </div>
-                            </div>
-                            <div class="deliverable">
-                                <span class="deliverable-icon">⚡</span>
-                                <div class="deliverable-content">
-                                    <span class="deliverable-metric">Framework Improvements</span>
-                                    <p>Enhanced internal proprietary framework</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="experience-card__tech">
-                            <span>Java</span>
-                            <span>Monitoring</span>
-                            <span>Alerting</span>
-                            <span>Automation</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- LogMeIn -->
-                <div class="experience-card" data-aos="fade-up">
-                    <div class="experience-card__header">
-                        <div class="experience-card__logo">
-                            <img src="assets/img/logmein_logo.png" alt="LogMeIn">
-                        </div>
-                        <div class="experience-card__meta">
-                            <h3 class="company-name">LogMeIn</h3>
-                            <p class="role-title">Associate Software Engineer Trainee</p>
-                            <p class="duration">
-                                <span class="dates">Jan 2020 - Dec 2020</span>
-                                <span class="length">· 1 yr</span>
-                            </p>
-                            <p class="location">📍 Bangalore</p>
-                        </div>
-                        <button class="experience-card__toggle" aria-expanded="false">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-
-                    <div class="experience-card__preview">
-                        <span class="preview-headline">🏆 63% → 94% email classification accuracy</span>
-                        <span class="preview-tags">ML · NLP · Speaker Diarization · Web Scraping</span>
-                    </div>
-
-                    <div class="experience-card__body" hidden>
-                        <div class="experience-card__headline">
-                            <div class="headline-badge">🏆 HEADLINE ACHIEVEMENT</div>
-                            <div class="headline-content">
-                                <div class="headline-metric">63% → 94% Email Classification</div>
-                                <p class="headline-description">
-                                    Improved ICICI Bank email classification accuracy, processing 10,000+ emails daily
-                                </p>
-                            </div>
-                        </div>
-                        <div class="experience-card__deliverables">
-                            <div class="deliverable">
-                                <span class="deliverable-icon">🎤</span>
-                                <div class="deliverable-content">
-                                    <span class="deliverable-metric">Speaker Diarization POC</span>
-                                    <p>Transcript segregation for remote meetings</p>
-                                </div>
-                            </div>
-                            <div class="deliverable">
-                                <span class="deliverable-icon">🌐</span>
-                                <div class="deliverable-content">
-                                    <span class="deliverable-metric">40K+ Customer Classifications</span>
-                                    <p>Web scraping for targeted marketing</p>
-                                </div>
-                            </div>
-                            <div class="deliverable">
-                                <span class="deliverable-icon">🏢</span>
-                                <div class="deliverable-content">
-                                    <span class="deliverable-metric">"Go to Office" from Scratch</span>
-                                    <span class="deliverable-badge">Remote with Boston Team</span>
-                                    <p>Only employee working remotely with Innovation Fields team</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="experience-card__tech">
-                            <span>Python</span>
-                            <span>ML</span>
-                            <span>NLP</span>
-                            <span>Web Scraping</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div style="margin-top: 3rem; background: rgba(100, 255, 218, 0.05); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--accent-primary);">
+            <p style="color: var(--accent-primary); font-weight: 600; margin-bottom: 0.5rem;">💡 Translate this to your team →</p>
+            <ul style="list-style: none; color: var(--text-secondary); font-size: 0.9rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0.5rem;">
+                <li>✓ I can reduce your cloud spend by 5-6 figures</li>
+                <li>✓ I can build CV systems that actually scale</li>
+                <li>✓ I can lead small teams to ship complex systems</li>
+            </ul>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section section--projects">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Systems I've Shipped</h2>
-            <p class="section-subtitle" data-aos="fade-up">Not demos. Not POCs. Production systems.</p>
+<!-- Experience Section -->
+<section id="experience" class="section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">The Journey So Far</h2>
 
-            <div class="projects-grid">
-                <!-- VLM Pipeline -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-card__visual">
-                        <div class="project-diagram vlm-diagram">
-                            <div class="diagram-step">
-                                <div class="diagram-icon">📷</div>
-                                <span>Image</span>
-                            </div>
-                            <div class="diagram-arrow">→</div>
-                            <div class="diagram-step diagram-step--process">
-                                <div class="diagram-icon">🧠</div>
-                                <span>Qwen-VL</span>
-                            </div>
-                            <div class="diagram-arrow">→</div>
-                            <div class="diagram-step diagram-step--output">
-                                <div class="diagram-icon">✓</div>
-                                <span>Labeled</span>
-                            </div>
+        <div class="timeline" style="max-width: 900px; margin: 0 auto;">
+            <!-- DEEPEN.AI -->
+            <div class="experience-card" style="background: var(--bg-card); border-radius: 8px; padding: 2rem; margin-bottom: 2rem; border-left: 4px solid var(--accent-primary);" data-aos="fade-up">
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <img src="assets/images/company-logos/deepen_logo.png" alt="Deepen.AI" style="width: 50px; height: 50px; border-radius: 8px; background: white; padding: 5px;">
+                        <div>
+                            <h3 style="margin: 0; color: var(--text-primary);">Deepen.AI</h3>
+                            <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">Senior Software & Research Engineer</p>
                         </div>
                     </div>
-                    <div class="project-card__content">
-                        <div class="project-card__header">
-                            <h3>VLM Multimodal Labeling Pipeline</h3>
-                            <span class="project-badge project-badge--shipped">🚀 SHIPPED</span>
+                    <div style="text-align: right; color: var(--text-tertiary); font-family: var(--font-mono); font-size: 0.8rem;">
+                        <div>Apr 2022 - Present</div>
+                        <div>2 yrs 8 mos</div>
+                        <div>📍 Hyderabad</div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(10, 25, 47, 0.5); border: 1px solid var(--color-leadership); border-left-width: 4px; padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem;">
+                    <div style="color: var(--color-leadership); font-size: 0.8rem; font-weight: 700; margin-bottom: 0.5rem;">🏆 HEADLINE ACHIEVEMENT</div>
+                    <strong style="color: var(--text-primary); font-size: 1.1rem; display: block;">Saved $72,000/year</strong>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">by rebuilding AI Sense microservice on Azure Batch Pools with sparse conv networks</p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span class="tech-tag" style="background: rgba(255, 255, 255, 0.1); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-family: var(--font-mono);">Azure</span>
+                        <span class="tech-tag" style="background: rgba(255, 255, 255, 0.1); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-family: var(--font-mono);">Sparse Conv</span>
+                    </div>
+                </div>
+
+                <div style="display: grid; gap: 1rem;">
+                    <div style="display: flex; gap: 1rem;">
+                        <span style="color: var(--color-performance); font-size: 1.2rem;">⚡</span>
+                        <div>
+                            <strong style="color: var(--text-primary);">500% Performance Gain</strong>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Built CV system with simultaneous multi-pattern recognition, 5x faster than standard.</p>
                         </div>
-                        <p class="project-card__description">
-                            Automated attribute labeling for autonomous vehicle data using Vision-Language Models
-                        </p>
-                        <div class="project-card__metric" data-color="performance">
-                            <span class="metric-value">50% FASTER</span>
-                            <span class="metric-label">Labeling</span>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <span style="color: var(--accent-primary); font-size: 1.2rem;">🤖</span>
+                        <div>
+                            <strong style="color: var(--text-primary);">50% Labeling Time Reduction</strong>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Integrated Qwen-VL pipeline for multimodal attribute labeling.</p>
                         </div>
-                        <div class="project-card__tech">
-                            <span>Python</span>
-                            <span>Qwen-VL</span>
-                            <span>Docker</span>
-                            <span>Azure</span>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <span style="color: var(--color-leadership); font-size: 1.2rem;">🎯</span>
+                        <div>
+                            <strong style="color: var(--text-primary);">1mm Calibration Accuracy</strong>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Led team of 5 for One-Shot Overlapping Camera Calibration system.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- 3D LiDAR -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-card__visual">
-                        <div class="project-diagram lidar-diagram">
-                            <div class="point-cloud">
-                                <span></span><span></span><span></span>
-                                <span></span><span></span><span></span>
-                                <span></span><span></span><span></span>
-                            </div>
-                            <div class="detection-box"></div>
-                        </div>
-                    </div>
-                    <div class="project-card__content">
-                        <div class="project-card__header">
-                            <h3>3D LiDAR Object Detection</h3>
-                            <span class="project-badge project-badge--shipped">🚀 SHIPPED</span>
-                        </div>
-                        <p class="project-card__description">
-                            Sparse conv networks with CenterPoint inference for real-time 3D object detection
-                        </p>
-                        <div class="project-card__metric" data-color="money">
-                            <span class="metric-value">$72K SAVED</span>
-                            <span class="metric-label">Annually</span>
-                        </div>
-                        <div class="project-card__tech">
-                            <span>PyTorch</span>
-                            <span>CUDA</span>
-                            <span>Azure Batch</span>
-                            <span>CenterPoint</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Camera Calibration -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="project-card__visual">
-                        <div class="project-diagram calibration-diagram">
-                            <div class="camera-rig">
-                                <div class="camera"><i class="fas fa-video"></i></div>
-                                <div class="camera"><i class="fas fa-video"></i></div>
-                                <div class="camera"><i class="fas fa-video"></i></div>
-                            </div>
-                            <div class="calibration-lines"></div>
-                            <div class="accuracy-badge">1mm</div>
-                        </div>
-                    </div>
-                    <div class="project-card__content">
-                        <div class="project-card__header">
-                            <h3>One-Shot Camera Calibration</h3>
-                            <span class="project-badge project-badge--shipped">🚀 SHIPPED</span>
-                            <span class="project-badge project-badge--led">👥 LED TEAM</span>
-                        </div>
-                        <p class="project-card__description">
-                            Multi-camera calibration system with 1mm translation and 1° rotation accuracy
-                        </p>
-                        <div class="project-card__metric" data-color="leadership">
-                            <span class="metric-value">1mm ACCURACY</span>
-                            <span class="metric-label">Translation</span>
-                        </div>
-                        <div class="project-card__tech">
-                            <span>OpenCV</span>
-                            <span>C++</span>
-                            <span>Python</span>
-                            <span>Optimization</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SLAM -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="project-card__visual">
-                        <div class="project-diagram slam-diagram">
-                            <svg viewBox="0 0 100 60" class="path-svg">
-                                <path class="slam-path" d="M10,50 Q25,20 50,30 T90,20" fill="none" stroke="#64ffda" stroke-width="2"/>
-                                <circle class="slam-dot" cx="10" cy="50" r="4" fill="#64ffda"/>
-                            </svg>
-                            <div class="map-grid"></div>
-                        </div>
-                    </div>
-                    <div class="project-card__content">
-                        <div class="project-card__header">
-                            <h3>SLAM Integration (KISS-ICP)</h3>
-                            <span class="project-badge project-badge--rnd">🔬 R&D</span>
-                        </div>
-                        <p class="project-card__description">
-                            Motion path visualization and mapping for unidirectional LiDARs
-                        </p>
-                        <div class="project-card__metric" data-color="accent">
-                            <span class="metric-value">PROD READY</span>
-                            <span class="metric-label">Deployed</span>
-                        </div>
-                        <div class="project-card__tech">
-                            <span>ROS2</span>
-                            <span>SLAM</span>
-                            <span>Point Clouds</span>
-                            <span>Localization</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section section--skills">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Technical Arsenal</h2>
-            <p class="section-subtitle" data-aos="fade-up">Organized by what I can deliver, not years counted</p>
-
-            <div class="skills-tiers">
-                <!-- Tier 1 -->
-                <div class="skill-tier skill-tier--expert" data-aos="fade-up" data-aos-delay="100">
-                    <div class="skill-tier__header">
-                        <span class="skill-tier__icon">🎯</span>
-                        <h3 class="skill-tier__title">SHIP BLINDFOLDED</h3>
-                        <span class="skill-tier__subtitle">Things I've shipped to production multiple times</span>
-                    </div>
-                    <div class="skill-tier__progress">
-                        <div class="progress-bar" data-percent="100"></div>
-                    </div>
-                    <div class="skill-tier__items">
-                        <div class="skill-item">
-                            <span class="skill-item__name">Computer Vision</span>
-                            <span class="skill-item__context">Custom OpenCV, 500% faster systems</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-item__name">Python</span>
-                            <span class="skill-item__context">Primary language, 5+ years production</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-item__name">PyTorch</span>
-                            <span class="skill-item__context">Sparse conv networks, classification</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-item__name">OpenCV</span>
-                            <span class="skill-item__context">Custom-built for internal use</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-item__name">Calibration</span>
-                            <span class="skill-item__context">LiDAR-Camera, Intrinsics, Overlapping</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tier 2 -->
-                <div class="skill-tier skill-tier--advanced" data-aos="fade-up" data-aos-delay="200">
-                    <div class="skill-tier__header">
-                        <span class="skill-tier__icon">⚡</span>
-                        <h3 class="skill-tier__title">PRODUCTION-READY IN DAYS</h3>
-                        <span class="skill-tier__subtitle">Comfortable and proven, ready to deploy</span>
-                    </div>
-                    <div class="skill-tier__progress">
-                        <div class="progress-bar" data-percent="80"></div>
-                    </div>
-                    <div class="skill-tier__items">
-                        <div class="skill-item">
-                            <span class="skill-item__name">VLM/Multimodal</span>
-                            <span class="skill-item__context">Qwen-VL pipeline in production</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-item__name">Deep Learning</span>
-                            <span class="skill-item__context">CNNs, Transformers, SLAM</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-item__name">Azure</span>
-                            <span class="skill-item__context">Batch Pools, cost optimization</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-item__name">System Design</span>
-                            <span class="skill-item__context">Microservices, pipelines</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-item__name">ROS2</span>
-                            <span class="skill-item__context">Sensor fusion, calibration nodes</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tier 3 -->
-                <div class="skill-tier skill-tier--proficient" data-aos="fade-up" data-aos-delay="300">
-                    <div class="skill-tier__header">
-                        <span class="skill-tier__icon">🔧</span>
-                        <h3 class="skill-tier__title">COMFORTABLE & GROWING</h3>
-                        <span class="skill-tier__subtitle">Used professionally, actively expanding</span>
-                    </div>
-                    <div class="skill-tier__progress">
-                        <div class="progress-bar" data-percent="60"></div>
-                    </div>
-                    <div class="skill-tier__items">
-                        <div class="skill-item">
-                            <span class="skill-item__name">AWS / GCP</span>
-                            <span class="skill-item__context">Cross-cloud experience</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-item__name">Docker</span>
-                            <span class="skill-item__context">Containerization, deployment</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-item__name">C++</span>
-                            <span class="skill-item__context">OpenCV optimizations, perf-critical</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-item__name">MongoDB</span>
-                            <span class="skill-item__context">Data pipelines, storage</span>
-                        </div>
+                <!-- Expandable Details -->
+                <button class="expand-btn" onclick="toggleExpand(this)" style="background: transparent; border: none; color: var(--accent-primary); font-family: var(--font-mono); cursor: pointer; font-size: 0.9rem; padding: 0; margin-top: 1rem;">+ Show more achievements & impact</button>
+                <div class="hidden-details" style="display: none; margin-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1rem;">
+                    <ul style="list-style: none; padding: 0; color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+                        <li style="margin-bottom: 0.5rem; display: flex; gap: 0.5rem;"><span style="color: var(--accent-primary);">▹</span> Responsible for complete lifecycle of ROS2 target-based Lidar-Camera calibration and intrinsics.</li>
+                        <li style="margin-bottom: 0.5rem; display: flex; gap: 0.5rem;"><span style="color: var(--accent-primary);">▹</span> Led R&D for F-Theta/Kannala-brandt Camera Models.</li>
+                        <li style="margin-bottom: 0.5rem; display: flex; gap: 0.5rem;"><span style="color: var(--accent-primary);">▹</span> Built custom OpenCV with improvements and fixes.</li>
+                    </ul>
+                    <div style="background: rgba(100, 255, 218, 0.05); padding: 1rem; border-radius: 8px; border-left: 3px solid var(--accent-primary);">
+                        <h5 style="color: var(--accent-primary); margin-bottom: 0.5rem; font-size: 0.9rem;">💡 What this means for your team →</h5>
+                        <ul style="list-style: none; padding: 0; color: var(--text-secondary); font-size: 0.85rem;">
+                            <li>• I can reduce your cloud spend by 5-6 figures annually</li>
+                            <li>• I can build CV systems that actually scale to production</li>
+                            <li>• I can lead small teams to ship complex systems</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- CFA Callout -->
-            <div class="cfa-callout" data-aos="fade-up" data-aos-delay="400">
-                <div class="cfa-callout__header">
-                    <span class="cfa-callout__icon">📊</span>
-                    <span class="cfa-callout__badge">THE UNCOMMON COMBINATION</span>
-                    <span class="cfa-callout__sparkle">✨</span>
-                </div>
-                <h3 class="cfa-callout__title">CFA LEVEL 1 CLEARED</h3>
-                <div class="cfa-callout__content">
-                    <p class="cfa-callout__question">"Why does a CV engineer study finance?"</p>
-                    <p class="cfa-callout__answer">
-                        Because I learned that the best technical solutions are worthless 
-                        if they don't move business metrics.
-                    </p>
-                    <p class="cfa-callout__proof">
-                        I don't just optimize for accuracy—<strong>I optimize for ROI.</strong>
-                        That's why I found $72K hiding in cloud configs that pure engineers missed.
-                    </p>
-                    <p class="cfa-callout__conclusion">
-                        <strong>Tech + Finance = Solutions that actually matter.</strong>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Currently Exploring -->
-            <div class="skills-exploring" data-aos="fade-up" data-aos-delay="500">
-                <div class="skills-exploring__header">
-                    <span class="skills-exploring__icon">🔬</span>
-                    <h4 class="skills-exploring__title">CURRENTLY EXPLORING</h4>
-                </div>
-                <div class="skills-exploring__items">
-                    <span class="exploring-tag">Embodied AI</span>
-                    <span class="exploring-tag">3D Gaussian Splatting</span>
-                    <span class="exploring-tag">Diffusion Models for Synthetic Data</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section section--contact">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Let's Build Something That Ships</h2>
-            <p class="section-subtitle" data-aos="fade-up">Not another meeting that leads nowhere</p>
-
-            <div class="contact-cards" data-aos="fade-up" data-aos-delay="100">
-                <a href="mailto:sragarwal@outlook.in" class="contact-card">
-                    <span class="contact-card__icon">📧</span>
-                    <span class="contact-card__label">Email Me</span>
-                    <span class="contact-card__subtext">Respond in 24 hours</span>
-                </a>
-                <a href="https://www.linkedin.com/in/shubam-agarwal/" target="_blank" class="contact-card">
-                    <span class="contact-card__icon">💼</span>
-                    <span class="contact-card__label">Connect</span>
-                    <span class="contact-card__subtext">Let's grow networks</span>
-                </a>
-                <a href="https://github.com/crazysa" target="_blank" class="contact-card">
-                    <span class="contact-card__icon">🐙</span>
-                    <span class="contact-card__label">View Code</span>
-                    <span class="contact-card__subtext">See how I think</span>
-                </a>
-                <a href="../Shubham Agarwal Resume.pdf" download class="contact-card contact-card--primary">
-                    <span class="contact-card__icon">📄</span>
-                    <span class="contact-card__label">Download Resume</span>
-                    <span class="contact-card__subtext">1 page, ATS-friendly</span>
-                </a>
-            </div>
-
-            <!-- What to Expect -->
-            <div class="contact-expectations" data-aos="fade-up" data-aos-delay="200">
-                <div class="contact-expectations__header">
-                    <span class="contact-expectations__icon">📬</span>
-                    <h4>WHAT TO EXPECT</h4>
-                </div>
-                <ul class="contact-expectations__list">
-                    <li><span class="check">✓</span> I respond within 24 hours (usually same day)</li>
-                    <li><span class="check">✓</span> Happy to do a 15-min intro call</li>
-                    <li><span class="check">✓</span> Can share detailed case studies on request</li>
-                    <li><span class="check">✓</span> Open to contract, full-time, or consulting</li>
-                    <li><span class="check">✓</span> Open to initial technical discussion before formal process</li>
-                </ul>
-            </div>
-
-            <!-- Office Hours -->
-            <div class="contact-office-hours" data-aos="fade-up" data-aos-delay="300">
-                <span class="contact-office-hours__icon">☕</span>
-                <div class="contact-office-hours__content">
-                    <h4>OFFICE HOURS</h4>
-                    <p>
-                        Open for 15-min coffee chats about CV systems, calibration, 
-                        or career advice. <strong>No pitch required.</strong>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Vizzy Contact -->
-            <div class="vizzy-contact" aria-hidden="true">
-                <svg class="vizzy vizzy--waving" viewBox="0 0 100 100">
-                    <rect class="vizzy-head" x="20" y="30" width="60" height="50" rx="10" fill="#112240" stroke="#64ffda" stroke-width="2"/>
-                    <circle class="vizzy-eye-outer" cx="50" cy="55" r="18" fill="#0a192f" stroke="#64ffda" stroke-width="2"/>
-                    <circle class="vizzy-iris" cx="50" cy="55" r="12" fill="#64ffda"/>
-                    <circle class="vizzy-pupil" cx="50" cy="55" r="6" fill="#0a192f"/>
-                    <line x1="50" y1="30" x2="50" y2="15" stroke="#64ffda" stroke-width="2"/>
-                    <circle class="vizzy-antenna-light" cx="50" cy="12" r="4" fill="#64ffda"/>
-                    <path class="vizzy-smile" d="M 35 68 Q 50 78 65 68" stroke="#64ffda" stroke-width="2" fill="none"/>
-                </svg>
-                <div class="vizzy-speech">Say hi! 👋</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Back to Top Button -->
-    <button id="backToTop" class="back-to-top" aria-label="Back to top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__columns">
-                <div class="footer__column">
-                    <h4>Connect</h4>
-                    <div class="footer__social">
-                        <a href="https://www.linkedin.com/in/shubam-agarwal/" target="_blank" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/crazysa" target="_blank" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="mailto:sragarwal@outlook.in" aria-label="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
+            <!-- ARCESIUM -->
+            <div class="experience-card" style="background: var(--bg-card); border-radius: 8px; padding: 2rem; margin-bottom: 2rem;" data-aos="fade-up">
+                <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.5rem;">
+                    <img src="assets/images/company-logos/arcesium_logo.png" alt="Arcesium" style="width: 50px; height: 50px; border-radius: 8px; background: white; padding: 5px;">
+                    <div>
+                        <h3 style="margin: 0; color: var(--text-primary);">Arcesium</h3>
+                        <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">Software Engineer</p>
                     </div>
                 </div>
-                <div class="footer__column">
-                    <h4>Quick Links</h4>
-                    <nav class="footer__nav">
-                        <a href="#home">Overview</a>
-                        <a href="#experience">Experience</a>
-                        <a href="#projects">Projects</a>
-                        <a href="#skills">Skills</a>
-                        <a href="#contact">Contact</a>
-                    </nav>
+                <div style="background: rgba(10, 25, 47, 0.5); padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
+                    <strong style="color: var(--accent-primary);">🏆 Saved 700+ Human Hours Yearly</strong>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Rewrote and automated post-trade reconciliation monitoring systems.</p>
                 </div>
-                <div class="footer__column">
-                    <h4>Status</h4>
-                    <div class="footer__status">
-                        <span>📍 Hyderabad, India</span>
-                        <span>🌐 Open to Remote</span>
-                        <span class="status-active">
-                            <span class="pulse-dot-small"></span>
-                            🔥 Actively Interviewing
-                        </span>
+            </div>
+
+            <!-- LOGMEIN -->
+            <div class="experience-card" style="background: var(--bg-card); border-radius: 8px; padding: 2rem;" data-aos="fade-up">
+                <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.5rem;">
+                    <img src="assets/images/company-logos/logmein_logo.png" alt="LogMeIn" style="width: 50px; height: 50px; border-radius: 8px; background: white; padding: 5px;">
+                    <div>
+                        <h3 style="margin: 0; color: var(--text-primary);">LogMeIn</h3>
+                        <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">Associate Software Engineer Trainee</p>
                     </div>
                 </div>
-            </div>
-            <div class="footer__divider"></div>
-            <div class="footer__bottom">
-                <p class="footer__tagline">Crafted with precision & lots of ☕</p>
-                <p class="footer__copyright">© 2025 Shubham Agarwal</p>
-            </div>
-            <div class="footer__vizzy" aria-hidden="true">
-                <svg class="vizzy-tiny" viewBox="0 0 100 100">
-                    <rect x="20" y="30" width="60" height="50" rx="10" fill="#112240" stroke="#64ffda" stroke-width="2"/>
-                    <circle cx="50" cy="55" r="12" fill="#64ffda"/>
-                    <circle cx="50" cy="55" r="6" fill="#0a192f"/>
-                    <circle cx="50" cy="12" r="4" fill="#64ffda"/>
-                </svg>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Custom Summary Modal -->
-    <div class="modal" id="customSummaryModal" hidden>
-        <div class="modal__backdrop"></div>
-        <div class="modal__content">
-            <div class="modal__header">
-                <h3><i class="fas fa-cog"></i> Build Custom Summary</h3>
-                <button class="modal__close">&times;</button>
-            </div>
-            <div class="modal__body">
-                <p>Select skills relevant to your role:</p>
-                <div class="skill-checkboxes">
-                    <label><input type="checkbox" value="Computer Vision" checked> Computer Vision</label>
-                    <label><input type="checkbox" value="VLM/Multimodal"> VLM/Multimodal</label>
-                    <label><input type="checkbox" value="Deep Learning" checked> Deep Learning</label>
-                    <label><input type="checkbox" value="LiDAR Calibration"> LiDAR Calibration</label>
-                    <label><input type="checkbox" value="Cloud (Azure/AWS)"> Cloud (Azure/AWS)</label>
-                    <label><input type="checkbox" value="PyTorch" checked> PyTorch</label>
-                    <label><input type="checkbox" value="Team Leadership"> Team Leadership</label>
-                    <label><input type="checkbox" value="Cost Optimization"> Cost Optimization</label>
-                    <label><input type="checkbox" value="ROS2"> ROS2</label>
-                    <label><input type="checkbox" value="Python" checked> Python</label>
-                    <label><input type="checkbox" value="OpenCV" checked> OpenCV</label>
-                    <label><input type="checkbox" value="System Design"> System Design</label>
+                <div style="background: rgba(10, 25, 47, 0.5); padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
+                    <strong style="color: var(--accent-primary);">🏆 63% → 94% Email Classification</strong>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Improved ICICI Bank email classification accuracy, processing 10k+ daily.</p>
                 </div>
-                <div class="generated-summary">
-                    <h4>Generated Summary:</h4>
-                    <p id="generatedSummaryText"></p>
-                </div>
-            </div>
-            <div class="modal__footer">
-                <button class="btn btn-primary" id="copyCustomSummary">
-                    <i class="fas fa-copy"></i> Copy Custom Summary
-                </button>
             </div>
         </div>
     </div>
+</section>
 
-    <!-- Toast Notification -->
-    <div class="toast" id="toast" aria-live="polite"></div>
+<!-- Projects Section -->
+<section id="projects" class="section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Systems I've Shipped</h2>
 
-    <!-- Scripts -->
+        <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <!-- Project 1 -->
+            <div class="project-card" data-aos="fade-up" style="background: var(--bg-card); border-radius: 8px; overflow: hidden;">
+                <div style="height: 150px; background: var(--bg-tertiary); display: flex; align-items: center; justify-content: center; position: relative;">
+                    <!-- SVG Diagram Placeholder -->
+                    <div style="font-family: monospace; font-size: 0.8rem; color: var(--accent-primary);">
+                        [ 📷 Image ] → [ Qwen-VL ] → [ ✓ Labeled ]
+                    </div>
+                </div>
+                <div style="padding: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <h3 style="font-size: 1.1rem; margin: 0;">VLM Multimodal Pipeline</h3>
+                        <span style="font-size: 0.7rem; background: rgba(74, 222, 128, 0.1); color: var(--color-money); padding: 2px 6px; border-radius: 4px;">🚀 SHIPPED</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Automated attribute labeling for AV data using Vision-Language Models.</p>
+                    <div style="color: var(--color-performance); font-weight: 700; font-family: var(--font-mono); margin-bottom: 1rem;">50% FASTER Labeling</div>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">Python</span>
+                        <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">Qwen-VL</span>
+                        <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">Azure</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100" style="background: var(--bg-card); border-radius: 8px; overflow: hidden;">
+                <div style="height: 150px; background: var(--bg-tertiary); display: flex; align-items: center; justify-content: center;">
+                    <div style="font-family: monospace; font-size: 0.8rem; color: var(--accent-primary);">
+                        ● ● ● [ Point Cloud ] ● ● ●
+                    </div>
+                </div>
+                <div style="padding: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <h3 style="font-size: 1.1rem; margin: 0;">3D LiDAR Detection</h3>
+                        <span style="font-size: 0.7rem; background: rgba(74, 222, 128, 0.1); color: var(--color-money); padding: 2px 6px; border-radius: 4px;">🚀 SHIPPED</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Sparse conv networks with CenterPoint inference.</p>
+                    <div style="color: var(--color-money); font-weight: 700; font-family: var(--font-mono); margin-bottom: 1rem;">$72K SAVED</div>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">PyTorch</span>
+                        <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">CUDA</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200" style="background: var(--bg-card); border-radius: 8px; overflow: hidden;">
+                <div style="height: 150px; background: var(--bg-tertiary); display: flex; align-items: center; justify-content: center;">
+                    <div style="font-family: monospace; font-size: 0.8rem; color: var(--accent-primary);">
+                        📷 ╲ │ ╱ 📷 → [ 1mm ]
+                    </div>
+                </div>
+                <div style="padding: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <h3 style="font-size: 1.1rem; margin: 0;">One-Shot Calibration</h3>
+                        <span style="font-size: 0.7rem; background: rgba(255, 215, 0, 0.1); color: var(--color-leadership); padding: 2px 6px; border-radius: 4px;">👥 LED TEAM</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Multi-camera systems with 1mm translation accuracy.</p>
+                    <div style="color: var(--color-leadership); font-weight: 700; font-family: var(--font-mono); margin-bottom: 1rem;">1mm ACCURACY</div>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">OpenCV</span>
+                        <span style="font-size: 0.75rem; border: 1px solid var(--text-tertiary); padding: 2px 6px; border-radius: 4px;">C++</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Skills Section -->
+<section id="skills" class="section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Technical Arsenal</h2>
+        <div class="skills-tiers">
+            <!-- Tier 1 -->
+            <div class="skill-tier" style="margin-bottom: 2rem;">
+                <h3 style="color: var(--text-primary); margin-bottom: 1rem;">🎯 SHIP BLINDFOLDED</h3>
+                <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; margin-bottom: 1rem;"><div style="width: 100%; height: 100%; background: var(--accent-primary); border-radius: 4px;"></div></div>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; color: var(--text-secondary); font-size: 0.9rem;">
+                    <span>Computer Vision</span><span>Python</span><span>PyTorch</span><span>OpenCV</span><span>Calibration</span>
+                </div>
+            </div>
+            <!-- Tier 2 -->
+            <div class="skill-tier" style="margin-bottom: 2rem;">
+                <h3 style="color: var(--text-primary); margin-bottom: 1rem;">⚡ PRODUCTION-READY</h3>
+                <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; margin-bottom: 1rem;"><div style="width: 80%; height: 100%; background: var(--accent-primary); border-radius: 4px;"></div></div>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; color: var(--text-secondary); font-size: 0.9rem;">
+                    <span>VLM</span><span>Deep Learning</span><span>Azure</span><span>ROS2</span>
+                </div>
+            </div>
+        </div>
+        <!-- CFA -->
+        <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05)); border: 2px solid var(--color-leadership); padding: 2rem; border-radius: 8px; text-align: center; margin-top: 3rem;">
+            <h3 style="color: var(--color-leadership);">CFA LEVEL 1 CLEARED</h3>
+            <p style="color: var(--text-secondary);">Tech + Finance = Solutions that actually matter.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section" style="background: linear-gradient(180deg, var(--bg-primary), var(--bg-secondary));">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Let's Build Something That Ships</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+            <a href="mailto:sragarwal@outlook.in" class="contact-card" style="background: var(--bg-primary); padding: 2rem; border-radius: 8px; text-align: center; border: 1px solid rgba(100,255,218,0.1);">
+                <div style="font-size: 2rem; margin-bottom: 1rem;">📧</div>
+                <h3>Email Me</h3>
+                <p style="font-size: 0.8rem; color: var(--text-tertiary);">Respond in 24 hrs</p>
+            </a>
+            <a href="assets/Shubham_Agarwal_Resume.pdf" class="contact-card" style="background: var(--bg-primary); padding: 2rem; border-radius: 8px; text-align: center; border: 1px solid var(--accent-primary);">
+                <div style="font-size: 2rem; margin-bottom: 1rem;">📄</div>
+                <h3>Download Resume</h3>
+                <p style="font-size: 0.8rem; color: var(--text-tertiary);">ATS Friendly</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer style="padding: 3rem 0; border-top: 1px solid rgba(255,255,255,0.1);">
+    <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem;">
+        <div>
+            <h4>Connect</h4>
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                <a href="#" style="color: var(--text-secondary);"><i class="fab fa-linkedin"></i></a>
+                <a href="#" style="color: var(--text-secondary);"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div>
+            <h4>Status</h4>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">📍 Hyderabad, India<br>🔥 Actively Interviewing</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/js/bg-animation.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/bg-animation.js"></script>
+    <script src="js/vizzy.js"></script>
+    <script src="js/recruiter-tools.js"></script>
 </body>
 </html>

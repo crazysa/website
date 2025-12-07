@@ -1,0 +1,183 @@
+.vizzy-container {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.vizzy-hero-wrapper {
+  animation: vizzyFloat 3s ease-in-out infinite;
+}
+
+@keyframes vizzyFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(2deg); }
+  50% { transform: translateY(-8px) rotate(0deg); }
+  75% { transform: translateY(-5px) rotate(-2deg); }
+}
+
+.vizzy-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.vizzy-body {
+  fill: var(--accent-primary);
+  transition: fill 0.3s ease;
+}
+
+.vizzy-eye {
+  fill: var(--bg-primary);
+}
+
+.vizzy-eye-lens {
+  fill: var(--text-primary);
+  animation: vizzyBlink 4s ease-in-out infinite;
+}
+
+@keyframes vizzyBlink {
+  0%, 45%, 55%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.1); }
+}
+
+.vizzy-antenna {
+  stroke: var(--accent-primary);
+  stroke-width: 2;
+  fill: none;
+}
+
+.vizzy-antenna-tip {
+  fill: var(--color-leadership);
+  animation: antennaPulse 2s ease-in-out infinite;
+}
+
+@keyframes antennaPulse {
+  0%, 100% { opacity: 0.5; r: 4; }
+  50% { opacity: 1; r: 6; }
+}
+
+.vizzy-curious .vizzy-eye-lens {
+  animation: vizzyCurious 0.5s ease-out forwards;
+}
+
+@keyframes vizzyCurious {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(5px); }
+}
+
+.vizzy-impressed {
+  animation: vizzyImpressed 0.5s ease-out;
+}
+
+@keyframes vizzyImpressed {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.vizzy-waving .vizzy-arm {
+  animation: vizzyWave 0.5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes vizzyWave {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+}
+
+.vizzy-thinking .vizzy-antenna-tip {
+  animation: vizzyThink 0.3s ease-in-out infinite;
+}
+
+@keyframes vizzyThink {
+  0%, 100% { fill: var(--color-leadership); }
+  50% { fill: var(--color-performance); }
+}
+
+.vizzy-speech-bubble {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-card);
+  border: 1px solid var(--accent-primary);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.vizzy-speech-bubble::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--accent-primary);
+}
+
+.vizzy-container:hover .vizzy-speech-bubble {
+  opacity: 1;
+}
+
+.vizzy-mini {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.floating-vizzy {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.floating-vizzy:hover {
+  transform: scale(1.1);
+}
+
+.floating-vizzy-panel {
+  position: fixed;
+  bottom: 140px;
+  right: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--accent-primary);
+  border-radius: 12px;
+  padding: 1rem;
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.floating-vizzy-panel.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.floating-vizzy-panel a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.floating-vizzy-panel a:hover {
+  background: rgba(100, 255, 218, 0.1);
+  color: var(--accent-primary);
+}
+
