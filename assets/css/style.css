@@ -234,162 +234,104 @@ ul {
     transform: scale(1.05);
 }
 
-/* Experience Section */
-.timeline {
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-/* Central vertical line */
-.timeline-line {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    background: var(--heading-color);
-    top: 0;
-    bottom: 0;
-    opacity: 0.2;
-}
-
-.timeline-row {
+/* Experience Section - New Layout */
+.experience-container {
     display: flex;
-    margin-bottom: 4rem;
-    position: relative;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    gap: 8rem; /* Large vertical spacing */
 }
 
-/* Dot Wrapper centered */
-.timeline-dot-wrapper {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    background-color: var(--primary-color);
-    padding: 10px 0;
-}
-
-.timeline-dot {
-    width: 40px;
-    height: 40px;
-    background-color: var(--primary-color);
-    border: 2px solid var(--accent-color);
-    border-radius: 50%;
+.experience-block {
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: var(--accent-color);
-    font-size: 16px;
-    box-shadow: 0 0 10px rgba(100,255,218,0.2);
+    justify-content: space-between;
+    min-height: 50vh;
 }
 
-/* Split Layout */
-.timeline-content, .timeline-visual {
-    width: 45%;
+/* Alternate Layout: Even children reversed */
+.experience-block:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.exp-visual, .exp-content {
+    width: 48%; /* Almost half each */
     position: relative;
 }
 
 /* Content Box Styling */
-.timeline-content {
-    background-color: var(--secondary-color);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
-    border: 1px solid rgba(100, 255, 218, 0.1);
-    position: relative;
-    overflow: hidden;
+.exp-content {
+    padding: 1rem;
 }
 
-/* Margins for proper spacing */
-.timeline-row.left .timeline-content {
-    margin-right: auto;
-    text-align: left;
+.exp-content h3 {
+    font-size: 1.8rem;
+    color: var(--heading-color);
+    margin-bottom: 0.5rem;
 }
 
-.timeline-row.left .timeline-visual {
-    margin-left: auto;
-    padding-left: 2rem;
-}
-
-.timeline-row.right .timeline-content {
-    margin-left: auto;
-    text-align: left;
-}
-
-.timeline-row.right .timeline-visual {
-    margin-right: auto;
-    padding-right: 2rem;
-}
-
-
-/* Timeline Date Styling */
-.timeline-date {
-    font-size: 0.9rem;
+.exp-content h4 {
+    font-size: 1.2rem;
     color: var(--accent-color);
     margin-bottom: 1rem;
-    font-weight: bold;
-    display: inline-block;
-    border: 1px solid var(--accent-color);
-    padding: 2px 8px;
-    border-radius: 4px;
+    font-family: var(--font-main);
 }
 
-/* Company Header Layout */
+.timeline-date {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-style: italic;
+    margin-bottom: 1rem;
+    display: block;
+}
+
 .company-header {
     display: flex;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 1rem;
+    align-items: flex-start;
+    margin-bottom: 2rem;
 }
 
 .company-logo-placeholder {
-    width: 50px;
-    height: 50px;
-    background-color: #fff; /* White background for logos to be visible */
-    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 1.5rem;
     flex-shrink: 0;
-    overflow: hidden;
-    padding: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    padding: 8px;
 }
 
-.company-header h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.2rem;
+/* List Items */
+.exp-list {
+    list-style: none;
+    border-left: 2px solid rgba(100, 255, 218, 0.2);
+    padding-left: 1.5rem;
+}
+
+.exp-list li {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    font-size: 1rem;
+    position: relative;
+}
+
+.exp-list li strong {
     color: var(--heading-color);
 }
 
-.company-header h4 {
-    font-size: 1rem;
-    color: var(--accent-color);
-    margin-bottom: 0;
-    font-family: var(--font-main);
-}
-
-.timeline-content ul {
-    list-style-type: none;
-}
-
-.timeline-content li {
-    margin-bottom: 0.8rem;
-    color: var(--text-color);
-    font-size: 0.95rem;
-    position: relative;
-    padding-left: 1.2rem;
-}
-
-.timeline-content li::before {
-    content: '▹';
+.exp-list li::before {
+    content: '';
     position: absolute;
-    left: 0;
-    color: var(--accent-color);
+    left: -1.95rem; /* Align with border */
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    background: var(--primary-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
 }
 
 

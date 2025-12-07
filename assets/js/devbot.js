@@ -2,7 +2,6 @@ class DevBotController {
     constructor() {
         this.container = document.getElementById('devbot-container');
         this.bot = document.getElementById('devbot');
-        this.eyes = document.querySelectorAll('.devbot-eye');
         this.speechBubble = document.querySelector('.devbot-speech-bubble');
 
         // Settings
@@ -18,36 +17,36 @@ class DevBotController {
 
         this.phrases = {
             home: [
-                "Hi! I'm DevBot.",
-                "Welcome to Shubham's Portfolio!",
-                "I live in this browser.",
-                "Scroll down for cool stuff!"
+                "Hi! I'm Shubham.",
+                "Welcome to my lab!",
+                "Check out my research below.",
+                "I build scalable systems."
             ],
             experience: [
-                "Wow, Computer Vision at Deepen.AI!",
-                "Analyzing lidar data... beep boop.",
-                "Financial systems are complex!",
-                "Look at those optimization metrics.",
-                "I need a bigger magnifying glass."
+                "Researching at Deepen.AI...",
+                "Optimizing costs... done!",
+                "Validating hypothesis...",
+                "Financial data integrity is key.",
+                "I saved $72,000 annually here!"
             ],
             skills: [
-                "I love Python!",
-                "Deep Learning is my brain power.",
-                "OpenCV helps me see you.",
-                "So many algorithms!",
-                "Do you speak Binary?"
+                "Python is my primary tool.",
+                "Deep Learning... fascinating.",
+                "OpenCV sees everything.",
+                "Algorithms are beautiful.",
+                "Let's optimize this code."
             ],
             contact: [
-                "Hire him! He's great.",
-                "Send a message!",
-                "I promise to deliver your email.",
-                "Let's build something together."
+                "Let's collaborate!",
+                "Send me a signal.",
+                "Awaiting your data packet.",
+                "Check out my GitHub."
             ],
             click: [
-                "Ouch! That tickles.",
-                "High five!",
-                "System Systems... nominal.",
-                "You found a secret!"
+                "Eureka!",
+                "Experiment successful!",
+                "Systems nominal.",
+                "Hello there!"
             ]
         };
 
@@ -71,11 +70,7 @@ class DevBotController {
         this.setupIntersectionObserver();
         this.container.addEventListener('click', () => this.handleClick());
 
-        // Add Jetpack flames dynamically
-        const jetpack = document.createElement('div');
-        jetpack.className = 'devbot-jetpack';
-        jetpack.innerHTML = '<div class="jet-flame left"></div><div class="jet-flame right"></div>';
-        this.bot.querySelector('.devbot-body').prepend(jetpack);
+        // Removed Jetpack dynamic injection as it doesn't fit the Professor theme
 
         this.animate();
 
@@ -84,10 +79,10 @@ class DevBotController {
             if(!this.isMobile) {
                 this.walkTo(100, () => {
                     this.wave();
-                    this.speak("Hi! I'm DevBot.");
+                    this.speak("Hi! I'm Shubham.");
                 });
             } else {
-                this.speak("Hi! I'm DevBot.");
+                this.speak("Hi! I'm Shubham.");
             }
         }, 1000);
 
@@ -100,7 +95,7 @@ class DevBotController {
     }
 
     setupIntersectionObserver() {
-        const options = { threshold: 0.4 };
+        const options = { threshold: 0.2 }; // Lower threshold for earlier detection
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -150,6 +145,8 @@ class DevBotController {
     }
 
     speak(text, duration = 3000) {
+        if(!this.speechBubble) return;
+
         this.speechBubble.textContent = text;
         this.speechBubble.classList.add('visible');
 
@@ -192,17 +189,12 @@ class DevBotController {
         this.isInteracting = true;
         this.setEmotion('happy');
         this.speakRandom('click');
-
-        // Jetpack Jump
-        this.container.classList.add('flying');
-        this.container.style.transform = `translateY(-100px)`;
+        this.wave(); // Wave instead of fly
 
         setTimeout(() => {
-            this.container.style.transform = `translateY(0)`;
-            this.container.classList.remove('flying');
             this.isInteracting = false;
             this.setEmotion('normal');
-        }, 1000);
+        }, 2000);
     }
 
     walkTo(x, callback) {
@@ -227,15 +219,10 @@ class DevBotController {
         const patrol = () => {
             if (this.currentSection !== 'experience' && this.currentSection !== 'skills') return;
 
-            // Random chance to fly instead of walk
-            if (Math.random() > 0.7) {
-                this.container.classList.add('flying');
-                setTimeout(() => this.container.classList.remove('flying'), 2000);
-            }
-
+            // Only walk now, no flying
             const randomX = Math.random() * (this.maxX - this.minX) + this.minX;
             this.walkTo(randomX, () => {
-                setTimeout(patrol, Math.random() * 3000 + 2000);
+                setTimeout(patrol, Math.random() * 4000 + 3000);
             });
         };
         patrol();

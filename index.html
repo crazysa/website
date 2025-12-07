@@ -34,31 +34,89 @@
     <!-- DevBot Container -->
     <div id="devbot-container">
         <div id="devbot" class="devbot-idle">
-            <div class="devbot-antenna"></div>
-            <div class="devbot-head">
-                <div class="devbot-face">
-                    <div class="devbot-eye left"></div>
-                    <div class="devbot-eye right"></div>
-                </div>
-            </div>
-            <div class="devbot-body">
-                <div class="devbot-chest-display"></div>
-            </div>
-            <div class="devbot-arms">
-                <div class="arm left"></div>
-                <div class="arm right"></div>
-            </div>
-            <div class="devbot-legs">
-                <div class="leg left"></div>
-                <div class="leg right"></div>
-            </div>
-            <div class="devbot-shadow"></div>
+            <!-- Mascot SVG (Professor Shubham) -->
+            <svg id="mascot-svg" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg" style="overflow: visible; width: 100%; height: 100%;">
+                <defs>
+                    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="2" result="blur"/>
+                        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                    </filter>
+                </defs>
+
+                <!-- Shadow -->
+                <ellipse cx="60" cy="150" rx="30" ry="5" fill="rgba(0,0,0,0.2)" filter="url(#glow)" class="mascot-shadow"/>
+
+                <!-- Legs Group -->
+                <g class="mascot-legs">
+                    <g class="leg left-leg" transform="translate(45, 100)"> <!-- Pivot at hip -->
+                        <rect x="-6" y="0" width="12" height="40" fill="#0a192f" rx="3"/>
+                        <path d="M-7 40 L7 40 L8 48 L-8 48 Z" fill="#112240"/> <!-- Shoe -->
+                    </g>
+                    <g class="leg right-leg" transform="translate(75, 100)">
+                        <rect x="-6" y="0" width="12" height="40" fill="#0a192f" rx="3"/>
+                        <path d="M-7 40 L7 40 L8 48 L-8 48 Z" fill="#112240"/> <!-- Shoe -->
+                    </g>
+                </g>
+
+                <!-- Body Group -->
+                <g class="mascot-body-group">
+                    <!-- Lab Coat Tail -->
+                    <path d="M35 100 Q60 115 85 100 L85 80 L35 80 Z" fill="#e6f1ff"/>
+
+                    <!-- Torso -->
+                    <rect x="35" y="60" width="50" height="50" fill="#ffffff" rx="5"/>
+                    <path d="M35 60 L60 90 L85 60" fill="none" stroke="#ccd6f6" stroke-width="1"/> <!-- Lapels -->
+
+                    <!-- Shirt/Tie -->
+                    <path d="M50 60 L60 70 L70 60 Z" fill="#64ffda"/>
+                    <path d="M60 60 L60 85" stroke="#0a192f" stroke-width="3"/> <!-- Tie -->
+
+                    <!-- Head -->
+                    <g class="mascot-head" transform="translate(60, 50)"> <!-- Pivot neck -->
+                        <!-- Neck -->
+                        <rect x="-6" y="0" width="12" height="12" fill="#ffdbac"/>
+
+                        <!-- Face -->
+                        <circle cx="0" cy="-15" r="24" fill="#ffdbac"/>
+
+                        <!-- Hair (Wild Researcher Style) -->
+                        <path d="M-24 -15 Q-32 -25 -22 -38 Q-12 -48 0 -42 Q12 -48 22 -38 Q32 -25 24 -15 Q28 -5 22 0 Q28 5 18 5 L-18 5 Q-28 5 -22 0 Q-28 -5 -24 -15 Z"
+                            fill="#f0f0f0" stroke="#ccd6f6" stroke-width="1"/>
+
+                        <!-- Eyes -->
+                        <g class="mascot-eyes">
+                            <circle class="eye left" cx="-8" cy="-15" r="2.5" fill="#0a192f"/>
+                            <circle class="eye right" cx="8" cy="-15" r="2.5" fill="#0a192f"/>
+                        </g>
+
+                        <!-- Glasses -->
+                        <g class="glasses" fill="none" stroke="#0a192f" stroke-width="1.5">
+                            <circle cx="-8" cy="-15" r="7"/>
+                            <circle cx="8" cy="-15" r="7"/>
+                            <line x1="-1" y1="-15" x2="1" y2="-15"/>
+                        </g>
+
+                        <!-- Mustache -->
+                        <path d="M-10 -5 Q0 -10 10 -5 Q0 2 -10 -5" fill="#f0f0f0" stroke="#ccd6f6" stroke-width="0.5"/>
+                    </g>
+
+                    <!-- Arms -->
+                    <g class="mascot-arm left-arm" transform="translate(35, 65)"> <!-- Pivot Shoulder -->
+                        <rect x="-6" y="0" width="12" height="35" fill="#ffffff" rx="3" transform="rotate(10)"/>
+                        <circle cx="2" cy="35" r="5" fill="#ffdbac" transform="rotate(10)"/>
+                    </g>
+                    <g class="mascot-arm right-arm" transform="translate(85, 65)"> <!-- Pivot Shoulder -->
+                        <rect x="-6" y="0" width="12" height="35" fill="#ffffff" rx="3" transform="rotate(-10)"/>
+                        <circle cx="-2" cy="35" r="5" fill="#ffdbac" transform="rotate(-10)"/>
+                    </g>
+                </g>
+            </svg>
         </div>
         <!-- Props -->
         <div class="devbot-prop prop-magnifier"></div>
-        <div class="devbot-prop prop-sign">Hire Me!</div>
+        <div class="devbot-prop prop-sign">Impact!</div>
         <!-- Speech Bubble -->
-        <div class="devbot-speech-bubble">Hi! I'm DevBot.</div>
+        <div class="devbot-speech-bubble">Hi! I'm Shubham.</div>
     </div>
 
     <!-- Background Animation Canvas -->
@@ -103,45 +161,12 @@
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Work Experience</h2>
 
-            <div class="timeline">
-                <div class="timeline-line"></div>
+            <div class="experience-container">
 
-                <!-- Job 1: Deepen.AI (Left Content, Right Visual) -->
-                <div class="timeline-row left">
-                    <!-- Text Content -->
-                    <div class="timeline-content" data-aos="fade-right">
-                        <div class="scan-line"></div>
-                        <div class="company-header">
-                            <div class="company-logo-placeholder">
-                                <img src="assets/img/deepen_logo.png" alt="Deepen.AI Logo" style="height: 25px; width: auto; max-width: 100%;">
-                            </div>
-                            <div>
-                                <h3>Senior Software and Research Engineer</h3>
-                                <h4>Deepen.AI <span class="location">| Hyderabad</span></h4>
-                            </div>
-                        </div>
-                        <div class="timeline-date">April 2022 - Present</div>
-                        <ul>
-                            <li><strong>Vision-Language Models:</strong> Designed and integrated a Qwen-VL–based Vision-Language Model pipeline for multimodal attribute labeling, achieving a ~50% reduction in manual labeling time while maintaining high semantic accuracy.</li>
-                            <li><strong>High-Performance CV:</strong> Engineered breakthrough computer vision system using <strong>OpenCV</strong> achieving 500% performance improvement over industry-standard solutions.</li>
-                            <li><strong>Cloud & Cost Optimization:</strong> Redeveloped AI Sense for 3D PCD object detection using spatial sparse convolutional network, hosted as a Microservice on Azure Pools reducing costs by $72,000 annually.</li>
-                            <li><strong>Calibration Algorithms:</strong> Led R&D for F-Theta/Kannala-brandt Camera Models and One Shot Overlapping Calibration (1mm accuracy).</li>
-                            <li><strong>Sensor Fusion:</strong> Responsible for complete lifecycle of ROS2 target-based Lidar-Camera calibration and intrinsics.</li>
-                            <li>Incorporated Segment Anything Model (SAM) for Targetless Lidar-Camera calibration (66% accuracy boost).</li>
-                            <li><strong>Multi-variate Optimization:</strong> Improved optimization run time in calibration by 15.7%.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Center Dot -->
-                    <div class="timeline-dot-wrapper">
-                         <div class="timeline-dot pulse-animation">
-                            <i class="fas fa-car-side"></i>
-                         </div>
-                    </div>
-
-                    <!-- Visual Content (Right) -->
-                    <div class="timeline-visual" data-aos="fade-left">
-                        <div class="tech-window cv-scanner">
+                <!-- Job 1: Deepen.AI -->
+                <div class="experience-block" id="exp-deepen">
+                    <div class="exp-visual" data-aos="fade-right">
+                        <div class="tech-window cv-scanner huge-window">
                             <div class="scanner-grid"></div>
                             <div class="scanner-box box-1"><span>Car 99%</span></div>
                             <div class="scanner-box box-2"><span>Pedestrian</span></div>
@@ -154,13 +179,33 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="exp-content" data-aos="fade-left">
+                        <div class="company-header">
+                            <div class="company-logo-placeholder">
+                                <img src="assets/img/deepen_logo.png" alt="Deepen.AI Logo" style="height: 35px; width: auto; max-width: 100%;">
+                            </div>
+                            <div>
+                                <h3>Senior Software & Research Engineer</h3>
+                                <h4>Deepen.AI <span class="location">| Hyderabad</span></h4>
+                                <div class="timeline-date">April 2022 - Present</div>
+                            </div>
+                        </div>
+
+                        <ul class="exp-list">
+                            <li><strong>Vision-Language Models:</strong> Designed and integrated a Qwen-VL–based Vision-Language Model pipeline for multimodal attribute labeling, achieving a ~50% reduction in manual labeling time while maintaining high semantic accuracy.</li>
+                            <li><strong>High-Performance CV:</strong> Engineered breakthrough computer vision system using <strong>OpenCV</strong> achieving 500% performance improvement over industry-standard solutions.</li>
+                            <li><strong>Cloud & Cost Optimization:</strong> Redeveloped AI Sense for 3D PCD object detection using spatial sparse convolutional network, hosted as a Microservice on Azure Pools reducing costs by $72,000 annually.</li>
+                            <li><strong>Calibration Algorithms:</strong> Led R&D for F-Theta/Kannala-brandt Camera Models and One Shot Overlapping Calibration (1mm accuracy).</li>
+                            <li><strong>Sensor Fusion:</strong> Responsible for complete lifecycle of ROS2 target-based Lidar-Camera calibration and intrinsics.</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- Job 2: Arcesium (Right Content, Left Visual) -->
-                <div class="timeline-row right">
-                    <!-- Visual Content (Left) -->
-                    <div class="timeline-visual" data-aos="fade-right">
-                         <div class="tech-window data-monitor">
+                <!-- Job 2: Arcesium -->
+                <div class="experience-block" id="exp-arcesium">
+                    <div class="exp-visual" data-aos="fade-left">
+                         <div class="tech-window data-monitor huge-window">
                              <div class="chart-bars">
                                  <div class="bar bar-1"></div>
                                  <div class="bar bar-2"></div>
@@ -177,27 +222,18 @@
                          </div>
                     </div>
 
-                    <!-- Center Dot -->
-                    <div class="timeline-dot-wrapper">
-                         <div class="timeline-dot pulse-animation">
-                            <i class="fas fa-chart-line"></i>
-                         </div>
-                    </div>
-
-                    <!-- Text Content (Right) -->
-                    <div class="timeline-content" data-aos="fade-left">
-                        <div class="scan-line"></div>
+                    <div class="exp-content" data-aos="fade-right">
                         <div class="company-header">
                             <div class="company-logo-placeholder">
-                                <img src="assets/img/arcesium_logo.png" alt="Arcesium Logo" style="height: 35px; width: auto; max-width: 100%;">
+                                <img src="assets/img/arcesium_logo.png" alt="Arcesium Logo" style="height: 45px; width: auto; max-width: 100%;">
                             </div>
                             <div>
                                 <h3>Software Engineer</h3>
                                 <h4>Arcesium <span class="location">| Hyderabad</span></h4>
+                                <div class="timeline-date">February 2021 - April 2022</div>
                             </div>
                         </div>
-                        <div class="timeline-date">February 2021 - April 2022</div>
-                        <ul>
+                        <ul class="exp-list">
                             <li><strong>System Design:</strong> Designed and Developed monitoring and alerting systems for post-trade reconciliation applications.</li>
                             <li><strong>Data Integrity:</strong> Drove data integrity management for major architectural changes.</li>
                             <li><strong>Automation:</strong> Improved code compliance and automated tasks, saving at least 700 human hours yearly.</li>
@@ -206,39 +242,10 @@
                     </div>
                 </div>
 
-                <!-- Job 3: LogMeIn (Left Content, Right Visual) -->
-                <div class="timeline-row left">
-                    <!-- Text Content -->
-                    <div class="timeline-content" data-aos="fade-right">
-                        <div class="scan-line"></div>
-                        <div class="company-header">
-                             <div class="company-logo-placeholder">
-                                <img src="assets/img/logmein_logo.png" alt="LogMeIn Logo" style="height: 25px; width: auto; max-width: 100%;">
-                            </div>
-                            <div>
-                                <h3>Associate Software Engineer Trainee</h3>
-                                <h4>LogMeIn <span class="location">| Bangalore</span></h4>
-                            </div>
-                        </div>
-                        <div class="timeline-date">January 2020 - December 2020</div>
-                        <ul>
-                            <li><strong>NLP & Classification:</strong> Increased email classification accuracy for ICICI bank from 63% to 94% (10k+ emails/day) via better data cleaning and tools.</li>
-                            <li>Developed POCs for email classification (word matching) and speaker diarization for meeting transcripts.</li>
-                            <li><strong>Remote Innovation:</strong> Worked remotely with the Boston innovation team to develop "go to office" solutions from scratch.</li>
-                            <li>Built web scraping and customer classification systems for targeted marketing (40k+ customers).</li>
-                        </ul>
-                    </div>
-
-                    <!-- Center Dot -->
-                    <div class="timeline-dot-wrapper">
-                         <div class="timeline-dot pulse-animation">
-                            <i class="fas fa-cloud"></i>
-                         </div>
-                    </div>
-
-                    <!-- Visual Content (Right) -->
-                    <div class="timeline-visual" data-aos="fade-left">
-                        <div class="tech-window nlp-network">
+                <!-- Job 3: LogMeIn -->
+                <div class="experience-block" id="exp-logmein">
+                    <div class="exp-visual" data-aos="fade-right">
+                        <div class="tech-window nlp-network huge-window">
                             <div class="node center-node"><i class="fas fa-envelope"></i></div>
                             <div class="node sat-node node-1"></div>
                             <div class="node sat-node node-2"></div>
@@ -250,6 +257,25 @@
                             </div>
                             <div class="msg-bubble">Classified: 94%</div>
                         </div>
+                    </div>
+
+                    <div class="exp-content" data-aos="fade-left">
+                        <div class="company-header">
+                             <div class="company-logo-placeholder">
+                                <img src="assets/img/logmein_logo.png" alt="LogMeIn Logo" style="height: 35px; width: auto; max-width: 100%;">
+                            </div>
+                            <div>
+                                <h3>Associate Software Engineer Trainee</h3>
+                                <h4>LogMeIn <span class="location">| Bangalore</span></h4>
+                                <div class="timeline-date">January 2020 - December 2020</div>
+                            </div>
+                        </div>
+                        <ul class="exp-list">
+                            <li><strong>NLP & Classification:</strong> Increased email classification accuracy for ICICI bank from 63% to 94% (10k+ emails/day) via better data cleaning and tools.</li>
+                            <li>Developed POCs for email classification (word matching) and speaker diarization for meeting transcripts.</li>
+                            <li><strong>Remote Innovation:</strong> Worked remotely with the Boston innovation team to develop "go to office" solutions from scratch.</li>
+                            <li>Built web scraping and customer classification systems for targeted marketing (40k+ customers).</li>
+                        </ul>
                     </div>
                 </div>
             </div>

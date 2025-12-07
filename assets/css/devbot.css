@@ -1,23 +1,20 @@
 :root {
     --bot-color-primary: #64ffda;
     --bot-color-secondary: #0a192f;
-    --bot-color-accent: #112240;
-    --bot-eye-color: #0a192f;
-    --bot-eye-light: #fff;
     --bot-size: 0.8; /* Scale factor */
 }
 
 #devbot-container {
     position: fixed;
     bottom: 20px;
-    left: 50px; /* Initial position */
+    left: 50px;
     z-index: 9999;
     width: calc(120px * var(--bot-size));
     height: calc(160px * var(--bot-size));
-    pointer-events: all; /* Allow clicks on robot */
+    pointer-events: all;
     transition: transform 0.3s ease-out, bottom 0.5s ease-in-out, opacity 0.5s ease;
     will-change: transform, left;
-    display: none; /* Hidden until loaded */
+    display: none;
     opacity: 0;
 }
 
@@ -30,178 +27,104 @@
     position: relative;
     width: 100%;
     height: 100%;
-    transform-origin: bottom center;
 }
 
-/* --- Robot Body Parts --- */
+/* --- SVG Parts Styling & Animation --- */
 
-.devbot-head {
-    position: absolute;
-    top: 0;
-    left: 10%;
-    width: 80%;
-    height: 70px;
-    background: var(--bot-color-primary);
-    border-radius: 15px;
-    border: 3px solid var(--bot-color-secondary);
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+/* Idle Animation */
+@keyframes idleBody {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
 }
 
-.devbot-antenna {
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 20px;
-    background: var(--bot-color-secondary);
-    z-index: 5;
+.devbot-idle .mascot-body-group {
+    animation: idleBody 3s ease-in-out infinite;
 }
 
-.devbot-antenna::after {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 12px;
-    height: 12px;
-    background: var(--bot-color-primary);
-    border: 2px solid var(--bot-color-secondary);
-    border-radius: 50%;
-    animation: blinkLight 2s infinite;
+/* Walking Animation */
+.devbot-walking .mascot-body-group {
+    animation: idleBody 0.4s ease-in-out infinite; /* Bouncy walk */
 }
 
-.devbot-face {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0 15px;
+/* Leg Swing - Must match SVG translate coordinates (45,100) and (75,100) */
+@keyframes walkLegLeft {
+    0%, 100% { transform: translate(45px, 100px) rotate(25deg); }
+    50% { transform: translate(45px, 100px) rotate(-25deg); }
+}
+@keyframes walkLegRight {
+    0%, 100% { transform: translate(75px, 100px) rotate(-25deg); }
+    50% { transform: translate(75px, 100px) rotate(25deg); }
 }
 
-.devbot-eye {
-    width: 12px;
-    height: 12px;
-    background: var(--bot-eye-color);
-    border-radius: 50%;
-    position: relative;
+.devbot-walking .leg.left-leg {
+    animation: walkLegLeft 0.8s infinite linear;
+}
+.devbot-walking .leg.right-leg {
+    animation: walkLegRight 0.8s infinite linear;
+}
+
+/* Arm Swing - Coordinates (35,65) and (85,65) */
+@keyframes walkArmLeft {
+    0%, 100% { transform: translate(35px, 65px) rotate(-15deg); }
+    50% { transform: translate(35px, 65px) rotate(15deg); }
+}
+@keyframes walkArmRight {
+    0%, 100% { transform: translate(85px, 65px) rotate(15deg); }
+    50% { transform: translate(85px, 65px) rotate(-15deg); }
+}
+
+.devbot-walking .mascot-arm.left-arm {
+    animation: walkArmLeft 0.8s infinite linear;
+}
+.devbot-walking .mascot-arm.right-arm {
+    animation: walkArmRight 0.8s infinite linear;
+}
+
+/* Waving - Right Arm */
+@keyframes waveArm {
+    0%, 100% { transform: translate(85px, 65px) rotate(-10deg); }
+    50% { transform: translate(85px, 65px) rotate(-160deg); }
+}
+
+.devbot-waving .mascot-arm.right-arm {
+    animation: waveArm 1s infinite ease-in-out;
+}
+
+/* Emotions */
+.mascot-eyes .eye {
     transition: all 0.2s ease;
+    transform-box: fill-box;
+    transform-origin: center;
 }
 
-.devbot-eye::after {
-    content: '';
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    width: 4px;
-    height: 4px;
-    background: var(--bot-eye-light);
-    border-radius: 50%;
+.emotion-surprised .mascot-eyes .eye {
+    transform: scale(1.5);
 }
 
-.devbot-body {
-    position: absolute;
-    top: 65px;
-    left: 15%;
-    width: 70%;
-    height: 60px;
-    background: var(--bot-color-accent);
-    border-radius: 10px;
-    border: 3px solid var(--bot-color-primary);
-    z-index: 9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.emotion-happy .mascot-eyes .eye {
+    transform: scaleY(0.2); /* Squinting/Closed eyes */
 }
 
-.devbot-chest-display {
-    width: 20px;
-    height: 20px;
-    background: var(--bot-color-primary);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--bot-color-primary);
-    animation: heartbeat 3s infinite;
+.emotion-love .mascot-eyes .eye {
+    fill: #ff6b6b;
+    transform: scale(1.2);
 }
 
-.devbot-arms {
-    position: absolute;
-    top: 75px;
-    width: 100%;
-    z-index: 8;
+/* Direction Mirroring */
+.face-left #devbot {
+    transform: scaleX(-1);
 }
 
-.arm {
-    position: absolute;
-    width: 15px;
-    height: 40px;
-    background: var(--bot-color-primary);
-    border-radius: 10px;
-    border: 2px solid var(--bot-color-secondary);
-    transform-origin: top center;
-    transition: transform 0.3s ease;
-}
-
-.arm.left {
-    left: 0;
-}
-
-.arm.right {
-    right: 0;
-}
-
-.devbot-legs {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 40px;
-    z-index: 8;
-}
-
-.leg {
-    position: absolute;
-    bottom: 0;
-    width: 15px;
-    height: 35px;
-    background: var(--bot-color-secondary);
-    border-radius: 0 0 10px 10px;
-    border: 2px solid var(--bot-color-primary);
-    transform-origin: top center;
-}
-
-.leg.left {
-    left: 30%;
-}
-
-.leg.right {
-    right: 30%;
-}
-
-.devbot-shadow {
-    position: absolute;
-    bottom: -10px;
-    left: 10%;
-    width: 80%;
-    height: 10px;
-    background: rgba(0,0,0,0.3);
-    border-radius: 50%;
-    filter: blur(2px);
-    transition: all 0.3s ease;
-}
-
-/* --- Props (Sign, Magnifying Glass) --- */
+/* --- Props --- */
 .devbot-prop {
     position: absolute;
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
+    z-index: 20;
 }
+.show-magnifier .prop-magnifier { opacity: 1; }
+.show-sign .prop-sign { opacity: 1; }
 
 .prop-magnifier {
     top: 60px;
@@ -249,127 +172,14 @@
     z-index: -1;
 }
 
-/* --- Animations --- */
-
-/* Idle */
-@keyframes idleHover {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-}
-
-.devbot-idle #devbot {
-    animation: idleHover 3s ease-in-out infinite;
-}
-
-.devbot-idle .arm.left {
-    transform: rotate(10deg);
-}
-.devbot-idle .arm.right {
-    transform: rotate(-10deg);
-}
-
-/* Walking */
-.devbot-walking #devbot {
-    animation: idleHover 0.5s ease-in-out infinite; /* Bouncier */
-}
-
-.devbot-walking .leg.left {
-    animation: walkLeg 0.8s infinite;
-}
-.devbot-walking .leg.right {
-    animation: walkLeg 0.8s infinite reverse;
-}
-.devbot-walking .arm.left {
-    animation: walkArm 0.8s infinite reverse;
-}
-.devbot-walking .arm.right {
-    animation: walkArm 0.8s infinite;
-}
-
-@keyframes walkLeg {
-    0%, 100% { transform: translateY(0) rotate(20deg); }
-    50% { transform: translateY(-5px) rotate(-20deg); }
-}
-@keyframes walkArm {
-    0%, 100% { transform: rotate(30deg); }
-    50% { transform: rotate(-30deg); }
-}
-
-/* Wave */
-.devbot-waving .arm.right {
-    transform-origin: top right;
-    animation: wave 1s infinite;
-}
-
-@keyframes wave {
-    0%, 100% { transform: rotate(-20deg); }
-    50% { transform: rotate(-160deg); }
-}
-
-/* Emotions */
-.emotion-happy .devbot-eye {
-    height: 6px;
-    border-radius: 0;
-    transform: scaleX(1.2);
-}
-
-.emotion-surprised .devbot-eye {
-    height: 16px;
-    width: 16px;
-}
-
-.emotion-love .devbot-eye {
-    background-color: #ff6b6b;
-    border-radius: 0;
-    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 75%, 18% 100%, 0% 38%);
-}
-
-.emotion-dizzy .devbot-eye {
-    animation: rollEyes 1s linear infinite;
-}
-@keyframes rollEyes {
-    from { transform: rotate(0deg) translateX(2px) rotate(0deg); }
-    to   { transform: rotate(360deg) translateX(2px) rotate(-360deg); }
-}
-
-/* Misc Animations */
-@keyframes blinkLight {
-    0%, 100% { opacity: 0.5; box-shadow: 0 0 0 var(--bot-color-primary); }
-    50% { opacity: 1; box-shadow: 0 0 10px var(--bot-color-primary); }
-}
-
-@keyframes heartbeat {
-    0%, 100% { transform: scale(1); opacity: 0.7; }
-    10% { transform: scale(1.2); opacity: 1; }
-    20% { transform: scale(1); opacity: 0.7; }
-}
-
-/* Direction mirroring */
-.face-left #devbot {
-    transform: scaleX(-1);
-}
-
-/* Visibility of props */
-.show-magnifier .prop-magnifier { opacity: 1; }
-.show-sign .prop-sign { opacity: 1; }
-
-/* Responsive */
-@media screen and (max-width: 768px) {
-    #devbot-container {
-        transform: scale(0.7);
-        left: 10px;
-        bottom: 10px;
-    }
-}
-
 /* --- Speech Bubble --- */
 .devbot-speech-bubble {
     position: absolute;
-    bottom: 110%; /* Above the robot */
+    bottom: 110%;
     left: 50%;
     transform: translateX(-50%) scale(0);
-    background: var(--white);
-    color: var(--bot-color-secondary);
+    background: #fff;
+    color: #0a192f;
     padding: 10px 15px;
     border-radius: 12px;
     font-size: 14px;
@@ -377,14 +187,18 @@
     font-family: 'Roboto', sans-serif;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     border: 2px solid var(--bot-color-primary);
-    white-space: nowrap;
+    white-space: normal;
+    text-align: center;
+    max-width: 200px;
     z-index: 100;
     opacity: 0;
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     pointer-events: none;
-    max-width: 200px;
-    white-space: normal;
-    text-align: center;
+}
+
+.devbot-speech-bubble.visible {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
 }
 
 .devbot-speech-bubble::after {
@@ -398,73 +212,14 @@
     border-color: var(--bot-color-primary) transparent transparent transparent;
 }
 
-.devbot-speech-bubble::before {
-    /* Inner triangle for border effect */
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 6px 6px 0;
-    border-style: solid;
-    border-color: var(--white) transparent transparent transparent;
-    z-index: 1;
-}
+/* Jetpack disabled for the Professor */
+.devbot-jetpack { display: none !important; }
 
-.devbot-speech-bubble.visible {
-    transform: translateX(-50%) scale(1);
-    opacity: 1;
-}
-
-/* --- Jetpack Effects --- */
-.devbot-jetpack {
-    position: absolute;
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 40px;
-    z-index: 7; /* Behind body */
-}
-
-.jet-flame {
-    position: absolute;
-    bottom: -10px;
-    width: 10px;
-    height: 15px;
-    background: #ff9f43;
-    border-radius: 50%;
-    opacity: 0;
-    animation: jetFlame 0.2s infinite alternate;
-}
-
-.jet-flame.left { left: 15px; }
-.jet-flame.right { right: 15px; }
-
-.flying .jet-flame {
-    opacity: 1;
-}
-
-.flying #devbot {
-    animation: hoverFly 1s ease-in-out infinite alternate;
-}
-
-@keyframes hoverFly {
-    from { transform: translateY(0); }
-    to { transform: translateY(-15px); }
-}
-
-@keyframes jetFlame {
-    from { height: 10px; background: #ff9f43; }
-    to { height: 20px; background: #ee5253; }
-}
-
-/* Mobile Adjustments for Speech */
+/* Responsive */
 @media screen and (max-width: 768px) {
-    .devbot-speech-bubble {
-        font-size: 12px;
-        padding: 8px 12px;
-        bottom: 120%;
-        max-width: 150px;
+    #devbot-container {
+        transform: scale(0.7);
+        left: 10px;
+        bottom: 10px;
     }
 }
