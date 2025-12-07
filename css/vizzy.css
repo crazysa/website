@@ -1,0 +1,101 @@
+/* Idle State */
+@keyframes vizzy-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes vizzy-blink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+@keyframes vizzy-antenna-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.vizzy-idle {
+  animation: vizzy-float 3s ease-in-out infinite;
+}
+
+.vizzy-iris {
+  transform-origin: 50px 55px;
+  animation: vizzy-blink 4s ease-in-out infinite;
+}
+
+.vizzy-antenna-light {
+  animation: vizzy-antenna-pulse 2s ease-in-out infinite;
+}
+
+/* Curious State (Hero) */
+@keyframes vizzy-curious {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+.vizzy--curious .vizzy-pupil,
+.vizzy--curious .vizzy-iris {
+  animation: vizzy-curious 2s ease-in-out infinite;
+}
+
+/* Impressed State (Near metrics) */
+@keyframes vizzy-impressed-iris {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+@keyframes vizzy-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.vizzy--impressed .vizzy-iris {
+  animation: vizzy-impressed-iris 0.5s ease-out;
+}
+
+.vizzy--impressed {
+  animation: vizzy-bounce 0.5s ease-out;
+}
+
+/* Thinking State (Skills section) */
+@keyframes vizzy-thinking {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.vizzy--thinking .vizzy-pupil {
+  animation: vizzy-thinking 1s ease-in-out infinite;
+}
+
+/* Waving State (Contact section) */
+@keyframes vizzy-wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(20deg); }
+  75% { transform: rotate(-10deg); }
+}
+
+.vizzy--waving .vizzy-arm {
+  opacity: 1;
+  transform-origin: 80px 55px;
+  animation: vizzy-wave 0.8s ease-in-out infinite;
+}
+
+/* Focus/Aperture Animation */
+@keyframes vizzy-focus {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(15deg) scale(0.8); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.vizzy--focusing .vizzy-aperture {
+  transform-origin: 50px 50px;
+  animation: vizzy-focus 0.5s ease-out;
+}
+
+/* Spin Animation (Easter Egg) */
+@keyframes vizzy-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
